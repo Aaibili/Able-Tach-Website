@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="田园研究所">
+  <title>田园研究所</title>
+  <style>
+    :root {
+      --paper: #f7f6f2;
+      --surface: #fffefa;
+      --ink: #222923;
+      --muted: #656b64;
+      --line: #d9ddd5;
+      --accent: #365b4a;
+      --accent-soft: #e8eee8;
+      --warning-bg: #f1eee5;
+      --warning-line: #c9b98e;
+      --max-width: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--paper); }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, "Noto Serif SC", "Songti SC", SimSun, serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-underline-offset: 4px; }
+    a:hover { color: var(--accent); }
+    .wrap { width: min(var(--max-width), calc(100% - 48px)); margin: 0 auto; }
+    .site-header { border-bottom: 1px solid var(--line); }
+    .masthead {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; padding: 25px 0 20px;
+    }
+    .brand { display: flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; }
+    .brand-icon { display: block; width: 44px; height: 44px; flex: 0 0 auto; object-fit: contain; }
+    .brand-copy { display: flex; flex-direction: column; gap: 1px; }
+    .brand strong { font-size: 17px; font-weight: 600; letter-spacing: .02em; }
+    .brand span, .eyebrow, .nav, .meta, .section-index, .footer-note {
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+    }
+    .brand span { color: var(--muted); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+    .nav { display: flex; flex-wrap: wrap; gap: 22px; font-size: 13px; }
+    .nav a { color: var(--muted); text-decoration: none; }
+    .nav a:hover { color: var(--accent); }
+    .hero {
+      display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(220px, .8fr);
+      gap: 52px; align-items: end; padding: 76px 0 64px;
+    }
+    .eyebrow { margin: 0 0 16px; color: var(--accent); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { max-width: 700px; margin: 0; font-size: clamp(36px, 5.4vw, 60px); font-weight: 500; line-height: 1.28; letter-spacing: -.035em; }
+    .hero-intro { max-width: 690px; margin: 23px 0 0; color: var(--muted); font-size: 16px; line-height: 2; }
+    .hero-aside { border-left: 2px solid var(--accent); padding: 5px 0 5px 20px; color: var(--muted); font-size: 13px; }
+    .hero-aside p { margin: 0 0 9px; }
+    .hero-aside p:last-child { margin-bottom: 0; }
+    .hero-aside strong { color: var(--ink); font-weight: 600; }
+    .section { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 36px; padding: 38px 0 43px; border-top: 1px solid var(--line); }
+    .section-heading { margin: 0; font-size: 17px; font-weight: 600; }
+    .section-index { display: block; margin-bottom: 7px; color: #8b9188; font-size: 10px; letter-spacing: .12em; }
+    .section-body { min-width: 0; }
+    .section-body > p:first-child { margin-top: 0; }
+    .prose { margin: 0 0 14px; color: #4f554e; font-size: 15px; line-height: 2; }
+    .topic-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+    .topic { padding: 19px 18px 6px 0; }
+    .topic + .topic { border-left: 1px solid var(--line); padding-left: 19px; }
+    .topic h3 { margin: 0 0 8px; font-size: 15px; font-weight: 600; }
+    .topic p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.9; }
+    .paper-list { margin: 0; padding: 0; list-style: none; }
+    .paper-list li { display: block; padding: 17px 0; border-top: 1px solid var(--line); }
+    .paper-list li:first-child { padding-top: 0; border-top: 0; }
+    .paper-year { color: var(--accent); font-family: Arial, sans-serif; font-size: 12px; padding-top: 3px; }
+    .paper-title { margin: 0 0 4px; font-size: 15px; font-weight: 600; }
+    .paper-title a { color: var(--ink); text-decoration: none; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .paper-title a:hover { color: var(--accent); text-decoration: underline; }
+    .paper-detail { margin: 0; color: var(--muted); font-family: Arial, "Microsoft YaHei", sans-serif; font-size: 12px; line-height: 1.8; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .paper-empty { color: var(--muted); font-size: 13px; line-height: 1.9; }
+    .paper-actions { display: flex; justify-content: flex-start; margin-top: 16px; }
+    .paper-more { border: 1px solid var(--line); border-radius: 999px; padding: 9px 18px; background: transparent; color: var(--accent); font: 600 13px/1.5 Arial, "Microsoft YaHei", sans-serif; cursor: pointer; transition: background .18s ease, border-color .18s ease; }
+    .paper-more:hover { background: var(--accent-soft); border-color: #b9c8b9; }
+    .paper-modal[hidden] { display: none !important; }
+    .paper-modal { position: fixed; inset: 0; z-index: 2500; display: grid; place-items: center; padding: 22px; }
+    .paper-modal__backdrop { position: absolute; inset: 0; background: rgba(12,20,29,.72); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    .paper-modal__panel { position: relative; z-index: 1; display: flex; flex-direction: column; width: min(780px,100%); max-height: min(82vh,780px); max-height: min(82svh,780px); overflow: hidden; border: 1px solid rgba(255,255,255,.65); border-radius: 20px; background: var(--paper); box-shadow: 0 24px 80px rgba(0,0,0,.3); }
+    .paper-modal__header { display: flex; flex: 0 0 auto; align-items: center; justify-content: space-between; gap: 16px; padding: 21px 25px 17px; border-bottom: 1px solid var(--line); }
+    .paper-modal__eyebrow { margin: 0 0 3px; color: var(--accent); font: 600 10px/1.5 Arial, sans-serif; letter-spacing: .14em; }
+    .paper-modal__header h2 { margin: 0; color: var(--ink); font-size: 20px; font-weight: 600; }
+    .paper-modal__close { flex: 0 0 auto; border: 1px solid var(--line); border-radius: 999px; padding: 7px 13px; background: transparent; color: var(--ink); font: 13px/1.5 Arial, "Microsoft YaHei", sans-serif; cursor: pointer; }
+    .paper-modal__close:hover { background: var(--accent-soft); }
+    .paper-modal__scroll { overflow-y: auto; min-height: 0; padding: 21px 25px 25px; overscroll-behavior: contain; }
+    @media (max-width: 600px) {
+      .paper-modal { padding: 10px; }
+      .paper-modal__panel { max-height: 90vh; max-height: 90svh; border-radius: 16px; }
+      .paper-modal__header { padding: 17px 18px 14px; }
+      .paper-modal__header h2 { font-size: 18px; }
+      .paper-modal__scroll { padding: 17px 18px 20px; }
+    }
+    .resource-links { display: flex; flex-wrap: wrap; gap: 10px 23px; margin: 0; padding: 0; list-style: none; }
+    .resource-links a { color: var(--accent); font-size: 14px; }
+    .contact-line { margin: 0; color: var(--muted); font-size: 14px; }
+    .disclaimer {
+      margin: 14px 0 0; padding: 24px 26px 26px;
+      background: var(--warning-bg); border-left: 3px solid var(--warning-line);
+    }
+    .disclaimer h2 { margin: 0 0 10px; font-size: 16px; font-weight: 600; }
+    .disclaimer .english { margin-left: 8px; color: var(--muted); font-family: Arial, sans-serif; font-size: 11px; font-weight: 400; }
+    .disclaimer p { margin: 0; color: #5d5b53; font-size: 13px; line-height: 1.95; }
+    .disclaimer .placeholder { margin-top: 10px; color: #797466; font-size: 12px; }
+    .site-footer { margin-top: 48px; padding: 20px 0 30px; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; color: #858a82; }
+    .footer-note { margin: 0; font-size: 11px; line-height: 1.8; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, var(--max-width)); }
+      .masthead { align-items: flex-start; flex-direction: column; gap: 15px; }
+      .nav { gap: 15px; }
+      .hero { grid-template-columns: 1fr; gap: 26px; padding: 54px 0 44px; }
+      .hero-aside { max-width: 420px; }
+      .section { grid-template-columns: 1fr; gap: 15px; padding: 29px 0 34px; }
+      .topic-list { grid-template-columns: 1fr; }
+      .topic { padding: 16px 0; }
+      .topic + .topic { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+      .footer-inner { flex-direction: column; gap: 5px; }
+    }
+    @media (max-width: 420px) {
+      .paper-list li { grid-template-columns: 45px minmax(0, 1fr); gap: 11px; }
+      .disclaimer { padding: 19px 17px 21px; }
+      h1 { font-size: 36px; }
+    }
+  /* Image placeholders */
+.image-placeholder { display:flex; align-items:center; justify-content:center; background:#eeede7; border:1px dashed #a9aaa0; color:#666b61; text-align:center; overflow:hidden; }
+.image-placeholder span { padding:1rem; }
+.hero-image { width:100%; aspect-ratio:16/7; margin:2rem 0; }
+.research-image { width:100%; aspect-ratio:4/3; margin-bottom:1rem; }
+.gallery-image { display:block; width:100%; height:auto; object-fit:contain; }
+.gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.25rem; }
+.gallery figure { margin:0; }
+.gallery figcaption { margin-top:.6rem; color:#666; font-size:.9rem; }
+@media (max-width:640px) { .gallery { grid-template-columns:1fr; } .hero-image { aspect-ratio:4/3; } }
+/* Full-width hero image placeholder; text stays above it. */
+.hero { position:relative; isolation:isolate; min-height:calc(100vh - 66px); min-height:calc(100svh - 66px); box-sizing:border-box; align-items:center; padding:64px 0 72px; }
+.hero > div.slogan-image { position:absolute; isolation:auto; z-index:0; inset:0 auto 0 50%; transform:translateX(-50%); width:100vw; height:auto; min-height:100%; margin:0; overflow:hidden; border:0; background:#e9e8df url("images/hero1.png") center / cover no-repeat; }
+.hero > div.slogan-image span { position:absolute; right:24px; bottom:20px; z-index:2; color:#77796f; font-size:11px; letter-spacing:.04em; pointer-events:none; }
+.hero > div:nth-of-type(2) { position:relative; z-index:1; }
+.hero > div:nth-of-type(2) > .eyebrow,
+.hero > div:nth-of-type(2) > h1,
+.hero > div:nth-of-type(2) > .hero-intro,
+.hero > .hero-aside { position:relative; z-index:1; }
+@media (max-width:760px) {
+  .hero { min-height:calc(100vh - 58px); min-height:calc(100svh - 58px); padding:48px 0; align-content:center; }
+  .hero > div.slogan-image span { right:16px; bottom:14px; }
+}
+/* White lettering with a medium black outline over the hero image */
+.hero > div:nth-of-type(2),
+.hero > .hero-aside {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+.hero > div:nth-of-type(2) > .eyebrow,
+.hero > div:nth-of-type(2) > h1,
+.hero > div:nth-of-type(2) > .hero-intro,
+.hero > .hero-aside,
+.hero > .hero-aside strong {
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  -webkit-text-stroke: 1.5px #111;
+  paint-order: stroke fill;
+  text-shadow: 0 0 1px rgba(0,0,0,.25);
+}
+.hero > div:nth-of-type(2) > h1 {
+  -webkit-text-stroke: 2px #111;
+  paint-order: stroke fill;
+}
+/* Enlarge all hero text except the main slogan heading */
+.hero > div:nth-of-type(2) > .eyebrow {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.hero > div:nth-of-type(2) > .hero-intro {
+  font-size: 20px;
+  line-height: 1.9;
+  max-width: 760px;
+}
+.hero > .hero-aside {
+  font-size: 17px;
+  line-height: 1.9;
+}
+.hero > .hero-aside strong {
+  font-size: 18px;
+}
+@media (max-width: 760px) {
+  .hero > div:nth-of-type(2) > .eyebrow { font-size: 14px; }
+  .hero > div:nth-of-type(2) > .hero-intro { font-size: 18px; }
+  .hero > .hero-aside { font-size: 16px; }
+  .hero > .hero-aside strong { font-size: 17px; }
+}/* Dark blue label behind the institute introduction */
+.hero > div:nth-of-type(2) > .hero-intro {
+  display: table;
+  width: fit-content;
+  max-width: 100%;
+  padding: 12px 18px;
+  background: #17324d;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  border-left: 4px solid #8ba8c4;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+@media (max-width: 760px) {
+  .hero > div:nth-of-type(2) > .hero-intro {
+    padding: 11px 14px;
+  }
+}/* Always-floating acrylic navigation */
+.site-header {
+  position:fixed;
+  top:12px;
+  left:0;
+  right:0;
+  z-index:1000;
+  width:100%;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+  pointer-events:none;
+}
+.site-header .masthead {
+  width:min(980px, calc(100% - 32px));
+  max-width:980px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:12px 18px 12px 16px;
+  border:1px solid rgba(255,255,255,.52);
+  border-radius:22px;
+  background:rgba(248,249,246,.72);
+  -webkit-backdrop-filter:blur(18px) saturate(1.35);
+  backdrop-filter:blur(18px) saturate(1.35);
+  box-shadow:0 8px 28px rgba(20,30,24,.13), inset 0 1px 0 rgba(255,255,255,.55);
+  box-sizing:border-box;
+  pointer-events:auto;
+  animation:acrylic-dock .3s cubic-bezier(.2,.7,.2,1) both;
+  transition:background .2s ease, box-shadow .2s ease;
+}
+.site-header .masthead:hover {
+  background:rgba(250,250,248,.84);
+  box-shadow:0 10px 32px rgba(20,30,24,.16), inset 0 1px 0 rgba(255,255,255,.7);
+}
+.site-header .brand { flex-shrink:0; }
+.site-header .nav { align-items:center; gap:20px; }
+.site-header .brand strong,
+.site-header .brand span,
+.site-header .nav a { color:var(--ink); text-shadow:none; }
+@keyframes acrylic-dock {
+  from { transform:translateY(-8px) scale(.98); opacity:.78; }
+  to { transform:translateY(0) scale(1); opacity:1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header .masthead { transition:none !important; animation:none !important; }
+}
+/* Leave room below the always-floating header and keep it responsive */
+.hero {
+  min-height:100vh;
+  min-height:100svh;
+  padding-top:132px;
+}
+@media (max-width:760px) {
+  .site-header { top:8px; }
+  .site-header .masthead {
+    width:calc(100% - 24px);
+    max-width:980px;
+    padding:11px 14px 11px 14px;
+    gap:11px 16px;
+    border-radius:19px;
+    flex-direction:row;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .site-header .brand-icon { width:38px; height:38px; }
+  .site-header .brand strong { font-size:16px; }
+  .site-header .brand span { font-size:9px; letter-spacing:.08em; }
+  .site-header .nav { gap:13px; font-size:12px; }
+  .hero { min-height:100vh; min-height:100svh; padding-top:150px; }
+}
+@media (max-width:420px) {
+  .site-header .masthead { padding:10px 12px 10px 12px; gap:9px 11px; }
+  .site-header .brand span { display:none; }
+  .site-header .nav { gap:11px; font-size:11px; }
+  .hero { min-height:100vh; min-height:100svh; padding-top:136px; }
+}
+/* Offset anchor destinations so the fixed acrylic header never covers them */
+html {
+  scroll-padding-top: 118px;
+  scroll-padding-block-start: 118px;
+}
+.section[id], #disclaimer {
+  scroll-margin-top: 118px;
+  scroll-margin-block-start: 118px;
+}
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 142px;
+    scroll-padding-block-start: 142px;
+  }
+  .section[id], #disclaimer {
+    scroll-margin-top: 142px;
+    scroll-margin-block-start: 142px;
+  }
+}
+@media (max-width: 420px) {
+  html {
+    scroll-padding-top: 112px;
+    scroll-padding-block-start: 112px;
+  }
+  .section[id], #disclaimer {
+    scroll-margin-top: 112px;
+    scroll-margin-block-start: 112px;
+  }
+}/* Required first-visit disclaimer reading gate */
+body.disclaimer-gate-active { overflow:hidden; }
+#site-content[inert] { user-select:none; }
+.disclaimer-gate {
+  position:fixed; inset:0; z-index:10000; display:grid; place-items:center;
+  padding:22px; background:rgba(12,20,29,.76);
+  -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+}
+.disclaimer-gate__panel {
+  width:min(860px,100%); max-height:calc(100vh - 44px); max-height:calc(100svh - 44px);
+  display:flex; flex-direction:column; overflow:hidden; border-radius:22px;
+  background:#f7f6f2; color:#222923; border:1px solid rgba(255,255,255,.65);
+  box-shadow:0 24px 80px rgba(0,0,0,.34);
+}
+.disclaimer-gate__header { flex:0 0 auto; padding:26px 30px 20px; }
+.disclaimer-gate__eyebrow { color:#365b4a; font:600 10px/1.5 Arial,sans-serif; letter-spacing:.18em; }
+.disclaimer-gate__header h1 { max-width:none; margin:7px 0 8px; color:#222923; font-size:clamp(22px,3vw,30px); line-height:1.45; letter-spacing:0; font-weight:600; }
+.disclaimer-gate__header p { margin:0; color:#656b64; font-size:14px; line-height:1.8; }
+.disclaimer-gate__scroll { flex:1 1 auto; min-height:120px; max-height:52vh; overflow-y:auto; overscroll-behavior:contain; padding:18px 30px; border-top:1px solid #d9ddd5; border-bottom:1px solid #d9ddd5; scrollbar-gutter:stable; }
+.disclaimer-gate__scroll .disclaimer { margin:0; padding:0; background:transparent; border:0; }
+.disclaimer-gate__scroll .disclaimer h2 { margin:0 0 12px; font-size:17px; }
+.disclaimer-gate__scroll .disclaimer p { margin:0 0 12px; font-size:13px; line-height:1.9; overflow-wrap:anywhere; }
+.disclaimer-gate__actions { flex:0 0 auto; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:12px 20px; padding:18px 30px 24px; }
+.disclaimer-gate__status { grid-column:1/-1; margin:0; color:#656b64; font-size:12px; line-height:1.6; }
+.disclaimer-gate__check { display:flex; align-items:center; gap:9px; color:#343a34; font-size:13px; line-height:1.6; }
+.disclaimer-gate__check input { width:17px; height:17px; accent-color:#365b4a; flex:0 0 auto; }
+.disclaimer-gate__button { border:0; border-radius:999px; padding:12px 20px; color:#fff; background:#365b4a; font:600 13px/1.4 Arial,"Microsoft YaHei",sans-serif; cursor:pointer; }
+.disclaimer-gate__button:disabled { color:#f6f6f3; background:#aab2aa; cursor:not-allowed; }
+.disclaimer-gate__button:not(:disabled):hover { background:#274536; }
+@media(max-width:600px) {
+  .disclaimer-gate { padding:10px; }
+  .disclaimer-gate__panel { max-height:calc(100vh - 20px); max-height:calc(100svh - 20px); border-radius:17px; }
+  .disclaimer-gate__header { padding:20px 19px 15px; }
+  .disclaimer-gate__header h1 { font-size:22px; }
+  .disclaimer-gate__header p { font-size:13px; }
+  .disclaimer-gate__scroll { max-height:52vh; padding:15px 19px; }
+  .disclaimer-gate__actions { grid-template-columns:1fr; gap:12px; padding:15px 19px 19px; }
+  .disclaimer-gate__button { width:100%; }
+}</style>
+</head>
+<body class="disclaimer-gate-active">
+  <div class="disclaimer-gate" id="disclaimer-gate" role="dialog" aria-modal="true" aria-labelledby="disclaimer-gate-title">
+    <div class="disclaimer-gate__panel" role="document">
+      <div class="disclaimer-gate__header">
+        <span class="disclaimer-gate__eyebrow">PLEASE READ</span>
+        <h1 id="disclaimer-gate-title">进入田园研究所前，请先阅读免责声明</h1>
+        <p>请在下方完整阅读免责声明。滚动至正文底部后，才能勾选确认并进入网站。</p>
+      </div>
+      <div class="disclaimer-gate__scroll" id="disclaimer-scroll" tabindex="0" aria-label="免责声明正文">
+        <section class="disclaimer" id="disclaimer" aria-labelledby="disclaimer-title">
+          <h2 id="disclaimer-title">免责声明 <span class="english">DISCLAIMER</span></h2>
+          <p>最后更新日期：【2026年10月17日】</p>
+          <p>田园研究所网站（以下简称“本站”）是一个以完全虚构人物、事件、组织、地点、情节等为内容的创作、展示或娱乐平台。请在使用本站前仔细阅读以下声明。</p>
+          <p><strong>1. 内容纯属虚构：</strong>本站所有内容，包括但不限于文字、图片、音频、视频、角色、姓名、机构名称、地点、事件、剧情、设定、评论及相关信息，均为虚构创作，并非真实发生。本站内容不代表任何现实人物、团体、组织、事件或地点的真实情况，也不代表本站运营者、作者或相关方的观点、立场或事实陈述。</p>
+          <p><strong>2. 如有雷同，纯属巧合：</strong>本站中出现的任何姓名、名称、机构、地点、事件、日期、情节等，如与现实中的个人、团体、组织、事件、地点、品牌、宗教、民族等存在相似之处，纯属巧合。本站无意影射、诽谤、侮辱、贬损、侵犯或针对任何现实主体。请勿将本站内容与现实人物、事件对号入座。</p>
+          <p><strong>3. 非新闻、非事实、非专业建议：</strong>本站内容不应被视为新闻、事实报道、历史记录、证据材料或法律、医疗、投资、心理、教育等专业建议。本站可能使用“报道”“纪实”“新闻”等风格化表达，但仅为艺术创作或娱乐表现，不改变其虚构性质。任何人不应依据本站内容作出决策或采取行动。因依赖本站内容造成的损失，本站不承担责任。</p>
+          <p><strong>4. 读者责任：</strong>访问者应自行判断并理解本站内容的虚构性质。因误解、传播、引用、改编、对号入座或其他不当使用本站内容而产生的后果，由行为人自行承担。本站不鼓励、不支持任何基于虚构内容对现实主体进行骚扰、攻击或侵权的行为。</p>
+          <p><strong>5. 侵权处理：</strong>若任何个人或组织认为本站内容侵犯其合法权益，请通过邮箱（lsy@abletach.de5.net）与本站联系，并提供权属证明、具体链接及情况说明。本站将在核实后及时采取删除、修改、断开链接等合理措施。</p>
+          <p><strong>6. 用户生成内容：</strong>若本站允许用户投稿、评论或发布内容，用户应确保其发布内容不侵犯他人合法权益，不发布真实诽谤、虚假信息或违法内容。本站对用户发布内容不承担事先审查义务，但收到有效通知后将依法依规处理。</p>
+          <p><strong>7. 外部链接：</strong>本站可能包含指向外部网站的链接，仅为方便访问。本站不对第三方网站的内容、安全性或合法性负责，也不代表本站认可其内容。</p>
+          <p><strong>8. 版权声明：</strong>本站原创内容版权归本网站运营者所有，未经许可，不得擅自转载、复制、改编或用于商业用途。引用本站内容请注明来源。虚构角色、设定和情节仅用于创作展示。</p>
+          <p><strong>9. 声明修改：</strong>本站有权根据实际情况随时更新本免责声明。更新后的声明在本页面公布后即生效。继续使用本站，视为接受更新后的声明。</p>
+          <p><strong>10. 法律适用与争议解决：</strong>本声明适用中华人民共和国法律（仅为本声明之目的，不包括香港特别行政区、澳门特别行政区和台湾地区法律）。因本站或本声明产生的争议，双方应尽量友好协商解决；协商不成的，任何一方均可向邯郸有管辖权的人民法院提起诉讼。</p>
+        </section>
+      </div>
+      <div class="disclaimer-gate__actions">
+        <p class="disclaimer-gate__status" id="disclaimer-status" aria-live="polite">请向下滚动，阅读完整份免责声明。</p>
+        <label class="disclaimer-gate__check"><input type="checkbox" id="disclaimer-confirm" disabled> 我已完整阅读并理解以上免责声明</label>
+        <button class="disclaimer-gate__button" id="disclaimer-enter" type="button" disabled>确认并进入网站</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-content" inert>
+    <header class="site-header">
+      <div class="wrap masthead">
+        <a class="brand" href="#top" aria-label="返回主页">
+          <img class="brand-icon" src="images/Icon1.png" alt="">
+          <div class="brand-copy">
+            <strong>田园研究所</strong>
+            <span>Academic Profile & Research Notes</span>
+          </div>
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="#about">简介</a>
+          <a href="#research">研究方向</a>
+          <a href="#publications">学术成果</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top" class="wrap">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="slogan-image" role="img" aria-label="生命与宇宙的奇幻交响"></div>
+        <div>
+          <p class="eyebrow">Research · Reading · Reflection</p>
+          <h1 id="page-title">以问题为起点，<br>探索知识的边界。</h1>
+          <p class="hero-intro">这里是田园研究所，一座为天体学、生物学、时空理论学而生的研究所。</p>
+        </div>
+        <aside class="hero-aside" aria-label="基本信息">
+          <p><strong>研究领域</strong><br>[天体学、生物学、时空理论学]</p>
+          <p><strong>所属机构</strong><br>[曙光大学]</p>
+          <p><strong>页面更新</strong><br>[2026 年 10 月]</p>
+        </aside>
+      </section>
+
+      <section id="about" class="section">
+        <div><span class="section-index">01 / PROFILE</span><h2 class="section-heading">研究简介</h2></div>
+        <div class="section-body"><p class="prose">为探寻lwy学说的准确性，我们研究所深入问题内部，发现了lwy学说的错误部分。现田园研究所已转向研究bsjdell学说的正确性和时空理论学。</p></div>
+      </section>
+
+      <section id="research" class="section">
+        <div><span class="section-index">02 / RESEARCH</span><h2 class="section-heading">研究方向</h2></div>
+        <div class="section-body">
+          <div class="topic-list">
+            <article class="topic"><h3>方向一 · [黑体、白体生物]</h3><p>我们已成功证实白体生物真实存在，目前正在观察其行为与生命活动；卢德块教授已成功证明黑体生物就是绿叶体，目前团队正在攻破《植物与黑体生物共存》难题。</p></article>
+            <article class="topic"><h3>方向二 · [红体生物]</h3><p>目前正处于早期攻坚阶段，目前已发现红体生物存在于人体内。</p></article>
+            <article class="topic"><h3>方向三 · [时间物质理论]</h3><p>目前正处于早期攻坚阶段</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="publications" class="section">
+        <div><span class="section-index">03 / OUTPUT</span><h2 class="section-heading">论文与成果</h2></div>
+        <div class="section-body">
+          <ul class="paper-list" id="paper-list" aria-live="polite">
+            <li class="paper-empty">正在读取论文与成果……</li>
+          </ul>
+          <div class="paper-actions">
+            <button class="paper-more" type="button" id="papers-more">查看更多</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="section">
+        <div><span class="section-index">04 / GALLERY</span><h2 class="section-heading">研究环境与项目</h2></div>
+        <div class="section-body">
+          <div class="gallery">
+            <figure><img class="gallery-image" src="images/research-director-reviewing-departments.jpg" alt="赵晓鸟副所长正在检查各个部门工作" loading="lazy"><figcaption>赵晓鸟副所长正在检查各个部门工作</figcaption></figure>
+            <figure><img class="gallery-image" src="images/researchers-discussing-ideas.jpg" alt="赵晓鸟副所长与陈仁杰教授讨论意见" loading="lazy"><figcaption>赵晓鸟副所长与陈仁杰教授讨论意见</figcaption></figure>
+            <figure><img class="gallery-image" src="images/professors-exchanging-views.jpg" alt="赵晓鸟副所长与孙笑川教授交换意见" loading="lazy"><figcaption>赵晓鸟副所长与孙笑川教授交换意见</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <div class="paper-modal" id="papers-modal" hidden>
+      <div class="paper-modal__backdrop" data-close-papers aria-hidden="true"></div>
+      <section class="paper-modal__panel" role="dialog" aria-modal="true" aria-labelledby="papers-modal-title" tabindex="-1">
+        <header class="paper-modal__header">
+          <div>
+            <p class="paper-modal__eyebrow">PAPERS AND ACHIEVEMENTS</p>
+            <h2 id="papers-modal-title">全部论文与成果</h2>
+          </div>
+          <button class="paper-modal__close" type="button" id="papers-close">关闭</button>
+        </header>
+        <div class="paper-modal__scroll">
+          <ul class="paper-list" id="paper-list-all" aria-live="polite">
+            <li class="paper-empty">正在读取论文与成果……</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <p class="footer-note">© [2026] [田园研究所] · 保留所有适用权利</p>
+        <p class="footer-note">学术交流 · 独立观点</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+  (function () {
+    const gate = document.getElementById('disclaimer-gate');
+    const site = document.getElementById('site-content');
+    const readingArea = document.getElementById('disclaimer-scroll');
+    const confirmation = document.getElementById('disclaimer-confirm');
+    const enterButton = document.getElementById('disclaimer-enter');
+    const status = document.getElementById('disclaimer-status');
+    if (!gate || !site || !readingArea || !confirmation || !enterButton || !status) return;
+    let reachedEnd = false;
+    function updateProgress() {
+      const atEnd = readingArea.scrollTop + readingArea.clientHeight >= readingArea.scrollHeight - 4;
+      if (atEnd && !reachedEnd) {
+        reachedEnd = true;
+        confirmation.disabled = false;
+        status.textContent = '已滚动至正文底部。请勾选确认框后继续。';
+      }
+      enterButton.disabled = !(reachedEnd && confirmation.checked);
+    }
+    readingArea.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    confirmation.addEventListener('change', function () {
+      enterButton.disabled = !(reachedEnd && confirmation.checked);
+      status.textContent = confirmation.checked ? '确认完成，可以进入网站。' : '请确认已完整阅读免责声明。';
+    });
+    enterButton.addEventListener('click', function () {
+      if (!reachedEnd || !confirmation.checked) return;
+      gate.remove();
+      site.removeAttribute('inert');
+      document.body.classList.remove('disclaimer-gate-active');
+      const heading = document.getElementById('page-title');
+      if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
+    });
+    updateProgress();
+  })();
+  </script>
+  <!-- PAPERS_DATA_START --><script type="application/json" id="papers-data">[{"file":"《时间物质理论与演算宇宙模型》.html","description":"[2026] · [田园研究所全体成员] · [时间物质理论] · [已发表]"},{"file":"《黑体生物和绿叶体的相关性》.html","description":"[2026] · [卢德块教授] · [黑体生物] · [未发表]"},{"file":"《黑体生物研究报告》.html","description":"[2026] · [田园研究所全体成员] · [黑体生物] · [已发表]"}]</script><!-- PAPERS_DATA_END -->
+  <script>
+  (function () {
+    const mainList = document.getElementById('paper-list');
+    const allList = document.getElementById('paper-list-all');
+    const moreButton = document.getElementById('papers-more');
+    const modal = document.getElementById('papers-modal');
+    const closeButton = document.getElementById('papers-close');
+    if (!mainList || !allList || !moreButton || !modal || !closeButton) return;
+
+    const directoryUrl = new URL('Papers%20and%20Achievements/', document.baseURI);
+    const collator = new Intl.Collator('zh-CN', { numeric: true, sensitivity: 'base' });
+
+    function isHtmlFilename(value) {
+      return typeof value === 'string' &&
+        value.length > 5 &&
+        !/[\\/]/.test(value) &&
+        value !== '.' && value !== '..' &&
+        /\.html$/i.test(value) &&
+        value.toLowerCase() !== 'index.html';
+    }
+
+    async function discoverFromDirectoryListing() {
+      try {
+        const response = await fetch(directoryUrl.href, { cache: 'no-store' });
+        if (!response.ok) return null;
+        const contentType = response.headers.get('content-type') || '';
+        if (!contentType.includes('text/html')) return null;
+        const markup = await response.text();
+        const doc = new DOMParser().parseFromString(markup, 'text/html');
+        const filenames = [];
+        for (const anchor of doc.querySelectorAll('a[href]')) {
+          try {
+            const url = new URL(anchor.getAttribute('href'), directoryUrl);
+            const parentPath = url.pathname.slice(0, url.pathname.lastIndexOf('/') + 1);
+            if (url.origin !== directoryUrl.origin || parentPath !== directoryUrl.pathname) continue;
+            const filename = decodeURIComponent(url.pathname.split('/').pop());
+            if (isHtmlFilename(filename)) filenames.push(filename);
+          } catch (_) {}
+        }
+        const unique = [...new Set(filenames)].sort(collator.compare);
+        return unique.length ? unique : null;
+      } catch (_) {
+        return null;
+      }
+    }
+
+    async function readManifest() {
+      try {
+        const response = await fetch(new URL('papers.json', directoryUrl).href, { cache: 'no-store' });
+        if (!response.ok) return [];
+        const data = await response.json();
+        const rawFiles = Array.isArray(data) ? data : (Array.isArray(data.files) ? data.files : []);
+        return [...new Set(rawFiles.map(item =>
+          typeof item === 'string' ? item : (item && (item.file || item.html))
+        ).filter(isHtmlFilename))].sort(collator.compare);
+      } catch (_) {
+        return [];
+      }
+    }
+
+    async function loadEntry(filename) {
+      const htmlUrl = new URL(encodeURIComponent(filename), directoryUrl).href;
+      const txtFilename = filename.replace(/\.html$/i, '.txt');
+      let description = '';
+      try {
+        const response = await fetch(new URL(encodeURIComponent(txtFilename), directoryUrl).href, { cache: 'no-store' });
+        if (response.ok) description = (await response.text()).trim();
+        else description = '未找到对应的 TXT 文件：' + txtFilename;
+      } catch (_) {
+        description = '暂时无法读取对应的 TXT 文件：' + txtFilename;
+      }
+      if (!description) description = '对应的 TXT 文件暂无内容。';
+      return { filename, htmlUrl, description };
+    }
+
+    function makeRow(entry) {
+      const li = document.createElement('li');
+      const title = document.createElement('p');
+      title.className = 'paper-title';
+      const link = document.createElement('a');
+      link.href = entry.htmlUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      const displayName = entry.filename.replace(/\.html$/i, '');
+      link.textContent = displayName;
+      link.setAttribute('aria-label', '打开论文网页：' + displayName);
+      title.appendChild(link);
+
+      const detail = document.createElement('p');
+      detail.className = 'paper-detail';
+      detail.textContent = entry.description;
+      li.append(title, detail);
+      return li;
+    }
+
+    function showEmpty(list) {
+      const li = document.createElement('li');
+      li.className = 'paper-empty';
+      li.textContent = '暂时没有发现论文 HTML 文件。请把 xxx.html 和同名 xxx.txt 放入 Papers and Achievements 文件夹。';
+      list.replaceChildren(li);
+    }
+
+    function renderList(list, entries) {
+      list.replaceChildren();
+      if (!entries.length) {
+        showEmpty(list);
+        return;
+      }
+      for (const entry of entries) list.appendChild(makeRow(entry));
+    }
+
+    function readEmbeddedEntries() {
+      try {
+        const node = document.getElementById('papers-data');
+        const data = JSON.parse(node ? node.textContent : '[]');
+        if (!Array.isArray(data)) return [];
+        return data
+          .filter(item => item && isHtmlFilename(item.file))
+          .map(item => ({
+            filename: item.file,
+            htmlUrl: new URL(encodeURIComponent(item.file), directoryUrl).href,
+            description: typeof item.description === 'string' && item.description.trim()
+              ? item.description
+              : '对应的 TXT 文件暂无内容。'
+          }));
+      } catch (_) {
+        return [];
+      }
+    }
+
+    async function initializePapers() {
+      // Embedded data works even when the page is opened directly from file://,
+      // where browser security blocks fetch() from reading local JSON/TXT files.
+      const embeddedEntries = readEmbeddedEntries();
+      if (embeddedEntries.length) {
+        renderList(mainList, embeddedEntries.slice(0, 3));
+        renderList(allList, embeddedEntries);
+        return;
+      }
+
+      const discovered = await discoverFromDirectoryListing();
+      const filenames = discovered || await readManifest();
+      const entries = await Promise.all(filenames.map(loadEntry));
+      renderList(mainList, entries.slice(0, 3));
+      renderList(allList, entries);
+    }
+
+    let previousOverflow = '';
+    function openModal() {
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      modal.hidden = false;
+      closeButton.focus();
+    }
+    function closeModal() {
+      modal.hidden = true;
+      document.body.style.overflow = previousOverflow;
+      moreButton.focus();
+    }
+    moreButton.addEventListener('click', openModal);
+    closeButton.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (event) {
+      if (event.target.matches('[data-close-papers]')) closeModal();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !modal.hidden) closeModal();
+    });
+
+    initializePapers();
+  })();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
