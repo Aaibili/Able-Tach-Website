@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="田园研究所：时间物质理论与演算宇宙模型">
+  <title>时间物质理论与演算宇宙模型 - 田园研究所</title>
+  <style>
+    :root {
+      --paper:#f7f6f2; --surface:#fffefa; --ink:#222923; --muted:#656b64;
+      --line:#d9ddd5; --accent:#365b4a; --accent-soft:#e8eee8;
+      --warning-bg:#f1eee5; --warning-line:#c9b98e; --max-width:1080px;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; background:var(--paper); scroll-padding-top:118px; }
+    body {
+      margin:0; background:var(--paper); color:var(--ink);
+      font-family:Georgia,"Noto Serif SC","Songti SC",SimSun,serif;
+      line-height:1.75; -webkit-font-smoothing:antialiased;
+    }
+    a { color:inherit; text-underline-offset:4px; }
+    a:hover { color:var(--accent); }
+    .wrap { width:min(var(--max-width),calc(100% - 48px)); margin:0 auto; }
+    .site-header { position:fixed; top:12px; left:0; right:0; z-index:1000; width:100%; background:transparent; border:0; box-shadow:none; pointer-events:none; }
+    .site-header .masthead {
+      width:min(980px,calc(100% - 32px)); max-width:980px; margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between; gap:24px;
+      padding:12px 18px 12px 16px; border:1px solid rgba(255,255,255,.52);
+      border-radius:22px; background:rgba(248,249,246,.72);
+      -webkit-backdrop-filter:blur(18px) saturate(1.35); backdrop-filter:blur(18px) saturate(1.35);
+      box-shadow:0 8px 28px rgba(20,30,24,.13),inset 0 1px 0 rgba(255,255,255,.55);
+      pointer-events:auto; animation:acrylic-dock .3s cubic-bezier(.2,.7,.2,1) both;
+      transition:background .2s ease,box-shadow .2s ease;
+    }
+    .site-header .masthead:hover { background:rgba(250,250,248,.84); box-shadow:0 10px 32px rgba(20,30,24,.16),inset 0 1px 0 rgba(255,255,255,.7); }
+    .brand { display:flex; flex-direction:row; align-items:center; gap:10px; flex-shrink:0; text-decoration:none; }
+    .brand-icon { display:block; width:44px; height:44px; flex:0 0 auto; object-fit:contain; }
+    .brand-copy { display:flex; flex-direction:column; gap:1px; }
+    .brand strong { color:var(--ink); font-size:17px; font-weight:600; letter-spacing:.02em; }
+    .brand span { color:var(--muted); font:11px/1.5 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.14em; }
+    .nav { display:flex; flex-wrap:wrap; align-items:center; gap:20px; font:13px Arial,"Microsoft YaHei",sans-serif; }
+    .nav a { color:var(--ink); text-decoration:none; }
+    .nav a:hover { color:var(--accent); }
+    @keyframes acrylic-dock { from { transform:translateY(-8px) scale(.98); opacity:.78; } to { transform:translateY(0) scale(1); opacity:1; } }
+    @media(prefers-reduced-motion:reduce) { .site-header .masthead { transition:none!important; animation:none!important; } }
+
+    .article-page { padding-top:132px; padding-bottom:56px; }
+    .article { max-width:860px; margin:0 auto; }
+    .article-header { padding:20px 0 32px; border-bottom:1px solid var(--line); }
+    .eyebrow { margin:0 0 14px; color:var(--accent); font:600 11px/1.6 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+    .article h1 { max-width:820px; margin:0; font-size:clamp(32px,4.8vw,48px); font-weight:500; line-height:1.35; letter-spacing:-.025em; overflow-wrap:anywhere; }
+    .article-lead { max-width:760px; margin:19px 0 0; color:var(--muted); font-size:17px; line-height:2; }
+    .article-seal { margin:22px 0 0; text-align:right; }
+    .article-seal img { width:112px; height:112px; object-fit:contain; }
+    .article-cover { width:100%; margin:30px 0 36px; overflow:hidden; }
+    .article-cover img { display:block; width:100%; height:auto; max-height:none; object-fit:contain; object-position:center; }
+    .article-cover figcaption { margin-top:8px; color:#858a82; font:11px/1.7 Arial,"Microsoft YaHei",sans-serif; text-align:right; }
+    @media(max-width:600px) { .article-cover { margin:22px 0 28px; } .article-cover img { width:100%; height:auto; max-height:none; } }
+    .article-meta { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px 22px; margin:27px 0 0; }
+    .article-meta div { min-width:0; }
+    .article-meta dt { margin-bottom:4px; color:#858a82; font:10px/1.6 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.1em; text-transform:uppercase; }
+    .article-meta dd { margin:0; color:var(--ink); font-size:13px; overflow-wrap:anywhere; }
+    .article-section { display:grid; grid-template-columns:155px minmax(0,1fr); gap:28px; padding:30px 0 34px; border-bottom:1px solid var(--line); }
+    .section-index { display:block; margin-bottom:7px; color:#8b9188; font:10px/1.6 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.12em; }
+    .article-section h2 { margin:0; font-size:18px; font-weight:600; }
+    .article-section h3 { margin:23px 0 8px; font-size:15px; font-weight:600; }
+    .article-section p { margin:0 0 14px; color:#4f554e; font-size:15px; line-height:2; white-space:pre-wrap; overflow-wrap:anywhere; }
+    .article-section p:last-child { margin-bottom:0; }
+    .article-section ul,.article-section ol { margin:0; padding-left:1.4em; color:#4f554e; font-size:14px; line-height:2; }
+    .article-section li { padding-left:3px; margin-bottom:6px; overflow-wrap:anywhere; }
+    .placeholder { color:#797f75; }
+    .article-back { display:inline-block; margin-top:28px; color:var(--accent); font:13px/1.7 Arial,"Microsoft YaHei",sans-serif; text-decoration:none; }
+    .article-back:hover { text-decoration:underline; }
+    .site-footer { margin-top:10px; padding:20px 0 30px; border-top:1px solid var(--line); }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; color:#858a82; }
+    .footer-note { margin:0; font:11px/1.8 Arial,"Microsoft YaHei",sans-serif; }
+
+    body.disclaimer-gate-active { overflow:hidden; }
+    #site-content[inert] { user-select:none; }
+    .disclaimer-gate { position:fixed; inset:0; z-index:10000; display:grid; place-items:center; padding:22px; background:rgba(12,20,29,.76); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); }
+    .disclaimer-gate__panel { width:min(860px,100%); max-height:calc(100vh - 44px); max-height:calc(100svh - 44px); display:flex; flex-direction:column; overflow:hidden; border-radius:22px; background:#f7f6f2; color:#222923; border:1px solid rgba(255,255,255,.65); box-shadow:0 24px 80px rgba(0,0,0,.34); }
+    .disclaimer-gate__header { flex:0 0 auto; padding:26px 30px 20px; }
+    .disclaimer-gate__eyebrow { color:#365b4a; font:600 10px/1.5 Arial,sans-serif; letter-spacing:.18em; }
+    .disclaimer-gate__header h2 { max-width:none; margin:7px 0 8px; color:#222923; font-size:clamp(22px,3vw,30px); line-height:1.45; letter-spacing:0; font-weight:600; }
+    .disclaimer-gate__header p { margin:0; color:#656b64; font-size:14px; line-height:1.8; }
+    .disclaimer-gate__scroll { flex:1 1 auto; min-height:120px; max-height:52vh; overflow-y:auto; overscroll-behavior:contain; padding:18px 30px; border-top:1px solid #d9ddd5; border-bottom:1px solid #d9ddd5; scrollbar-gutter:stable; }
+    .disclaimer { margin:0; padding:0; }
+    .disclaimer h3 { margin:0 0 12px; font-size:17px; }
+    .disclaimer p { margin:0 0 12px; font-size:13px; line-height:1.9; overflow-wrap:anywhere; }
+    .disclaimer__english { margin-left:8px; color:#656b64; font:11px Arial,sans-serif; }
+    .disclaimer-gate__actions { flex:0 0 auto; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:12px 20px; padding:18px 30px 24px; }
+    .disclaimer-gate__status { grid-column:1/-1; margin:0; color:#656b64; font-size:12px; line-height:1.6; }
+    .disclaimer-gate__check { display:flex; align-items:center; gap:9px; color:#343a34; font-size:13px; line-height:1.6; }
+    .disclaimer-gate__check input { width:17px; height:17px; accent-color:#365b4a; flex:0 0 auto; }
+    .disclaimer-gate__button { border:0; border-radius:999px; padding:12px 20px; color:#fff; background:#365b4a; font:600 13px/1.4 Arial,"Microsoft YaHei",sans-serif; cursor:pointer; }
+    .disclaimer-gate__button:disabled { color:#f6f6f3; background:#aab2aa; cursor:not-allowed; }
+    .disclaimer-gate__button:not(:disabled):hover { background:#274536; }
+    @media(max-width:760px) {
+      .site-header { top:8px; }
+      .site-header .masthead { width:calc(100% - 24px); padding:11px 14px; gap:11px 16px; border-radius:19px; flex-wrap:wrap; }
+      .brand-icon { width:38px; height:38px; }
+      .brand strong { font-size:16px; }
+      .brand span { font-size:9px; letter-spacing:.08em; }
+      .nav { gap:13px; font-size:12px; }
+      .article-page { padding-top:146px; }
+      .article-section { grid-template-columns:1fr; gap:13px; padding:25px 0 28px; }
+      .article-meta { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+      .article-lead { font-size:16px; }
+      .footer-inner { flex-direction:column; gap:5px; }
+    }
+    @media(max-width:420px) {
+      .site-header .masthead { padding:10px 12px; gap:9px 11px; }
+      .brand span { display:none; }
+      .nav { gap:11px; font-size:11px; }
+      .article-page { padding-top:132px; }
+      .article h1 { font-size:32px; }
+      .article-meta { gap:13px 10px; }
+    }
+    @media(max-width:600px) {
+      .disclaimer-gate { padding:10px; }
+      .disclaimer-gate__panel { max-height:calc(100vh - 20px); max-height:calc(100svh - 20px); border-radius:17px; }
+      .disclaimer-gate__header { padding:20px 19px 15px; }
+      .disclaimer-gate__header h2 { font-size:22px; }
+      .disclaimer-gate__header p { font-size:13px; }
+      .disclaimer-gate__scroll { max-height:52vh; padding:15px 19px; }
+      .disclaimer-gate__actions { grid-template-columns:1fr; gap:12px; padding:15px 19px 19px; }
+      .disclaimer-gate__button { width:100%; }
+    }
+  </style>
+</head>
+<body class="disclaimer-gate-active">
+  <div class="disclaimer-gate" id="disclaimer-gate" role="dialog" aria-modal="true" aria-labelledby="disclaimer-gate-title">
+    <div class="disclaimer-gate__panel" role="document">
+      <div class="disclaimer-gate__header">
+        <span class="disclaimer-gate__eyebrow">PLEASE READ</span>
+        <h2 id="disclaimer-gate-title">进入田园研究所前，请先阅读免责声明</h2>
+        <p>请在下方完整阅读免责声明。滚动至正文底部后，才能勾选确认并进入网站。</p>
+      </div>
+      <div class="disclaimer-gate__scroll" id="disclaimer-scroll" tabindex="0" aria-label="免责声明正文">
+        <section class="disclaimer" aria-labelledby="disclaimer-title">
+          <h3 id="disclaimer-title">免责声明 <span class="disclaimer__english">DISCLAIMER</span></h3>
+          <p>最后更新日期：【2026年10月17日】</p>
+          <p>田园研究所网站（以下简称“本站”）是一个以完全虚构人物、事件、组织、地点、情节等为内容的创作、展示或娱乐平台。请在使用本站前仔细阅读以下声明。</p>
+          <p><strong>1. 内容纯属虚构：</strong>本站所有内容，包括但不限于文字、图片、音频、视频、角色、姓名、机构名称、地点、事件、剧情、设定、评论及相关信息，均为虚构创作，并非真实发生。本站内容不代表任何现实人物、团体、组织、事件或地点的真实情况，也不代表本站运营者、作者或相关方的观点、立场或事实陈述。</p>
+          <p><strong>2. 如有雷同，纯属巧合：</strong>本站中出现的任何姓名、名称、机构、地点、事件、日期、情节等，如与现实中的个人、团体、组织、事件、地点、品牌、宗教、民族等存在相似之处，纯属巧合。本站无意影射、诽谤、侮辱、贬损、侵犯或针对任何现实主体。请勿将本站内容与现实人物、事件对号入座。</p>
+          <p><strong>3. 非新闻、非事实、非专业建议：</strong>本站内容不应被视为新闻、事实报道、历史记录、证据材料或法律、医疗、投资、心理、教育等专业建议。本站可能使用“报道”“纪实”“新闻”等风格化表达，但仅为艺术创作或娱乐表现，不改变其虚构性质。任何人不应依据本站内容作出决策或采取行动。因依赖本站内容造成的损失，本站不承担责任。</p>
+          <p><strong>4. 读者责任：</strong>访问者应自行判断并理解本站内容的虚构性质。因误解、传播、引用、改编、对号入座或其他不当使用本站内容而产生的后果，由行为人自行承担。本站不鼓励、不支持任何基于虚构内容对现实主体进行骚扰、攻击或侵权的行为。</p>
+          <p><strong>5. 侵权处理：</strong>若任何个人或组织认为本站内容侵犯其合法权益，请通过邮箱（lsy@abletach.de5.net）与本站联系，并提供权属证明、具体链接及情况说明。本站将在核实后及时采取删除、修改、断开链接等合理措施。</p>
+          <p><strong>6. 用户生成内容：</strong>若本站允许用户投稿、评论或发布内容，用户应确保其发布内容不侵犯他人合法权益，不发布真实诽谤、虚假信息或违法内容。本站对用户发布内容不承担事先审查义务，但收到有效通知后将依法依规处理。</p>
+          <p><strong>7. 外部链接：</strong>本站可能包含指向外部网站的链接，仅为方便访问。本站不对第三方网站的内容、安全性或合法性负责，也不代表本站认可其内容。</p>
+          <p><strong>8. 版权声明：</strong>本站原创内容版权归本网站运营者所有，未经许可，不得擅自转载、复制、改编或用于商业用途。引用本站内容请注明来源。虚构角色、设定和情节仅用于创作展示。</p>
+          <p><strong>9. 声明修改：</strong>本站有权根据实际情况随时更新本免责声明。更新后的声明在本页面公布后即生效。继续使用本站，视为接受更新后的声明。</p>
+          <p><strong>10. 法律适用与争议解决：</strong>本声明适用中华人民共和国法律（仅为本声明之目的，不包括香港特别行政区、澳门特别行政区和台湾地区法律）。因本站或本声明产生的争议，双方应尽量友好协商解决；协商不成的，任何一方均可向邯郸有管辖权的人民法院提起诉讼。</p>
+        </section>
+      </div>
+      <div class="disclaimer-gate__actions">
+        <p class="disclaimer-gate__status" id="disclaimer-status" aria-live="polite">请向下滚动，阅读完整份免责声明。</p>
+        <label class="disclaimer-gate__check"><input type="checkbox" id="disclaimer-confirm" disabled> 我已完整阅读并理解以上免责声明</label>
+        <button class="disclaimer-gate__button" id="disclaimer-enter" type="button" disabled>确认并进入网站</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-content" inert>
+    <header class="site-header">
+      <div class="wrap masthead">
+        <a class="brand" href="../index.html#top" aria-label="返回田园研究所主页">
+          <img class="brand-icon" src="../images/Icon1.png" alt="田园研究所标志" width="44" height="44">
+          <div class="brand-copy">
+            <strong>田园研究所</strong>
+            <span>Academic Profile &amp; Research Notes</span>
+          </div>
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="../index.html#about">简介</a>
+          <a href="../index.html#research">研究方向</a>
+          <a href="../index.html#publications">学术成果</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top" class="wrap article-page">
+      <article class="article">
+  <header class="article-header">
+    <p class="eyebrow">PAPER / ACHIEVEMENT</p>
+    <h1 id="page-title">时间物质理论与演算宇宙模型</h1>
+    <p class="article-lead">本文提出一种基于时间物质相变理论的宇宙学框架，将时间描述为具有固态、液态、气态三种形态的物质实体，并以演算进程、创世火种、平行宇宙和平行时间线等概念组织整体模型。</p>
+    <dl class="article-meta">
+      <div><dt>作者 / AUTHOR</dt><dd>田园研究所全体</dd></div>
+      <div><dt>收稿日期 / DATE</dt><dd>2026-10-22</dd></div>
+      <div><dt>研究领域 / FIELD</dt><dd>时间物质理论、天体物理学</dd></div>
+      <div><dt>成果类型 / TYPE</dt><dd>思辨性理论框架</dd></div>
+    </dl>
+  </header>
+
+  <figure class="article-cover">
+    <img src="../images/time-matter-model-cover.png" alt="时间物质理论与演算宇宙模型示意图" loading="lazy">
+    <figcaption>时间物质理论与演算宇宙模型示意图</figcaption>
+  </figure>
+
+  <section class="article-section" id="abstract">
+    <div><span class="section-index">ABSTRACT</span><h2>摘要</h2></div>
+    <div>
+      <p>本文提出一种基于时间物质相变理论的宇宙学框架。该框架将时间视为一种具有固、液、气三态的物质实体，其相变过程由因果熔点、可能性沸点、观测潜热等基本物理量所支配。宇宙的运行由演算进程驱动，演算进程消耗液体态的现在时间，从未来时间中抽取补充，并通过复制过程生成过去时间。暗物质可转化为多种空白时间形态，包括分叉时间与未来时间，这些空白时间属于错误时间的一种，不携带任何因果信息。分叉时间可跨宇宙插入平行宇宙的过去时间点，与必然陷入时间循环的未来时间相呼应，构成时间循环并最终转化为时间废料。宇宙诞生时自带创世火种作为初始参数，自动激活后启动演算，不同创世火种生成不同的平行宇宙。平行时间线作为容器包含全部平行宇宙，各时间线之间仅演算进程不同，内容完全相同。火种具备自我复制能力，可传播至演算进程更慢的平行时间线，形成级联扩散。本文系统阐述上述概念及其相互关系，构建一个自洽的时间物质理论框架。</p>
+      <p><strong>关键词：</strong>时间物质；演算进程；创世火种；平行时间线；暗物质；错误时间</p>
+    </div>
+  </section>
+
+  <section class="article-section" id="introduction">
+    <div><span class="section-index">01 / INTRODUCTION</span><h2>1. 引言</h2></div>
+    <div>
+      <p>传统物理学将时间视为连续的背景参数或时空几何的一个维度，但从未将时间本身视为一种具有内部结构和相变行为的物质实体。本文提出，时间是一种真实存在的物质，具备固态、液态、气态三种基本形态，并可在特定条件下发生相变。这一基本假设构成了时间物质理论的核心。</p>
+      <p>本理论中的核心物理量——因果熔点、可能性沸点、观测潜热、记忆熵、演算能——均为该框架下的基本物理量，其存在性不依赖外部理论的验证。它们如同质量、电荷一样，是描述时间物质行为的基础参量。</p>
+    </div>
+  </section>
+
+  <section class="article-section" id="three-states">
+    <div><span class="section-index">02 / THREE STATES</span><h2>2. 时间的三态模型</h2></div>
+    <div>
+      <h3>2.1 固态时间（过去时间）</h3>
+      <p>固态时间是已完成相变的时间物质，具有固定的结构和不可逆的形态。过去时间即为固态时间，它不再参与流动，而是作为宇宙的记忆结构被固定下来。固态时间的稳定性由记忆熵描述，记忆熵越低，过去时间的结构越稳定，因果记录越清晰。</p>
+      <h3>2.2 液态时间（现在时间）</h3>
+      <p>液态时间是正在被演算进程消耗的时间物质，具有流动性。现在时间即为液态时间，它是演算进程直接作用的对象。演算进程每向前推进一步，便消耗一部分液体态现在时间，同时从未来时间中抽取新的液体态补充进来，维持时间流动的连续性。</p>
+      <h3>2.3 气态时间（未来时间）</h3>
+      <p>气态时间是尚未凝聚为液态的时间物质，具有高度的不确定性和弥散性。未来时间即为气态时间，它以可能性的形式存在，在达到可能性沸点时发生凝结，转化为液态的现在时间。</p>
+      <h3>2.4 相变条件</h3>
+      <p>时间物质在三态之间的转化需要满足特定的相变条件：</p>
+      <ul>
+        <li><strong>因果熔点：</strong>固态时间融化为液态时间所需的因果强度阈值。当某一过去时间点的因果关联强度超过因果熔点时，该固态时间可被重新激活并融化为液态。</li>
+        <li><strong>可能性沸点：</strong>气态时间凝结为液态时间所需的可能性密度阈值。当未来时间中某一可能性的密度超过可能性沸点时，该可能性凝结为液态现在时间。</li>
+        <li><strong>观测潜热：</strong>时间物质在相变过程中吸收或释放的能量。观测行为本身会向时间物质注入能量，影响相变的方向和速率。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="article-section" id="calculation">
+    <div><span class="section-index">03 / PROCESS</span><h2>3. 演算进程</h2></div>
+    <div>
+      <p>演算进程是实际时间流动的底层驱动机制，它不等于现在时间。现在时间只是演算进程所作用的物质载体——即液体态时间。演算进程每向前推进一步，便消耗一部分液体态现在时间，同时从未来时间中抽取新的液体态补充进来。</p>
+      <p>演算进程是宇宙的底层节拍器，它决定了时间流动的速度和方向。演算进程本身不由任何更底层的机制驱动，它是时间物质系统的内禀属性。</p>
+    </div>
+  </section>
+
+  <section class="article-section" id="past-time">
+    <div><span class="section-index">04 / PAST TIME</span><h2>4. 过去时间的生成</h2></div>
+    <div>
+      <p>过去时间由现在时间的复制过程产生。当演算进程消耗一部分液体态现在时间后，该被消耗的时间点通过复制过程转化为固态的过去时间。该复制过程本身存在于过去时间结构之中，其具体机制超出本模型当前的解释范围。</p>
+    </div>
+  </section>
+
+  <section class="article-section" id="entropy">
+    <div><span class="section-index">05 / ENTROPY</span><h2>5. 熵增与熵减</h2></div>
+    <div>
+      <p>在本理论框架中，热力学第二定律不成立。</p>
+      <p>熵增与熵减的互补仅发生在“物质先转化为固/液/气三态，再进一步转化为时间”的特定相变链中。在此过程中，物质为进入时间相变所付出的结构重组代价（熵增）会被时间生成过程释放的秩序补偿（熵减）所抵消。</p>
+      <p>除此特定过程外，一切其他物理过程产生的熵增照常累积，不可抵消。因此，现实中观测到的熵增现象来源于非时间相变过程的熵积累。</p>
+    </div>
+  </section>
+
+  <section class="article-section" id="dark-matter">
+    <div><span class="section-index">06 / DARK MATTER</span><h2>6. 暗物质</h2></div>
+    <div>
+      <p>暗物质是一种特殊的时间物质残留形态，它不参与常规的因果记录，但具有微弱的引力效应。暗物质可转化为多种时间形态，这些时间形态均不携带任何因果信息，属于空白时间，是错误时间的一种。</p>
+      <p>暗物质的主要转化路径包括：</p>
+      <ul>
+        <li><strong>转化为分叉时间：</strong>分叉时间是一种空白时间，不包含任何因果信息。它会被插入到随机一个平行宇宙的某个过去时间点中。</li>
+        <li><strong>转化为未来时间：</strong>由暗物质转化而来的未来时间同样是空白时间，它必然会陷入时间循环。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="article-section" id="branch-time">
+    <div><span class="section-index">07 / BRANCH TIME</span><h2>7. 分叉时间与错误时间</h2></div>
+    <div>
+      <p>分叉时间由暗物质生成，是一种空白时间，不包含任何因果信息。它会被插入到随机一个平行宇宙的某个过去时间点中，并与该宇宙中由暗物质生成的、必然陷入时间循环的未来时间相呼应，从而构成时间循环。时间循环完成后，分叉时间与对应的未来时间一同转化为时间废料。</p>
+      <p>空白时间是错误时间的一种。错误时间指不携带有效因果信息、无法正常参与时间物质相变循环的时间形态。错误时间的完整分类将在后续研究中阐述。</p>
+    </div>
+  </section>
+
+  <section class="article-section" id="time-waste">
+    <div><span class="section-index">08 / TIME WASTE</span><h2>8. 时间废料</h2></div>
+    <div>
+      <p>时间废料是时间物质相变失败或时间循环完成后的残留物。它不再参与任何相变过程，失去转化为其他时间形态的能力，作为惰性物质存在于宇宙结构中。暗物质和时间废料之间存在密切的生成关系：暗物质生成的空白时间经历时间循环后，最终转化为时间废料。</p>
+    </div>
+  </section>
+
+  <section class="article-section" id="genesis">
+    <div><span class="section-index">09 / GENESIS</span><h2>9. 创世火种与平行宇宙</h2></div>
+    <div>
+      <h3>9.1 创世火种</h3>
+      <p>创世火种是宇宙生成之初就存在的初始参数，类似于程序生成中的“种子”。每个宇宙在诞生时自动拥有一个创世火种，该火种自动激活，触发宇宙的启动过程，开启演算进程。创世火种不存在上一代来源，它是宇宙诞生的起点。</p>
+      <h3>9.2 平行宇宙</h3>
+      <p>不同的创世火种生成不同的平行宇宙。平行宇宙在理论框架上完全相同——它们遵循相同的时间物质相变规律、相同的演算机制——但由于创世火种不同，各自的初始条件和演化路径存在本质差异。因此，各平行宇宙拥有完全不同的内容。</p>
+      <p>各平行宇宙之间的演算进程保持一致。</p>
+      <h3>9.3 火种的级联传播</h3>
+      <p>宇宙在运行过程中会产生火种。火种被激活后不仅生成复制体宇宙，其自身亦具备自我复制能力。复制出的火种可继续传播至更深层的复制体宇宙，形成火种的级联扩散。复制体宇宙的演算进程更慢，时间流动速率降低。</p>
+    </div>
+  </section>
+
+  <section class="article-section" id="parallel-timelines">
+    <div><span class="section-index">10 / PARALLEL TIMELINES</span><h2>10. 平行时间线</h2></div>
+    <div>
+      <p>平行时间线是比平行宇宙更高一级的结构。每一条平行时间线都包含全部平行宇宙——即所有创世火种生成的宇宙都“装载”在同一条平行时间线中。</p>
+      <p>不同平行时间线之间的区别仅在于演算进程不同，它们所装载的平行宇宙集合完全相同，内容完全一致。平行时间线的数量是无限的，每条时间线拥有各自独立的演算进程。</p>
+      <p>平行时间线与平行宇宙构成了一个二维结构：横向为不同的创世火种（平行宇宙），纵向为不同的演算进程（平行时间线）。每个具体的宇宙实例由唯一的（创世火种，演算进程）组合确定。</p>
+    </div>
+  </section>
+
+  <section class="article-section" id="cross-universe">
+    <div><span class="section-index">11 / CROSS-UNIVERSE</span><h2>11. 分叉时间的跨宇宙机制</h2></div>
+    <div>
+      <p>分叉时间的插入发生在某一条平行时间线内部。它从该时间线中的某个宇宙出发，插入到同一条时间线中另一个平行宇宙的过去时间点。时间线作为“舞台”，平行宇宙作为舞台上的“演员”，分叉时间在演员之间穿梭，与对应宇宙中由暗物质生成的未来时间形成呼应，构成时间循环。</p>
+    </div>
+  </section>
+
+  <section class="article-section" id="conclusion">
+    <div><span class="section-index">12 / CONCLUSION</span><h2>12. 结论</h2></div>
+    <div>
+      <p>本文提出了一个基于时间物质相变的宇宙学框架。该框架将时间视为具有三态的物质实体，由演算进程驱动流动，通过创世火种启动，在平行时间线和平行宇宙的二维结构中展开。暗物质作为时间物质的特殊残留，可转化为空白时间（错误时间的一种），通过分叉时间的跨宇宙插入机制构成时间循环并最终转化为时间废料。火种具备自我复制和级联传播能力，可在平行时间线之间扩散。</p>
+      <p>本框架目前为思辨性理论，其核心概念作为该体系内的基本物理量存在。后续研究将致力于完善错误时间的完整分类、细化分叉时间的跨宇宙呼应机制、以及探索创世火种的本质属性。</p>
+    </div>
+  </section>
+
+  <section class="article-section" id="references">
+    <div><span class="section-index">REFERENCES</span><h2>参考文献</h2></div>
+    <div>
+      <ol>
+        <li>赵晓鸟. 时间物质相变初步研究[J]. 田园研究所内部报告, 2025.</li>
+        <li>赵晓鸟. 演算进程与时间流动的驱动机制[J]. 田园研究所工作论文, 2025.</li>
+        <li>赵晓鸟. 暗物质与时间废料生成关系探讨[J]. 田园研究所内部报告, 2026.</li>
+        <li>赵晓鸟. 创世火种假说与平行宇宙的种子模型[J]. 田园研究所工作论文, 2026.</li>
+        <li>赵晓鸟. 平行时间线结构及其与平行宇宙的正交关系[J]. 田园研究所内部报告, 2026.</li>
+        <li>赵晓鸟. 错误时间分类初探：空白时间与分叉时间[J]. 田园研究所工作论文, 2026.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="article-section" id="author-information">
+    <div><span class="section-index">AUTHOR INFORMATION</span><h2>作者信息</h2></div>
+    <div>
+      <p>田园研究所全体（赵晓鸟教授、念与教授、卢德块教授、田黄教授、86 岁的上郝老教授、负一风教授、田佑成先生等）。</p>
+      <p><strong>研究方向：</strong>滚木力学、黑体生物学、查肖学、天体物理学。</p>
+      <p><strong>通讯地址：</strong>曙光大学，田园研究所，河北省邯郸市。</p>
+      <p><strong>收稿日期：</strong>2026 年 10 月 22 日。</p>
+      <figure class="article-seal"><img src="../images/Icon1.png" alt="田园研究所标志" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <a class="article-back" href="../index.html#publications">← 返回论文与成果列表</a>
+</article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <p class="footer-note">© [2026] 田园研究所 · 保留所有适用权利</p>
+        <p class="footer-note">学术交流 · 独立观点</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+  (function () {
+    const gate = document.getElementById('disclaimer-gate');
+    const site = document.getElementById('site-content');
+    const readingArea = document.getElementById('disclaimer-scroll');
+    const confirmation = document.getElementById('disclaimer-confirm');
+    const enterButton = document.getElementById('disclaimer-enter');
+    const status = document.getElementById('disclaimer-status');
+    if (!gate || !site || !readingArea || !confirmation || !enterButton || !status) return;
+    let reachedEnd = false;
+    function updateProgress() {
+      const atEnd = readingArea.scrollTop + readingArea.clientHeight >= readingArea.scrollHeight - 4;
+      if (atEnd && !reachedEnd) {
+        reachedEnd = true;
+        confirmation.disabled = false;
+        status.textContent = '已滚动至正文底部。请勾选确认框后继续。';
+      }
+      enterButton.disabled = !(reachedEnd && confirmation.checked);
+    }
+    readingArea.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    confirmation.addEventListener('change', function () {
+      enterButton.disabled = !(reachedEnd && confirmation.checked);
+      status.textContent = confirmation.checked ? '确认完成，可以进入网站。' : '请确认已完整阅读免责声明。';
+    });
+    enterButton.addEventListener('click', function () {
+      if (!reachedEnd || !confirmation.checked) return;
+      gate.remove();
+      site.removeAttribute('inert');
+      document.body.classList.remove('disclaimer-gate-active');
+      const heading = document.getElementById('page-title');
+      if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
+    });
+    updateProgress();
+  })();
+  </script>
+</body>
+</html>

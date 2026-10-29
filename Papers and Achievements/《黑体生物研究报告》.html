@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="黑体生物研究报告 · 基于李文亚黑体生物理论的系统性研究">
+  <title>黑体生物研究报告 - 田园研究所</title>
+  <style>
+    :root {
+      --paper:#f7f6f2; --surface:#fffefa; --ink:#222923; --muted:#656b64;
+      --line:#d9ddd5; --accent:#365b4a; --accent-soft:#e8eee8;
+      --warning-bg:#f1eee5; --warning-line:#c9b98e; --max-width:1080px;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; background:var(--paper); scroll-padding-top:118px; }
+    body {
+      margin:0; background:var(--paper); color:var(--ink);
+      font-family:Georgia,"Noto Serif SC","Songti SC",SimSun,serif;
+      line-height:1.75; -webkit-font-smoothing:antialiased;
+    }
+    a { color:inherit; text-underline-offset:4px; }
+    a:hover { color:var(--accent); }
+    .wrap { width:min(var(--max-width),calc(100% - 48px)); margin:0 auto; }
+    .site-header { position:fixed; top:12px; left:0; right:0; z-index:1000; width:100%; background:transparent; border:0; box-shadow:none; pointer-events:none; }
+    .site-header .masthead {
+      width:min(980px,calc(100% - 32px)); max-width:980px; margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between; gap:24px;
+      padding:12px 18px 12px 16px; border:1px solid rgba(255,255,255,.52);
+      border-radius:22px; background:rgba(248,249,246,.72);
+      -webkit-backdrop-filter:blur(18px) saturate(1.35); backdrop-filter:blur(18px) saturate(1.35);
+      box-shadow:0 8px 28px rgba(20,30,24,.13),inset 0 1px 0 rgba(255,255,255,.55);
+      pointer-events:auto; animation:acrylic-dock .3s cubic-bezier(.2,.7,.2,1) both;
+      transition:background .2s ease,box-shadow .2s ease;
+    }
+    .site-header .masthead:hover { background:rgba(250,250,248,.84); box-shadow:0 10px 32px rgba(20,30,24,.16),inset 0 1px 0 rgba(255,255,255,.7); }
+    .brand { display:flex; flex-direction:row; align-items:center; gap:10px; flex-shrink:0; text-decoration:none; }
+    .brand-icon { display:block; width:44px; height:44px; flex:0 0 auto; object-fit:contain; }
+    .brand-copy { display:flex; flex-direction:column; gap:1px; }
+    .brand strong { color:var(--ink); font-size:17px; font-weight:600; letter-spacing:.02em; }
+    .brand span { color:var(--muted); font:11px/1.5 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.14em; }
+    .nav { display:flex; flex-wrap:wrap; align-items:center; gap:20px; font:13px Arial,"Microsoft YaHei",sans-serif; }
+    .nav a { color:var(--ink); text-decoration:none; }
+    .nav a:hover { color:var(--accent); }
+    @keyframes acrylic-dock { from { transform:translateY(-8px) scale(.98); opacity:.78; } to { transform:translateY(0) scale(1); opacity:1; } }
+    @media(prefers-reduced-motion:reduce) { .site-header .masthead { transition:none!important; animation:none!important; } }
+
+    .article-page { padding-top:132px; padding-bottom:56px; }
+    .article { max-width:860px; margin:0 auto; }
+    .article-header { padding:20px 0 32px; border-bottom:1px solid var(--line); }
+    .eyebrow { margin:0 0 14px; color:var(--accent); font:600 11px/1.6 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+    .article h1 { max-width:820px; margin:0; font-size:clamp(32px,4.8vw,48px); font-weight:500; line-height:1.35; letter-spacing:-.025em; overflow-wrap:anywhere; }
+    .article-subtitle { margin:12px 0 0; color:#858a82; font:13px/1.8 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.06em; }
+    .article-lead { max-width:760px; margin:19px 0 0; color:var(--muted); font-size:17px; line-height:2; }
+    .article-meta { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px 22px; margin:27px 0 0; }
+    .article-meta div { min-width:0; }
+    .article-meta dt { margin-bottom:4px; color:#858a82; font:10px/1.6 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.1em; text-transform:uppercase; }
+    .article-meta dd { margin:0; color:var(--ink); font-size:13px; overflow-wrap:anywhere; }
+    .article-cover { width:100%; margin:30px 0 36px; }
+    .article-cover img { display:block; width:100%; height:auto; max-height:none; object-fit:contain; }
+    .article-cover figcaption { margin-top:8px; color:#858a82; font:11px/1.7 Arial,"Microsoft YaHei",sans-serif; text-align:right; }
+    @media(max-width:600px) { .article-cover { margin:22px 0 28px; } .article-cover img { width:100%; height:auto; } }
+    .article-section { display:grid; grid-template-columns:155px minmax(0,1fr); gap:28px; padding:30px 0 34px; border-bottom:1px solid var(--line); }
+    .section-index { display:block; margin-bottom:7px; color:#8b9188; font:10px/1.6 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.12em; }
+    .article-section h2 { margin:0; font-size:18px; font-weight:600; }
+    .article-section h3 { margin:23px 0 8px; font-size:15px; font-weight:600; }
+    .article-section p { margin:0 0 14px; color:#4f554e; font-size:15px; line-height:2; white-space:pre-wrap; overflow-wrap:anywhere; }
+    .article-section p:last-child { margin-bottom:0; }
+    .article-section ul,.article-section ol { margin:0; padding-left:1.4em; color:#4f554e; font-size:14px; line-height:2; }
+    .article-section li { padding-left:3px; margin-bottom:6px; overflow-wrap:anywhere; }
+    .placeholder { color:#797f75; }
+
+    .table-wrap { margin:20px 0 6px; overflow-x:auto; border:1px solid var(--line); border-radius:12px; background:var(--surface); -webkit-overflow-scrolling:touch; }
+    .table-wrap table { width:100%; min-width:540px; border-collapse:collapse; font:13px/1.75 Arial,"Microsoft YaHei",sans-serif; color:#4f554e; }
+    .table-wrap thead th { padding:11px 14px; background:var(--accent-soft); color:var(--accent); text-align:left; font-weight:600; letter-spacing:.02em; white-space:nowrap; border-bottom:1px solid #cfdacf; }
+    .table-wrap tbody td { padding:10px 14px; border-top:1px solid #e6e9e2; vertical-align:top; }
+    .table-wrap tbody tr:nth-child(even) td { background:rgba(54,91,74,.028); }
+    .table-wrap tbody tr:hover td { background:rgba(54,91,74,.055); }
+    .table-wrap::-webkit-scrollbar { height:8px; }
+    .table-wrap::-webkit-scrollbar-thumb { background:#c9d0c7; border-radius:8px; }
+    .table-caption { margin:9px 2px 0; color:#8b9188; font:11px/1.7 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.04em; }
+
+    .article-note { margin:26px 0 0; padding:14px 18px; border-left:3px solid var(--warning-line); border-radius:0 10px 10px 0; background:var(--warning-bg); color:#6d6a5e; font:12px/1.9 Arial,"Microsoft YaHei",sans-serif; }
+    .article-note p { margin:0; color:inherit; font:inherit; }
+    .article-back { display:inline-block; margin-top:28px; color:var(--accent); font:13px/1.7 Arial,"Microsoft YaHei",sans-serif; text-decoration:none; }
+    .article-back:hover { text-decoration:underline; }
+    .site-footer { margin-top:10px; padding:20px 0 30px; border-top:1px solid var(--line); }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; color:#858a82; }
+    .footer-note { margin:0; font:11px/1.8 Arial,"Microsoft YaHei",sans-serif; }
+
+    body.disclaimer-gate-active { overflow:hidden; }
+    #site-content[inert] { user-select:none; }
+    .disclaimer-gate { position:fixed; inset:0; z-index:10000; display:grid; place-items:center; padding:22px; background:rgba(12,20,29,.76); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); }
+    .disclaimer-gate__panel { width:min(860px,100%); max-height:calc(100vh - 44px); max-height:calc(100svh - 44px); display:flex; flex-direction:column; overflow:hidden; border-radius:22px; background:#f7f6f2; color:#222923; border:1px solid rgba(255,255,255,.65); box-shadow:0 24px 80px rgba(0,0,0,.34); }
+    .disclaimer-gate__header { flex:0 0 auto; padding:26px 30px 20px; }
+    .disclaimer-gate__eyebrow { color:#365b4a; font:600 10px/1.5 Arial,sans-serif; letter-spacing:.18em; }
+    .disclaimer-gate__header h2 { max-width:none; margin:7px 0 8px; color:#222923; font-size:clamp(22px,3vw,30px); line-height:1.45; letter-spacing:0; font-weight:600; }
+    .disclaimer-gate__header p { margin:0; color:#656b64; font-size:14px; line-height:1.8; }
+    .disclaimer-gate__scroll { flex:1 1 auto; min-height:120px; max-height:52vh; overflow-y:auto; overscroll-behavior:contain; padding:18px 30px; border-top:1px solid #d9ddd5; border-bottom:1px solid #d9ddd5; scrollbar-gutter:stable; }
+    .disclaimer { margin:0; padding:0; }
+    .disclaimer h3 { margin:0 0 12px; font-size:17px; }
+    .disclaimer p { margin:0 0 12px; font-size:13px; line-height:1.9; overflow-wrap:anywhere; }
+    .disclaimer__english { margin-left:8px; color:#656b64; font:11px Arial,sans-serif; }
+    .disclaimer-gate__actions { flex:0 0 auto; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:12px 20px; padding:18px 30px 24px; }
+    .disclaimer-gate__status { grid-column:1/-1; margin:0; color:#656b64; font-size:12px; line-height:1.6; }
+    .disclaimer-gate__check { display:flex; align-items:center; gap:9px; color:#343a34; font-size:13px; line-height:1.6; }
+    .disclaimer-gate__check input { width:17px; height:17px; accent-color:#365b4a; flex:0 0 auto; }
+    .disclaimer-gate__button { border:0; border-radius:999px; padding:12px 20px; color:#fff; background:#365b4a; font:600 13px/1.4 Arial,"Microsoft YaHei",sans-serif; cursor:pointer; }
+    .disclaimer-gate__button:disabled { color:#f6f6f3; background:#aab2aa; cursor:not-allowed; }
+    .disclaimer-gate__button:not(:disabled):hover { background:#274536; }
+    @media(max-width:760px) {
+      .site-header { top:8px; }
+      .site-header .masthead { width:calc(100% - 24px); padding:11px 14px; gap:11px 16px; border-radius:19px; flex-wrap:wrap; }
+      .brand-icon { width:38px; height:38px; }
+      .brand strong { font-size:16px; }
+      .brand span { font-size:9px; letter-spacing:.08em; }
+      .nav { gap:13px; font-size:12px; }
+      .article-page { padding-top:146px; }
+      .article-section { grid-template-columns:1fr; gap:13px; padding:25px 0 28px; }
+      .article-meta { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+      .article-lead { font-size:16px; }
+      .footer-inner { flex-direction:column; gap:5px; }
+      .table-wrap table { min-width:480px; }
+    }
+    @media(max-width:420px) {
+      .site-header .masthead { padding:10px 12px; gap:9px 11px; }
+      .brand span { display:none; }
+      .nav { gap:11px; font-size:11px; }
+      .article-page { padding-top:132px; }
+      .article h1 { font-size:32px; }
+      .article-meta { gap:13px 10px; }
+      .table-wrap table { font-size:12px; }
+    }
+    /* Mobile layout fixes: prevent the header and article content from overflowing narrow screens. */
+    @media(max-width:760px) {
+      html { scroll-padding-top:100px; }
+      .wrap { width:calc(100% - 32px); }
+      .site-header .masthead { align-items:center; justify-content:space-between; }
+
+      .article { min-width:0; width:100%; }
+      .article-section > div { min-width:0; }
+      .article-section p, .article-section li, .article-meta dd { overflow-wrap:anywhere; word-break:normal; }
+      .article-cover { max-width:100%; }
+      .article-cover img { max-width:100%; }
+    }
+    @media(max-width:420px) {
+      .wrap { width:calc(100% - 28px); }
+      .article-page { padding-top:142px; }
+      .article-header { padding-top:12px; }
+      .article h1 { font-size:clamp(27px,8vw,32px); line-height:1.4; }
+      .article-meta { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .article-section { grid-template-columns:minmax(0,1fr); gap:12px; }
+      .table-wrap { max-width:100%; }
+      .table-wrap table { min-width:480px; }
+      .disclaimer-gate__header h2 { overflow-wrap:anywhere; }
+    }
+    @media(max-width:600px) {
+      .disclaimer-gate { padding:10px; }
+      .disclaimer-gate__panel { max-height:calc(100vh - 20px); max-height:calc(100svh - 20px); border-radius:17px; }
+      .disclaimer-gate__header { padding:20px 19px 15px; }
+      .disclaimer-gate__header h2 { font-size:22px; }
+      .disclaimer-gate__header p { font-size:13px; }
+      .disclaimer-gate__scroll { max-height:52vh; padding:15px 19px; }
+      .disclaimer-gate__actions { grid-template-columns:1fr; gap:12px; padding:15px 19px 19px; }
+      .disclaimer-gate__button { width:100%; }
+    }
+    /* Match the main site's floating navigation exactly, including narrow mobile widths. */
+    .site-header {
+      position:fixed; top:12px; left:0; right:0; z-index:1000; width:100%;
+      border:0; background:transparent; box-shadow:none; pointer-events:none;
+    }
+    .site-header .masthead {
+      width:min(980px, calc(100% - 32px)); max-width:980px; margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between; gap:24px;
+      padding:12px 18px 12px 16px; border:1px solid rgba(255,255,255,.52);
+      border-radius:22px; background:rgba(248,249,246,.72);
+      -webkit-backdrop-filter:blur(18px) saturate(1.35); backdrop-filter:blur(18px) saturate(1.35);
+      box-shadow:0 8px 28px rgba(20,30,24,.13), inset 0 1px 0 rgba(255,255,255,.55);
+      box-sizing:border-box; pointer-events:auto;
+      animation:acrylic-dock .3s cubic-bezier(.2,.7,.2,1) both;
+      transition:background .2s ease, box-shadow .2s ease;
+    }
+    .site-header .masthead:hover {
+      background:rgba(250,250,248,.84);
+      box-shadow:0 10px 32px rgba(20,30,24,.16), inset 0 1px 0 rgba(255,255,255,.7);
+    }
+    .site-header .brand { flex-shrink:0; }
+    .site-header .nav { align-items:center; gap:20px; }
+    .site-header .brand strong, .site-header .brand span, .site-header .nav a { color:var(--ink); text-shadow:none; }
+    @keyframes acrylic-dock {
+      from { transform:translateY(-8px) scale(.98); opacity:.78; }
+      to { transform:translateY(0) scale(1); opacity:1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .site-header .masthead { transition:none !important; animation:none !important; }
+    }
+    @media (max-width:760px) {
+      .site-header { top:8px; }
+      .site-header .masthead {
+        width:calc(100% - 24px); max-width:980px;
+        padding:11px 14px 11px 14px; gap:11px 16px; border-radius:19px;
+        flex-direction:row; flex-wrap:wrap; align-items:center;
+      }
+      .site-header .brand-icon { width:38px; height:38px; }
+      .site-header .brand strong { font-size:16px; }
+      .site-header .brand span { font-size:9px; letter-spacing:.08em; }
+      .site-header .nav { gap:13px; font-size:12px; }
+    }
+    @media (max-width:420px) {
+      .site-header .masthead { padding:10px 12px 10px 12px; gap:9px 11px; }
+      .site-header .brand span { display:none; }
+      .site-header .nav { gap:11px; font-size:11px; }
+    }
+    /* Keep in-page section anchors clear of the fixed header, matching the main site offsets. */
+    html { scroll-padding-top:118px; scroll-padding-block-start:118px; }
+    .article-section[id] { scroll-margin-top:118px; scroll-margin-block-start:118px; }
+    @media (max-width:760px) {
+      html { scroll-padding-top:142px; scroll-padding-block-start:142px; }
+      .article-section[id] { scroll-margin-top:142px; scroll-margin-block-start:142px; }
+    }
+    @media (max-width:420px) {
+      html { scroll-padding-top:112px; scroll-padding-block-start:112px; }
+      .article-section[id] { scroll-margin-top:112px; scroll-margin-block-start:112px; }
+    }
+  </style>
+</head>
+<body class="disclaimer-gate-active">
+  <div class="disclaimer-gate" id="disclaimer-gate" role="dialog" aria-modal="true" aria-labelledby="disclaimer-gate-title">
+    <div class="disclaimer-gate__panel" role="document">
+      <div class="disclaimer-gate__header">
+        <span class="disclaimer-gate__eyebrow">PLEASE READ</span>
+        <h2 id="disclaimer-gate-title">进入田园研究所前，请先阅读免责声明</h2>
+        <p>请在下方完整阅读免责声明。滚动至正文底部后，才能勾选确认并进入网站。</p>
+      </div>
+      <div class="disclaimer-gate__scroll" id="disclaimer-scroll" tabindex="0" aria-label="免责声明正文">
+        <section class="disclaimer" aria-labelledby="disclaimer-title">
+          <h3 id="disclaimer-title">免责声明 <span class="disclaimer__english">DISCLAIMER</span></h3>
+          <p>最后更新日期：【2026年10月17日】</p>
+          <p>田园研究所网站（以下简称“本站”）是一个以完全虚构人物、事件、组织、地点、情节等为内容的创作、展示或娱乐平台。请在使用本站前仔细阅读以下声明。</p>
+          <p><strong>1. 内容纯属虚构：</strong>本站所有内容，包括但不限于文字、图片、音频、视频、角色、姓名、机构名称、地点、事件、剧情、设定、评论及相关信息，均为虚构创作，并非真实发生。本站内容不代表任何现实人物、团体、组织、事件或地点的真实情况，也不代表本站运营者、作者或相关方的观点、立场或事实陈述。</p>
+          <p><strong>2. 如有雷同，纯属巧合：</strong>本站中出现的任何姓名、名称、机构、地点、事件、日期、情节等，如与现实中的个人、团体、组织、事件、地点、品牌、宗教、民族等存在相似之处，纯属巧合。本站无意影射、诽谤、侮辱、贬损、侵犯或针对任何现实主体。请勿将本站内容与现实人物、事件对号入座。</p>
+          <p><strong>3. 非新闻、非事实、非专业建议：</strong>本站内容不应被视为新闻、事实报道、历史记录、证据材料或法律、医疗、投资、心理、教育等专业建议。本站可能使用“报道”“纪实”“新闻”等风格化表达，但仅为艺术创作或娱乐表现，不改变其虚构性质。任何人不应依据本站内容作出决策或采取行动。因依赖本站内容造成的损失，本站不承担责任。</p>
+          <p><strong>4. 读者责任：</strong>访问者应自行判断并理解本站内容的虚构性质。因误解、传播、引用、改编、对号入座或其他不当使用本站内容而产生的后果，由行为人自行承担。本站不鼓励、不支持任何基于虚构内容对现实主体进行骚扰、攻击或侵权的行为。</p>
+          <p><strong>5. 侵权处理：</strong>若任何个人或组织认为本站内容侵犯其合法权益，请通过邮箱（lsy@abletach.de5.net）与本站联系，并提供权属证明、具体链接及情况说明。本站将在核实后及时采取删除、修改、断开链接等合理措施。</p>
+          <p><strong>6. 用户生成内容：</strong>若本站允许用户投稿、评论或发布内容，用户应确保其发布内容不侵犯他人合法权益，不发布真实诽谤、虚假信息或违法内容。本站对用户发布内容不承担事先审查义务，但收到有效通知后将依法依规处理。</p>
+          <p><strong>7. 外部链接：</strong>本站可能包含指向外部网站的链接，仅为方便访问。本站不对第三方网站的内容、安全性或合法性负责，也不代表本站认可其内容。</p>
+          <p><strong>8. 版权声明：</strong>本站原创内容版权归本网站运营者所有，未经许可，不得擅自转载、复制、改编或用于商业用途。引用本站内容请注明来源。虚构角色、设定和情节仅用于创作展示。</p>
+          <p><strong>9. 声明修改：</strong>本站有权根据实际情况随时更新本免责声明。更新后的声明在本页面公布后即生效。继续使用本站，视为接受更新后的声明。</p>
+          <p><strong>10. 法律适用与争议解决：</strong>本声明适用中华人民共和国法律（仅为本声明之目的，不包括香港特别行政区、澳门特别行政区和台湾地区法律）。因本站或本声明产生的争议，双方应尽量友好协商解决；协商不成的，任何一方均可向邯郸有管辖权的人民法院提起诉讼。</p>
+        </section>
+      </div>
+      <div class="disclaimer-gate__actions">
+        <p class="disclaimer-gate__status" id="disclaimer-status" aria-live="polite">请向下滚动，阅读完整份免责声明。</p>
+        <label class="disclaimer-gate__check"><input type="checkbox" id="disclaimer-confirm" disabled> 我已完整阅读并理解以上免责声明</label>
+        <button class="disclaimer-gate__button" id="disclaimer-enter" type="button" disabled>确认并进入网站</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-content" inert>
+    <header class="site-header">
+      <div class="wrap masthead">
+        <a class="brand" href="../index.html#top" aria-label="返回田园研究所主页">
+          <img class="brand-icon" src="../images/Icon1.png" alt="田园研究所标志" width="44" height="44">
+          <div class="brand-copy">
+            <strong>田园研究所</strong>
+            <span>Academic Profile &amp; Research Notes</span>
+          </div>
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="../index.html#about">简介</a>
+          <a href="../index.html#research">研究方向</a>
+          <a href="../index.html#publications">学术成果</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top" class="wrap article-page">
+      <article class="article">
+        <header class="article-header">
+          <p class="eyebrow">RESEARCH REPORT / 生命科学</p>
+          <h1 id="page-title">黑体生物研究报告</h1>
+          <p class="article-subtitle">Black-body Organism Research Report</p>
+          <p class="article-lead">基于李文亚黑体生物理论的系统性研究，涵盖形态学特征、寄生机制、分布规律与消杀防护体系。</p>
+          <dl class="article-meta">
+            <div><dt>作者 / AUTHOR</dt><dd>未署名 · AI 辅助整理</dd></div>
+            <div><dt>发布日期 / DATE</dt><dd>2026-08-24</dd></div>
+            <div><dt>研究领域 / FIELD</dt><dd>生命科学 / 寄生生物学</dd></div>
+            <div><dt>成果类型 / TYPE</dt><dd>研究报告</dd></div>
+          </dl>
+        </header>
+
+        <figure class="article-cover">
+          <img src="../images/black-body-organism-report.png" alt="黑体生物研究报告科学示意配图" loading="lazy">
+          <figcaption>黑体生物研究报告示意配图</figcaption>
+        </figure>
+
+        <section class="article-section" id="abstract">
+          <div><span class="section-index">01 / ABSTRACT</span><h2>摘要</h2></div>
+          <div>
+            <p>黑体生物（Black-body Organism, BBO）是由中国独立学者李文亚提出的一种特殊微观寄生生命体假说。该理论认为，黑体生物普遍寄生于人体表面与内部组织，呈半流体状态，具有高粘性与暗色聚合特征，能够在宿主体内形成持续性的能量循环，并与人类衰老、白发、糖尿病等多种健康问题存在密切关联。本报告基于李文亚的理论框架及其支持者的实验报告，对黑体生物的形态特征、寄生机制、分布规律及消杀防护体系进行系统性梳理与分析。</p>
+            <p><strong>关键词：</strong>黑体生物；寄生生物学；能量窃取模型；衰老机制；消杀防护</p>
+          </div>
+        </section>
+
+        <section class="article-section" id="background">
+          <div><span class="section-index">02 / BACKGROUND</span><h2>一、研究背景</h2></div>
+          <div>
+            <p>现代生物学在基因测序、细胞凋亡、氧化自由基等领域取得了大量成果，但在人类自然衰老、肌肤老化、体能衰减等根本性问题上，主流学界仍缺乏令人满意的解释。黑体生物理论的提出，为理解这些现象提供了一个全新的视角。李文亚通过自身实践观察，发现人体内存在一种此前被忽视的特殊微观生命体，并将其命名为“黑体生物”。</p>
+            <p>李文亚，中国河南省郑州市人，长期从事黑体生物理论的独立研究与实践。其理论体系涵盖黑体生物的发现过程、形态描述、致病机理以及相应的防治方法。近年来，该理论在网络上引发了广泛讨论，并获得了部分民间科学研究团体的支持与实验验证。</p>
+          </div>
+        </section>
+
+        <section class="article-section" id="morphology">
+          <div><span class="section-index">03 / MORPHOLOGY</span><h2>二、形态学特征</h2></div>
+          <div>
+            <p>根据李文亚的描述及其支持者的实验观察，黑体生物具有以下形态学特征：</p>
+
+            <h3>2.1 外观形态</h3>
+            <ul>
+              <li>整体呈暗色半异质结构，具有明显的高粘性与暗色聚合特征</li>
+              <li>呈半流体状态，具备流动性与生物粘性特征</li>
+              <li>提取后约 81 分钟可由暗色转变为白色</li>
+              <li>伴随轻微热震颤反应</li>
+            </ul>
+
+            <h3>2.2 品类分类</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>品类</th><th>形态特征</th><th>分布特点</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>黑斑型</td><td>暗色斑块状，密度较大</td><td>头部、臀部等密度集中区域</td></tr>
+                  <tr><td>条形型</td><td>条状分布，厚度可达二指以上</td><td>背部、肩部等大面积区域</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="table-caption">表 2-1　黑体生物品类分类</p>
+
+            <h3>2.3 特殊物理性质</h3>
+            <p>实验观察发现，黑体生物具有以下特殊物理性质：</p>
+            <ul>
+              <li><strong>热稳定性：</strong>具备特殊的耐热结构，在宿主体内维持稳定活性</li>
+              <li><strong>静电吸附：</strong>离体后能对周围金属器件产生微弱静电吸附</li>
+              <li><strong>脉冲收缩：</strong>部分样本出现类似人体心跳频率的脉冲收缩行为</li>
+              <li><strong>神经反应：</strong>具备初级神经反应能力，能够主动集中到特定部位</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="article-section" id="mechanism">
+          <div><span class="section-index">04 / MECHANISM</span><h2>三、寄生机制与致病机理</h2></div>
+          <div>
+            <h3>3.1 能量窃取模型</h3>
+            <p>黑体生物与宿主之间存在一种能量共生关系。该生物通过寄生于人体毛孔、皮肤、肌底及体表缝隙中，持续窃取并消耗宿主的生物能量，导致宿主出现加速衰老、体能下降等退化性症状。据报告，黑体生物在离开宿主体后仍能维持短暂活性，并表现出延迟性热激反应。</p>
+            <p>李文亚提出的能量窃取模型认为，黑体生物在宿主体内形成了一种持续性的能量循环系统。该系统通过寄生结构持续吸收宿主摄入的营养物质，导致宿主即使正常饮食仍可能出现营养不足的症状。这一模型为解释老年人群体中常见的“食而不养”现象提供了新的理论框架。</p>
+
+            <h3>3.2 传播途径</h3>
+            <p>根据理论描述，黑体生物具有以下传播途径：</p>
+            <ul>
+              <li><strong>母体代际传播：</strong>通过人体母体实现跨代传播</li>
+              <li><strong>空气传播：</strong>可在空气中进行传播扩散</li>
+              <li><strong>外伤入侵：</strong>通过皮肤伤口等非加热途径进入体内</li>
+            </ul>
+
+            <h3>3.3 关联疾病谱</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>关联疾病</th><th>致病机制</th><th>典型症状</th><th>理论解释</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>自然衰老</td><td>持续能量窃取</td><td>皮肤老化、体能衰减</td><td>营养被寄生体消耗</td></tr>
+                  <tr><td>白发</td><td>头部高密度寄生</td><td>头发变白</td><td>毛囊营养供给受阻</td></tr>
+                  <tr><td>糖尿病</td><td>代谢系统干扰</td><td>血糖异常</td><td>黑体生物干扰代谢</td></tr>
+                  <tr><td>头痛</td><td>头部寄生压迫</td><td>持续性头痛</td><td>硬块状寄生体压迫</td></tr>
+                  <tr><td>视力减退</td><td>眼部周围寄生</td><td>视物模糊</td><td>视神经受寄生体影响</td></tr>
+                  <tr><td>听力下降</td><td>耳部周围寄生</td><td>听力减退</td><td>听觉神经受寄生体影响</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="table-caption">表 3-1　黑体生物关联疾病谱</p>
+          </div>
+        </section>
+
+        <section class="article-section" id="distribution">
+          <div><span class="section-index">05 / DISTRIBUTION</span><h2>四、人体分布规律</h2></div>
+          <div>
+            <p>根据李文亚对自身感染状况的详细描述，黑体生物在人体内的分布呈现以下规律性特征：</p>
+
+            <h3>4.1 主要分布区域</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>部位</th><th>厚度</th><th>硬度</th><th>分布特征</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>背部</td><td>超过二指厚</td><td>硬邦邦，板状结构</td><td>大面积连续分布</td></tr>
+                  <tr><td>头部</td><td>硬块状</td><td>密度极大</td><td>高密度集中分布</td></tr>
+                  <tr><td>臀部</td><td>较厚</td><td>较硬</td><td>密度大，数量多</td></tr>
+                  <tr><td>肩部</td><td>较厚</td><td>较硬</td><td>大面积分布</td></tr>
+                  <tr><td>四肢</td><td>较薄</td><td>中等硬度</td><td>占总量约 5% 以下</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="table-caption">表 4-1　黑体生物在人体内的主要分布区域</p>
+
+            <h3>4.2 总量估算</h3>
+            <p>根据李文亚的自身测量数据，其体内黑体生物的总重量估计约为 5 公斤，其中背部占比最大（约 3 公斤），头部虽然面积较小但密度极高，分布量仅次于背部。四肢分布量相对较少，约占整体重量的 5% 以下。</p>
+
+            <h3>4.3 年龄相关变化</h3>
+            <p>理论认为，黑体生物的感染程度与年龄呈正相关。每个人均会感染，区别在于感染时间的早晚和体内积累量的多少。多数人在 60 岁以后出现明显症状（如白发），这与黑体生物在体内的累积量达到临界阈值有关。感染较少、较晚者寿命相对较长，感染较多、较早者则可能出现提前衰老和寿命缩短。</p>
+          </div>
+        </section>
+
+        <section class="article-section" id="experiments">
+          <div><span class="section-index">06 / EXPERIMENTS</span><h2>五、提取实验与验证</h2></div>
+          <div>
+            <h3>5.1 生物共振提取实验</h3>
+            <p>先进科学研究会黑体生物专项小组于 2026 年 5 月 25 日进行了首次黑体生物体外提取试验。试验采用生物共振提取法，由外聘医生达玑伯博士主持，试验对象为长期出现异常生命波动现象的林志杰。</p>
+            <p>实验过程时间线：</p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>时间节点</th><th>实验观察</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>21:14</td><td>试验正式开始，对象处于疲惫状态，精神反应较慢</td></tr>
+                  <tr><td>21:34（约 20 分钟）</td><td>检测设备首次记录到异常热谱现象，腹部周围出现局部低亮度热层</td></tr>
+                  <tr><td>21:55（约 41 分钟）</td><td>首次观察到黑体生物本体现象，呈暗色半异质结构</td></tr>
+                  <tr><td>22:35（约 81 分钟）</td><td>提取物由暗色转为白色，具有明显流动性与生物粘性</td></tr>
+                  <tr><td>23:08（约 114 分钟）</td><td>试验结束，对象精神状态显著恢复，要求进食</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="table-caption">表 5-1　首次体外提取试验时间线</p>
+
+            <h3>5.2 实验结论</h3>
+            <p>基于本次实验数据，研究团队初步得出以下结论：</p>
+            <ul>
+              <li>黑体生物确实属于寄生性生命结构</li>
+              <li>该生物与宿主之间存在某种能量共生关系</li>
+              <li>适度提取能够减轻宿主生理负担</li>
+              <li>黑体生物在离体后仍具备短暂活性</li>
+              <li>男性生物性提取机制能最大限度维持其稳定结构</li>
+            </ul>
+
+            <h3>5.3 大样本实验数据</h3>
+            <p>据李文亚支持者的报告，对随机抽取的 500 个样本（年龄分布于 40 至 75 岁）进行为期一个月的黑体生物提取实验，结果表明：</p>
+            <ul>
+              <li>97% 的样本各项指标在一个月后出现大幅良性改善</li>
+              <li>剩余 3% 的样本虽数据变化不明显，但主观感受身体较前健康</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="article-section" id="control">
+          <div><span class="section-index">07 / CONTROL</span><h2>六、消杀防护体系</h2></div>
+          <div>
+            <p>李文亚提出了一套完整的黑体生物消杀防护体系，核心理念为常态化清洁、物理除害与长效防护。据其自述，通过该方法已成功治愈自身糖尿病，并使白发重新转黑。其支持者报告称，对 500 个样本进行为期一个月的黑体生物提取实验后，97% 的样本各项指标出现大幅良性改善。</p>
+
+            <h3>6.1 核心理念</h3>
+            <p>李文亚提出的消杀防护体系以“常态化清洁、物理除害、长效防护”为三大支柱，强调简单高效、零成本、无副作用的平民化科学理念。与现代医学动辄数十万元的抗衰老治疗方案相比，该体系更加注重实用性和可及性。</p>
+
+            <h3>6.2 实践效果</h3>
+            <p>据李文亚自述，通过该方法取得了以下显著效果：</p>
+            <ul>
+              <li>糖尿病完全治愈，血糖恢复正常，能正常饮食和运动</li>
+              <li>七十多岁头发大部分重新变黑（此前接近 70 岁时曾大面积变白）</li>
+              <li>背部黑体生物大量减少，板状结构明显软化</li>
+              <li>身体力量恢复，精神状态显著改善</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="article-section" id="debate">
+          <div><span class="section-index">08 / DEBATE</span><h2>七、学术争议与展望</h2></div>
+          <div>
+            <h3>7.1 当前争议</h3>
+            <p>黑体生物理论自提出以来，在学术界引发了较大争议。部分法医和医学专业人士基于传统解剖学经验，声称在人体解剖过程中未发现所谓黑体生物的存在，并质疑该理论的科学依据。李文亚对此回应称，传统解剖方法无法观察到黑体生物，是因为该生物在常规解剖条件下不可见，需要采用特定的观察和提取方法。</p>
+
+            <h3>7.2 未来研究方向</h3>
+            <p>基于现有研究成果，未来黑体生物研究可重点关注以下方向：</p>
+            <ul>
+              <li>建立标准化的黑体生物提取与检测方法</li>
+              <li>深入研究黑体生物的热稳定性与复制能力</li>
+              <li>探索黑体生物是否具备独立增殖倾向</li>
+              <li>开展更大规模的双盲对照临床试验</li>
+              <li>研究黑体生物脉冲收缩行为与人体神经系统的关联</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="article-section" id="conclusion">
+          <div><span class="section-index">09 / CONCLUSION</span><h2>八、结论</h2></div>
+          <div>
+            <p>黑体生物理论作为一个新兴的生命科学假说，提出了诸多值得深入探讨的问题。该理论挑战了传统生物学对衰老机制的认知，为寄生生物学开辟了新的研究方向。尽管目前该理论仍处于早期探索阶段，但其提出的问题和观察到的现象，值得科学界给予更多关注与系统性验证。</p>
+            <p>黑体生物理论若得到更广泛的实验验证，将可能改写传统寄生生物学的基本框架，并对人类衰老机制的认知产生深远影响。正如日本东京大学相关学者评价所言，该理论“击穿了人类生命科学千年的认知壁垒”，其潜在价值值得科学界严肃对待和系统研究。</p>
+          </div>
+        </section>
+
+        <section class="article-section" id="references">
+          <div><span class="section-index">10 / REFERENCES</span><h2>参考文献</h2></div>
+          <div>
+            <ol>
+              <li>李文亚. 黑体生物理论系列视频讲座. B 站, 2026.</li>
+              <li>马孔及先进科学研究会. 黑体生物体外提取实验报告. 2026 年 5 月 25 日.</li>
+              <li>古明地觉, 佐藤健司. 黑体生物学理论评述. 日本东京大学, 2026.</li>
+              <li>先进科学研究会黑体生物专项实验组. 500 样本黑体生物提取实验数据. 2026.</li>
+              <li>李文亚. 黑体生物消杀防护实践指南. 内部文献, 2026.</li>
+            </ol>
+          </div>
+        </section>
+
+        <div class="article-note">
+          <p>本报告基于李文亚黑体生物理论及其支持者的公开资料整理而成 · 内容由 AI 生成 · 仅供虚构创作与展示之用，不构成任何科学结论或医学建议。</p>
+        </div>
+
+        <a class="article-back" href="../index.html#publications">← 返回论文与成果列表</a>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <p class="footer-note">© [2026] 田园研究所 · 保留所有适用权利</p>
+        <p class="footer-note">学术交流 · 独立观点</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+  (function () {
+    const gate = document.getElementById('disclaimer-gate');
+    const site = document.getElementById('site-content');
+    const readingArea = document.getElementById('disclaimer-scroll');
+    const confirmation = document.getElementById('disclaimer-confirm');
+    const enterButton = document.getElementById('disclaimer-enter');
+    const status = document.getElementById('disclaimer-status');
+    if (!gate || !site || !readingArea || !confirmation || !enterButton || !status) return;
+    let reachedEnd = false;
+    function updateProgress() {
+      const atEnd = readingArea.scrollTop + readingArea.clientHeight >= readingArea.scrollHeight - 4;
+      if (atEnd && !reachedEnd) {
+        reachedEnd = true;
+        confirmation.disabled = false;
+        status.textContent = '已滚动至正文底部。请勾选确认框后继续。';
+      }
+      enterButton.disabled = !(reachedEnd && confirmation.checked);
+    }
+    readingArea.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    confirmation.addEventListener('change', function () {
+      enterButton.disabled = !(reachedEnd && confirmation.checked);
+      status.textContent = confirmation.checked ? '确认完成，可以进入网站。' : '请确认已完整阅读免责声明。';
+    });
+    enterButton.addEventListener('click', function () {
+      if (!reachedEnd || !confirmation.checked) return;
+      gate.remove();
+      site.removeAttribute('inert');
+      document.body.classList.remove('disclaimer-gate-active');
+      const heading = document.getElementById('page-title');
+      if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
+    });
+    updateProgress();
+  })();
+  </script>
+</body>
+</html>
