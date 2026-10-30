@@ -72,7 +72,7 @@ This project separates the licensing of source code from the permissions applica
 
 ### Source Code
 
-Only the original source-code files and components identified as GPL-covered in [`LICENSE-SCOPE.md`](LICENSE-SCOPE.md), or individually marked as GPL-3.0-covered, are intended to be licensed under the **GNU General Public License v3.0 (GPL-3.0)**.
+Only the original source-code files and components identified as GPL-covered in [`LICENSE-SCOPE.md`](LICENSE-SCOPE.md), or individually marked as GPL-3.0-covered, are licensed under the **GNU General Public License v3.0 (GPL-3.0)**.
 
 The presence of the root `LICENSE` file does not, by itself, mean that every file in this repository is licensed under GPL-3.0. Consult [`LICENSE-SCOPE.md`](LICENSE-SCOPE.md), file-level notices, and third-party license notices to determine the applicable terms.
 
