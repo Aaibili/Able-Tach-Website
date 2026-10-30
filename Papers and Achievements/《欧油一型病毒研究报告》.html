@@ -71,22 +71,22 @@
 
     body.disclaimer-gate-active { overflow:hidden; }
     #site-content[inert] { user-select:none; }
-    .disclaimer-gate { position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; padding:22px; min-width:0; overflow-x:hidden; overflow-y:auto; background:rgba(12,20,29,.76); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); }
-    .disclaimer-gate__panel { flex:0 1 860px; width:100%; min-width:0; max-width:860px; max-height:calc(100vh - 44px); max-height:calc(100svh - 44px); display:flex; flex-direction:column; overflow:hidden; border-radius:22px; background:#f7f6f2; color:#222923; border:1px solid rgba(255,255,255,.65); box-shadow:0 24px 80px rgba(0,0,0,.34); }
-    .disclaimer-gate__header { flex:0 0 auto; min-width:0; padding:26px 30px 20px; }
+    .disclaimer-gate { position:fixed; inset:0; z-index:10000; display:grid; place-items:center; padding:22px; background:rgba(12,20,29,.76); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); }
+    .disclaimer-gate__panel { width:min(860px,100%); max-height:calc(100vh - 44px); max-height:calc(100svh - 44px); display:flex; flex-direction:column; overflow:hidden; border-radius:22px; background:#f7f6f2; color:#222923; border:1px solid rgba(255,255,255,.65); box-shadow:0 24px 80px rgba(0,0,0,.34); }
+    .disclaimer-gate__header { flex:0 0 auto; padding:26px 30px 20px; }
     .disclaimer-gate__eyebrow { color:#365b4a; font:600 10px/1.5 Arial,sans-serif; letter-spacing:.18em; }
-    .disclaimer-gate__header h2 { max-width:none; overflow-wrap:anywhere; margin:7px 0 8px; color:#222923; font-size:clamp(22px,3vw,30px); line-height:1.45; letter-spacing:0; font-weight:600; }
-    .disclaimer-gate__header p { min-width:0; overflow-wrap:anywhere; margin:0; color:#656b64; font-size:14px; line-height:1.8; }
-    .disclaimer-gate__scroll { flex:1 1 auto; min-width:0; min-height:0; max-height:52vh; overflow-y:auto; overscroll-behavior:contain; padding:18px 30px; border-top:1px solid #d9ddd5; border-bottom:1px solid #d9ddd5; scrollbar-gutter:stable; }
+    .disclaimer-gate__header h2 { max-width:none; margin:7px 0 8px; color:#222923; font-size:clamp(22px,3vw,30px); line-height:1.45; letter-spacing:0; font-weight:600; }
+    .disclaimer-gate__header p { margin:0; color:#656b64; font-size:14px; line-height:1.8; }
+    .disclaimer-gate__scroll { flex:1 1 auto; min-height:120px; max-height:52vh; overflow-y:auto; overscroll-behavior:contain; padding:18px 30px; border-top:1px solid #d9ddd5; border-bottom:1px solid #d9ddd5; scrollbar-gutter:stable; }
     .disclaimer { margin:0; padding:0; }
     .disclaimer h3 { margin:0 0 12px; font-size:17px; }
     .disclaimer p { margin:0 0 12px; font-size:13px; line-height:1.9; overflow-wrap:anywhere; }
     .disclaimer__english { margin-left:8px; color:#656b64; font:11px Arial,sans-serif; }
-    .disclaimer-gate__actions { flex:0 0 auto; min-width:0; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:12px 20px; padding:18px 30px 24px; }
-    .disclaimer-gate__status { min-width:0; overflow-wrap:anywhere; grid-column:1/-1; margin:0; color:#656b64; font-size:12px; line-height:1.6; }
-    .disclaimer-gate__check { min-width:0; overflow-wrap:anywhere; display:flex; align-items:center; gap:9px; color:#343a34; font-size:13px; line-height:1.6; }
+    .disclaimer-gate__actions { flex:0 0 auto; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:12px 20px; padding:18px 30px 24px; }
+    .disclaimer-gate__status { grid-column:1/-1; margin:0; color:#656b64; font-size:12px; line-height:1.6; }
+    .disclaimer-gate__check { display:flex; align-items:center; gap:9px; color:#343a34; font-size:13px; line-height:1.6; }
     .disclaimer-gate__check input { width:17px; height:17px; accent-color:#365b4a; flex:0 0 auto; }
-    .disclaimer-gate__button { min-width:0; max-width:100%; border:0; border-radius:999px; padding:12px 20px; color:#fff; background:#365b4a; font:600 13px/1.4 Arial,"Microsoft YaHei",sans-serif; cursor:pointer; }
+    .disclaimer-gate__button { border:0; border-radius:999px; padding:12px 20px; color:#fff; background:#365b4a; font:600 13px/1.4 Arial,"Microsoft YaHei",sans-serif; cursor:pointer; }
     .disclaimer-gate__button:disabled { color:#f6f6f3; background:#aab2aa; cursor:not-allowed; }
     .disclaimer-gate__button:not(:disabled):hover { background:#274536; }
     @media(max-width:760px) {
