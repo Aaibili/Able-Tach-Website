@@ -4,6 +4,9 @@
 
 This document identifies the parts of Able-Tach-Website that are licensed under the GNU General Public License v3.0 (GPL-3.0).
 
+**Copyright holder for original project-authored materials:** lsy.  
+**Website name:** Tianyuan Research Institute (田园研究所), which is a website name only and not the legal identity of the copyright holder.
+
 ## 1. GPL-3.0 Covered Materials
 
 The following original website source code authored for this project is licensed under GPL-3.0:
@@ -56,6 +59,9 @@ Contributors should submit only material they have the right to contribute. Cont
 # 许可证适用范围
 
 本文档明确 Able-Tach-Website 中哪些内容采用 GNU GPL v3.0（GPL-3.0）授权。
+
+**本项目原创材料的版权主体：** lsy。  
+**网站名称：** 田园研究所（Tianyuan Research Institute），仅为网站名称，并非版权主体的法律名称或登记主体。
 
 ## 一、GPL-3.0 授权范围
 
