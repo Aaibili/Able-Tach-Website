@@ -4,6 +4,10 @@
 
 **Tianyuan Research Institute · 田园研究所**
 
+**Copyright holder:** lsy
+
+*Tianyuan Research Institute (田园研究所) is the website name only; it is not the legal identity of the copyright holder.*
+
 **Research · Reading · Reflection**
 
 Able-Tach-Website is the source repository for Tianyuan Research Institute, an academic-themed static website dedicated to exploring astronomy, biology, and related fields of knowledge.
@@ -127,7 +131,8 @@ Do not submit third-party images, articles, or other creative materials unless t
 ## Project Information
 
 - **Repository:** [Aaibili/Able-Tach-Website](https://github.com/Aaibili/Able-Tach-Website)
-- **Website Name:** Tianyuan Research Institute (田园研究所)
+- **Website Name:** Tianyuan Research Institute (田园研究所) — website name only
+- **Copyright Holder:** lsy
 - **Focus Areas:** Astronomy and Biology
 - **Project Type:** Static Academic Website
 - **Source Code License:** GNU GPL v3.0, limited to the scope described in `LICENSE-SCOPE.md`
