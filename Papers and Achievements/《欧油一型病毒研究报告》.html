@@ -129,6 +129,63 @@
     .table-wrap th { padding:11px 14px; background:var(--accent-soft); color:var(--accent); text-align:left; white-space:nowrap; border-bottom:1px solid #cfdacf; }
     .table-wrap td { padding:10px 14px; border-top:1px solid #e6e9e2; vertical-align:top; }
     .table-wrap tbody tr:nth-child(even) td { background:rgba(54,91,74,.028); }
+    /* Mobile dialog hardening: constrain the panel to the visual viewport. */
+    .disclaimer-gate,
+    .disclaimer-gate * { box-sizing:border-box; }
+    @media(max-width:600px) {
+      .disclaimer-gate {
+        display:flex !important;
+        align-items:center;
+        justify-content:center;
+        width:100vw;
+        min-width:0;
+        padding:10px;
+        overflow-x:hidden;
+      }
+      .disclaimer-gate__panel {
+        display:flex;
+        flex:0 0 auto !important;
+        flex-direction:column;
+        width:calc(100vw - 20px) !important;
+        min-width:0 !important;
+        max-width:calc(100vw - 20px) !important;
+        max-height:calc(100vh - 20px);
+        max-height:calc(100svh - 20px);
+        overflow:hidden;
+      }
+      .disclaimer-gate__header,
+      .disclaimer-gate__scroll,
+      .disclaimer-gate__actions {
+        display:block;
+        width:100%;
+        min-width:0;
+        max-width:100%;
+      }
+      .disclaimer-gate__header { flex:0 0 auto; }
+      .disclaimer-gate__header h2,
+      .disclaimer-gate__header p,
+      .disclaimer-gate__status,
+      .disclaimer-gate__check,
+      .disclaimer p {
+        max-width:100%;
+        white-space:normal !important;
+        overflow-wrap:anywhere;
+        word-break:break-word;
+      }
+      .disclaimer-gate__scroll {
+        display:block;
+        flex:1 1 auto;
+        min-height:0;
+        overflow-x:hidden;
+        overflow-y:auto;
+      }
+      .disclaimer-gate__actions {
+        flex:0 0 auto;
+        display:grid;
+        grid-template-columns:minmax(0,1fr);
+      }
+      .disclaimer-gate__button { width:100%; }
+    }
     .article-note { margin:28px 0 0; padding:15px 18px; border-left:3px solid var(--warning-line); border-radius:0 10px 10px 0; background:var(--warning-bg); color:#6d6a5e; font:12px/1.9 Arial,"Microsoft YaHei",sans-serif; }
     .article-note p { margin:0; }
   </style>
