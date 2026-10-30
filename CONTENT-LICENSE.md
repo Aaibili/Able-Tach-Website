@@ -4,7 +4,7 @@
 **Website:** Tianyuan Research Institute (田园研究所)  
 **Copyright Notice:** © 2026 the applicable author(s) or rights holder(s). All rights reserved where applicable.
 
-This document explains the intended distinction between the licensing of source code and the rights applicable to creative content in this repository. It is a project notice, not a substitute for file-specific licenses or applicable law.
+This document explains the distinction between the licensing of source code and the rights applicable to creative content in this repository. It is a project notice, not a substitute for file-specific licenses or applicable law.
 
 ## 1. Source Code
 
@@ -52,7 +52,7 @@ Where applicable, consult the relevant file notices and original license terms b
 
 Unless an individual file or accompanying notice expressly grants a license, the project does not grant a general license to reuse original articles, images, illustrations, backgrounds, research materials, branding, or other creative content.
 
-This is a statement of the permissions the project intends to grant; it does not remove rights or exceptions that may be available under applicable law. An individual file may carry a separate license or permission notice that takes precedence for that file.
+This statement describes the permissions granted by the project; it does not remove rights or exceptions that may be available under applicable law. An individual file may carry a separate license or permission notice that takes precedence for that file.
 
 For clarity, the fact that a file is publicly viewable, downloadable, or included in this repository does not by itself constitute permission for unrestricted reuse.
 
@@ -66,7 +66,7 @@ This document does not provide warranties concerning the accuracy, completeness,
 
 ## 8. Scope and Interpretation
 
-This document describes the intended separation between source code licensing and content permissions. It does not replace the full text of GPL-3.0 or override an independent license attached to a specific file.
+This document describes the separation between source code licensing and content permissions. It does not replace the full text of GPL-3.0 or override an independent license attached to a specific file.
 
 Nothing in this notice is intended to remove rights granted by applicable law or by an explicit license applicable to a particular work.
 
