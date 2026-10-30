@@ -2,7 +2,12 @@
 
 **Project:** Able-Tach-Website  
 **Website:** Tianyuan Research Institute (田园研究所)  
-**Copyright Notice:** © 2026 the applicable author(s) or rights holder(s). All rights reserved where applicable.
+**Copyright Holder:** lsy  
+**Copyright Notice:** © 2026 lsy. All rights reserved where applicable.
+
+**Website name:** Tianyuan Research Institute (田园研究所). This is the website name only, not the legal identity of the copyright holder.
+
+The copyright holder identified for original project materials covered by this notice is lsy. This identification does not claim ownership of third-party materials or override any separate rights held by contributors or other rights holders.
 
 This document explains the distinction between the licensing of source code and the rights applicable to creative content in this repository. It is a project notice, not a substitute for file-specific licenses or applicable law.
 
