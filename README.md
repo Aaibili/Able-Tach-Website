@@ -33,10 +33,10 @@ The directory structure may evolve as the project develops. A typical layout may
 Able-Tach-Website/
 ├── index.html
 ├── LICENSE
-├── README.md
+├── LICENSE-SCOPE.md
 ├── CONTENT-LICENSE.md
-├── css/
-├── js/
+├── README.md
+├── README.zh-CN.md
 ├── images/
 └── Papers and Achievements/
 ```
@@ -68,41 +68,37 @@ Before publishing a deployment, review the applicable licenses for all included 
 
 ## Licensing
 
-This project uses a **separate licensing approach for source code and creative content**.
+This project separates the licensing of source code from the permissions applicable to articles, images, branding, and other creative materials.
 
 ### Source Code
 
-Original website code explicitly included in the project's GPL-licensed scope is distributed under the **GNU General Public License v3.0 (GPL-3.0)**.
+Only the original source-code files and components identified as GPL-covered in [`LICENSE-SCOPE.md`](LICENSE-SCOPE.md), or individually marked as GPL-3.0-covered, are intended to be licensed under the **GNU General Public License v3.0 (GPL-3.0)**.
 
-You may use, study, modify, and redistribute the covered code in accordance with the terms of that license.
+The presence of the root `LICENSE` file does not, by itself, mean that every file in this repository is licensed under GPL-3.0. Consult [`LICENSE-SCOPE.md`](LICENSE-SCOPE.md), file-level notices, and third-party license notices to determine the applicable terms.
 
-When distributing covered modified versions, you must comply with the applicable GPL requirements, including the relevant source-code and license-notice obligations.
+For covered code, you may use, study, modify, and redistribute it in accordance with GPL-3.0. Distribution of covered modified versions must comply with the license's applicable conditions, including source-code and notice requirements.
 
-See [`LICENSE`](LICENSE) for the applicable license text.
+See [`LICENSE`](LICENSE) for the complete license text.
 
 Official license: https://www.gnu.org/licenses/gpl-3.0.html
 
 ### Articles, Research Materials, and Images
 
-Unless a specific page or file states otherwise, articles, research reports, theoretical models, illustrations, AI-generated images, and other creative materials are **not automatically covered by the source-code license**.
+Unless an individual file or accompanying notice expressly states otherwise, original articles, research reports, theoretical models, illustrations, backgrounds, AI-generated images, and other creative materials are **not included in the GPL-3.0 grant**.
 
-The GPL license for the website code does not, by itself, grant permission to reproduce, modify, redistribute, or commercially use these separate materials.
+No general permission to reproduce, modify, redistribute, publicly display, or commercially use these materials is granted merely because they are included in this public repository. Any rights and exceptions provided by applicable law remain unaffected.
 
-Please consult [`CONTENT-LICENSE.md`](CONTENT-LICENSE.md) and any notices accompanying individual files before using them.
+Please consult [`CONTENT-LICENSE.md`](CONTENT-LICENSE.md) and notices accompanying individual files before reusing such materials.
 
-AI-generated materials may be subject to additional terms or limitations depending on the generation service, applicable law, and any third-party rights involved.
+AI-generated materials may be subject to additional terms or limitations depending on the generation service, applicable law, and third-party rights. Their copyright status may vary.
 
 ### Name and Branding
 
-The project name **Able-Tach-Website**, the website name **Tianyuan Research Institute (田园研究所)**, and their respective logos, icons, and other identifying brand assets are not automatically licensed under GPL-3.0 merely because the website code is open source.
-
-Please do not use these assets in ways that falsely imply official affiliation, endorsement, or authorization.
+The project name **Able-Tach-Website**, the website name **Tianyuan Research Institute (田园研究所)**, and associated logos, icons, and other identifying brand assets are not automatically licensed under GPL-3.0. Do not use them in a way that falsely implies official affiliation, endorsement, or authorization.
 
 ### Third-Party Materials
 
-Third-party fonts, icons, libraries, images, and other materials remain subject to their respective licenses and terms.
-
-A file's inclusion in this repository does not necessarily mean that it is owned by the project or available under GPL-3.0.
+Third-party fonts, icons, libraries, images, and other materials remain subject to their respective licenses and terms. Their inclusion in this repository does not mean that they are owned by the project or licensed under GPL-3.0.
 
 ## Disclaimer
 
@@ -116,7 +112,7 @@ The source code is distributed under its applicable license and subject to the w
 
 ## Contributing
 
-Contributions to the website code are welcome, subject to the project's licensing requirements.
+Contributions to files explicitly identified as GPL-covered source code are welcome, subject to the applicable licensing requirements.
 
 Before submitting a contribution, please ensure that:
 
@@ -124,6 +120,7 @@ Before submitting a contribution, please ensure that:
 - You identify any third-party assets and their applicable licenses.
 - You do not include confidential information, credentials, or private data.
 - You understand that contributions to GPL-covered code may be distributed under the project's GPL licensing terms.
+- You clearly identify any contribution that is intended to have a different license.
 
 Do not submit third-party images, articles, or other creative materials unless their use is properly authorized.
 
@@ -133,8 +130,8 @@ Do not submit third-party images, articles, or other creative materials unless t
 - **Website Name:** Tianyuan Research Institute (田园研究所)
 - **Focus Areas:** Astronomy and Biology
 - **Project Type:** Static Academic Website
-- **Source Code License:** GNU GPL v3.0, for explicitly covered code
-- **Content Licensing:** See `CONTENT-LICENSE.md` and individual asset notices
+- **Source Code License:** GNU GPL v3.0, limited to the scope described in `LICENSE-SCOPE.md`
+- **Content Licensing:** See `CONTENT-LICENSE.md` and individual file notices
 
 ---
 
