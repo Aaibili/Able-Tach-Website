@@ -51,8 +51,8 @@ def main() -> None:
         re.DOTALL,
     )
     replacement = (
-        DATA_START + "\\n"
-        + '<script type="application/json" id="papers-data">' + safe_json + "</script>\\n"
+        DATA_START + "\n"
+        + '<script type="application/json" id="papers-data">' + safe_json + "</script>\n"
         + DATA_END
     )
     updated_page, count = pattern.subn(lambda _: replacement, page, count=1)
@@ -61,7 +61,8 @@ def main() -> None:
             "未找到论文数据插入标记，请确认 index.html 包含 "
             f"{DATA_START} 和 {DATA_END}"
         )
-    INDEX_PATH.write_text(updated_page, encoding="utf-8")
+    # Normalize the document ending: exactly one final newline, no accumulated blank lines.
+    INDEX_PATH.write_text(updated_page.rstrip() + "\n", encoding="utf-8")
 
     print(f"已更新 {MANIFEST_PATH.name} 和 index.html，共收录 {len(entries)} 篇。")
     for entry in entries:
