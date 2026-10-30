@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="欧油一型病毒虚构病原体研究报告">
+  <title>欧油一型病毒研究报告 - 田园研究所</title>
+  <style>
+    :root {
+      --paper:#f7f6f2; --surface:#fffefa; --ink:#222923; --muted:#656b64;
+      --line:#d9ddd5; --accent:#365b4a; --accent-soft:#e8eee8;
+      --warning-bg:#f1eee5; --warning-line:#c9b98e; --max-width:1080px;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; background:var(--paper); scroll-padding-top:118px; }
+    body {
+      margin:0; background:var(--paper); color:var(--ink);
+      font-family:Georgia,"Noto Serif SC","Songti SC",SimSun,serif;
+      line-height:1.75; -webkit-font-smoothing:antialiased;
+    }
+    a { color:inherit; text-underline-offset:4px; }
+    a:hover { color:var(--accent); }
+    .wrap { width:min(var(--max-width),calc(100% - 48px)); margin:0 auto; }
+    .site-header { position:fixed; top:12px; left:0; right:0; z-index:1000; width:100%; background:transparent; border:0; box-shadow:none; pointer-events:none; }
+    .site-header .masthead {
+      width:min(980px,calc(100% - 32px)); max-width:980px; margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between; gap:24px;
+      padding:12px 18px 12px 16px; border:1px solid rgba(255,255,255,.52);
+      border-radius:22px; background:rgba(248,249,246,.72);
+      -webkit-backdrop-filter:blur(18px) saturate(1.35); backdrop-filter:blur(18px) saturate(1.35);
+      box-shadow:0 8px 28px rgba(20,30,24,.13),inset 0 1px 0 rgba(255,255,255,.55);
+      pointer-events:auto; animation:acrylic-dock .3s cubic-bezier(.2,.7,.2,1) both;
+      transition:background .2s ease,box-shadow .2s ease;
+    }
+    .site-header .masthead:hover { background:rgba(250,250,248,.84); box-shadow:0 10px 32px rgba(20,30,24,.16),inset 0 1px 0 rgba(255,255,255,.7); }
+    .brand { display:flex; flex-direction:row; align-items:center; gap:10px; flex-shrink:0; text-decoration:none; }
+    .brand-icon { display:block; width:44px; height:44px; flex:0 0 auto; object-fit:contain; }
+    .brand-copy { display:flex; flex-direction:column; gap:1px; }
+    .brand strong { color:var(--ink); font-size:17px; font-weight:600; letter-spacing:.02em; }
+    .brand span { color:var(--muted); font:11px/1.5 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.14em; }
+    .nav { display:flex; flex-wrap:wrap; align-items:center; gap:20px; font:13px Arial,"Microsoft YaHei",sans-serif; }
+    .nav a { color:var(--ink); text-decoration:none; }
+    .nav a:hover { color:var(--accent); }
+    @keyframes acrylic-dock { from { transform:translateY(-8px) scale(.98); opacity:.78; } to { transform:translateY(0) scale(1); opacity:1; } }
+    @media(prefers-reduced-motion:reduce) { .site-header .masthead { transition:none!important; animation:none!important; } }
+
+    .article-page { padding-top:132px; padding-bottom:56px; }
+    .article { max-width:860px; margin:0 auto; }
+    .article-header { padding:20px 0 32px; border-bottom:1px solid var(--line); }
+    .eyebrow { margin:0 0 14px; color:var(--accent); font:600 11px/1.6 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+    .article h1 { max-width:820px; margin:0; font-size:clamp(32px,4.8vw,48px); font-weight:500; line-height:1.35; letter-spacing:-.025em; overflow-wrap:anywhere; }
+    .article-lead { max-width:760px; margin:19px 0 0; color:var(--muted); font-size:17px; line-height:2; }
+    .article-meta { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px 22px; margin:27px 0 0; }
+    .article-meta div { min-width:0; }
+    .article-meta dt { margin-bottom:4px; color:#858a82; font:10px/1.6 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.1em; text-transform:uppercase; }
+    .article-meta dd { margin:0; color:var(--ink); font-size:13px; overflow-wrap:anywhere; }
+    .article-section { display:grid; grid-template-columns:155px minmax(0,1fr); gap:28px; padding:30px 0 34px; border-bottom:1px solid var(--line); }
+    .section-index { display:block; margin-bottom:7px; color:#8b9188; font:10px/1.6 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.12em; }
+    .article-section h2 { margin:0; font-size:18px; font-weight:600; }
+    .article-section h3 { margin:23px 0 8px; font-size:15px; font-weight:600; }
+    .article-section p { margin:0 0 14px; color:#4f554e; font-size:15px; line-height:2; white-space:pre-wrap; overflow-wrap:anywhere; }
+    .article-section p:last-child { margin-bottom:0; }
+    .article-section ul,.article-section ol { margin:0; padding-left:1.4em; color:#4f554e; font-size:14px; line-height:2; }
+    .article-section li { padding-left:3px; margin-bottom:6px; overflow-wrap:anywhere; }
+    .placeholder { color:#797f75; }
+    .article-back { display:inline-block; margin-top:28px; color:var(--accent); font:13px/1.7 Arial,"Microsoft YaHei",sans-serif; text-decoration:none; }
+    .article-back:hover { text-decoration:underline; }
+    .site-footer { margin-top:10px; padding:20px 0 30px; border-top:1px solid var(--line); }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; color:#858a82; }
+    .footer-note { margin:0; font:11px/1.8 Arial,"Microsoft YaHei",sans-serif; }
+
+    body.disclaimer-gate-active { overflow:hidden; }
+    #site-content[inert] { user-select:none; }
+    .disclaimer-gate { position:fixed; inset:0; z-index:10000; display:grid; place-items:center; padding:22px; background:rgba(12,20,29,.76); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); }
+    .disclaimer-gate__panel { width:min(860px,100%); max-height:calc(100vh - 44px); max-height:calc(100svh - 44px); display:flex; flex-direction:column; overflow:hidden; border-radius:22px; background:#f7f6f2; color:#222923; border:1px solid rgba(255,255,255,.65); box-shadow:0 24px 80px rgba(0,0,0,.34); }
+    .disclaimer-gate__header { flex:0 0 auto; padding:26px 30px 20px; }
+    .disclaimer-gate__eyebrow { color:#365b4a; font:600 10px/1.5 Arial,sans-serif; letter-spacing:.18em; }
+    .disclaimer-gate__header h2 { max-width:none; margin:7px 0 8px; color:#222923; font-size:clamp(22px,3vw,30px); line-height:1.45; letter-spacing:0; font-weight:600; }
+    .disclaimer-gate__header p { margin:0; color:#656b64; font-size:14px; line-height:1.8; }
+    .disclaimer-gate__scroll { flex:1 1 auto; min-height:120px; max-height:52vh; overflow-y:auto; overscroll-behavior:contain; padding:18px 30px; border-top:1px solid #d9ddd5; border-bottom:1px solid #d9ddd5; scrollbar-gutter:stable; }
+    .disclaimer { margin:0; padding:0; }
+    .disclaimer h3 { margin:0 0 12px; font-size:17px; }
+    .disclaimer p { margin:0 0 12px; font-size:13px; line-height:1.9; overflow-wrap:anywhere; }
+    .disclaimer__english { margin-left:8px; color:#656b64; font:11px Arial,sans-serif; }
+    .disclaimer-gate__actions { flex:0 0 auto; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:12px 20px; padding:18px 30px 24px; }
+    .disclaimer-gate__status { grid-column:1/-1; margin:0; color:#656b64; font-size:12px; line-height:1.6; }
+    .disclaimer-gate__check { display:flex; align-items:center; gap:9px; color:#343a34; font-size:13px; line-height:1.6; }
+    .disclaimer-gate__check input { width:17px; height:17px; accent-color:#365b4a; flex:0 0 auto; }
+    .disclaimer-gate__button { border:0; border-radius:999px; padding:12px 20px; color:#fff; background:#365b4a; font:600 13px/1.4 Arial,"Microsoft YaHei",sans-serif; cursor:pointer; }
+    .disclaimer-gate__button:disabled { color:#f6f6f3; background:#aab2aa; cursor:not-allowed; }
+    .disclaimer-gate__button:not(:disabled):hover { background:#274536; }
+    @media(max-width:760px) {
+      .site-header { top:8px; }
+      .site-header .masthead { width:calc(100% - 24px); padding:11px 14px; gap:11px 16px; border-radius:19px; flex-wrap:wrap; }
+      .brand-icon { width:38px; height:38px; }
+      .brand strong { font-size:16px; }
+      .brand span { font-size:9px; letter-spacing:.08em; }
+      .nav { gap:13px; font-size:12px; }
+      .article-page { padding-top:146px; }
+      .article-section { grid-template-columns:1fr; gap:13px; padding:25px 0 28px; }
+      .article-meta { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+      .article-lead { font-size:16px; }
+      .footer-inner { flex-direction:column; gap:5px; }
+    }
+    @media(max-width:420px) {
+      .site-header .masthead { padding:10px 12px; gap:9px 11px; }
+      .brand span { display:none; }
+      .nav { gap:11px; font-size:11px; }
+      .article-page { padding-top:132px; }
+      .article h1 { font-size:32px; }
+      .article-meta { gap:13px 10px; }
+    }
+    @media(max-width:600px) {
+      .disclaimer-gate { padding:10px; }
+      .disclaimer-gate__panel { max-height:calc(100vh - 20px); max-height:calc(100svh - 20px); border-radius:17px; }
+      .disclaimer-gate__header { padding:20px 19px 15px; }
+      .disclaimer-gate__header h2 { font-size:22px; }
+      .disclaimer-gate__header p { font-size:13px; }
+      .disclaimer-gate__scroll { max-height:52vh; padding:15px 19px; }
+      .disclaimer-gate__actions { grid-template-columns:1fr; gap:12px; padding:15px 19px 19px; }
+      .disclaimer-gate__button { width:100%; }
+    }
+    .fiction-notice { margin:26px 0 30px; padding:18px 20px; border:1px solid #c9b98e; border-left:4px solid #9a7837; border-radius:0 10px 10px 0; background:#f1eee5; color:#5d584b; }
+    .fiction-notice strong { color:#765d28; }
+    .fiction-notice p { margin:0; font:13px/1.9 Arial,"Microsoft YaHei",sans-serif; overflow-wrap:anywhere; }
+    .fiction-label { display:block; margin-bottom:7px; color:#765d28; font:700 10px/1.6 Arial,sans-serif; letter-spacing:.15em; }
+    .table-wrap { margin:20px 0 6px; overflow-x:auto; border:1px solid var(--line); border-radius:12px; background:var(--surface); -webkit-overflow-scrolling:touch; }
+    .table-wrap table { width:100%; min-width:500px; border-collapse:collapse; font:13px/1.75 Arial,"Microsoft YaHei",sans-serif; color:#4f554e; }
+    .table-wrap th { padding:11px 14px; background:var(--accent-soft); color:var(--accent); text-align:left; white-space:nowrap; border-bottom:1px solid #cfdacf; }
+    .table-wrap td { padding:10px 14px; border-top:1px solid #e6e9e2; vertical-align:top; }
+    .table-wrap tbody tr:nth-child(even) td { background:rgba(54,91,74,.028); }
+    .article-note { margin:28px 0 0; padding:15px 18px; border-left:3px solid var(--warning-line); border-radius:0 10px 10px 0; background:var(--warning-bg); color:#6d6a5e; font:12px/1.9 Arial,"Microsoft YaHei",sans-serif; }
+    .article-note p { margin:0; }
+  </style>
+</head>
+<body class="disclaimer-gate-active">
+  <div class="disclaimer-gate" id="disclaimer-gate" role="dialog" aria-modal="true" aria-labelledby="disclaimer-gate-title">
+    <div class="disclaimer-gate__panel" role="document">
+      <div class="disclaimer-gate__header">
+        <span class="disclaimer-gate__eyebrow">PLEASE READ</span>
+        <h2 id="disclaimer-gate-title">进入田园研究所前，请先阅读免责声明</h2>
+        <p>请在下方完整阅读免责声明。滚动至正文底部后，才能勾选确认并进入网站。</p>
+      </div>
+      <div class="disclaimer-gate__scroll" id="disclaimer-scroll" tabindex="0" aria-label="免责声明正文">
+        <section class="disclaimer" aria-labelledby="disclaimer-title">
+          <h3 id="disclaimer-title">免责声明 <span class="disclaimer__english">DISCLAIMER</span></h3>
+          <p>最后更新日期：【2026年10月17日】</p>
+          <p>田园研究所网站（以下简称“本站”）是一个以完全虚构人物、事件、组织、地点、情节等为内容的创作、展示或娱乐平台。请在使用本站前仔细阅读以下声明。</p>
+          <p><strong>1. 内容纯属虚构：</strong>本站所有内容，包括但不限于文字、图片、音频、视频、角色、姓名、机构名称、地点、事件、剧情、设定、评论及相关信息，均为虚构创作，并非真实发生。本站内容不代表任何现实人物、团体、组织、事件或地点的真实情况，也不代表本站运营者、作者或相关方的观点、立场或事实陈述。</p>
+          <p><strong>2. 如有雷同，纯属巧合：</strong>本站中出现的任何姓名、名称、机构、地点、事件、日期、情节等，如与现实中的个人、团体、组织、事件、地点、品牌、宗教、民族等存在相似之处，纯属巧合。本站无意影射、诽谤、侮辱、贬损、侵犯或针对任何现实主体。请勿将本站内容与现实人物、事件对号入座。</p>
+          <p><strong>3. 非新闻、非事实、非专业建议：</strong>本站内容不应被视为新闻、事实报道、历史记录、证据材料或法律、医疗、投资、心理、教育等专业建议。本站可能使用“报道”“纪实”“新闻”等风格化表达，但仅为艺术创作或娱乐表现，不改变其虚构性质。任何人不应依据本站内容作出决策或采取行动。因依赖本站内容造成的损失，本站不承担责任。</p>
+          <p><strong>4. 读者责任：</strong>访问者应自行判断并理解本站内容的虚构性质。因误解、传播、引用、改编、对号入座或其他不当使用本站内容而产生的后果，由行为人自行承担。本站不鼓励、不支持任何基于虚构内容对现实主体进行骚扰、攻击或侵权的行为。</p>
+          <p><strong>5. 侵权处理：</strong>若任何个人或组织认为本站内容侵犯其合法权益，请通过邮箱（lsy@abletach.de5.net）与本站联系，并提供权属证明、具体链接及情况说明。本站将在核实后及时采取删除、修改、断开链接等合理措施。</p>
+          <p><strong>6. 用户生成内容：</strong>若本站允许用户投稿、评论或发布内容，用户应确保其发布内容不侵犯他人合法权益，不发布真实诽谤、虚假信息或违法内容。本站对用户发布内容不承担事先审查义务，但收到有效通知后将依法依规处理。</p>
+          <p><strong>7. 外部链接：</strong>本站可能包含指向外部网站的链接，仅为方便访问。本站不对第三方网站的内容、安全性或合法性负责，也不代表本站认可其内容。</p>
+          <p><strong>8. 版权声明：</strong>本站原创内容版权归本网站运营者所有，未经许可，不得擅自转载、复制、改编或用于商业用途。引用本站内容请注明来源。虚构角色、设定和情节仅用于创作展示。</p>
+          <p><strong>9. 声明修改：</strong>本站有权根据实际情况随时更新本免责声明。更新后的声明在本页面公布后即生效。继续使用本站，视为接受更新后的声明。</p>
+          <p><strong>10. 法律适用与争议解决：</strong>本声明适用中华人民共和国法律（仅为本声明之目的，不包括香港特别行政区、澳门特别行政区和台湾地区法律）。因本站或本声明产生的争议，双方应尽量友好协商解决；协商不成的，任何一方均可向邯郸有管辖权的人民法院提起诉讼。</p>
+        </section>
+      </div>
+      <div class="disclaimer-gate__actions">
+        <p class="disclaimer-gate__status" id="disclaimer-status" aria-live="polite">请向下滚动，阅读完整份免责声明。</p>
+        <label class="disclaimer-gate__check"><input type="checkbox" id="disclaimer-confirm" disabled> 我已完整阅读并理解以上免责声明</label>
+        <button class="disclaimer-gate__button" id="disclaimer-enter" type="button" disabled>确认并进入网站</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-content" inert>
+    <header class="site-header">
+      <div class="wrap masthead">
+        <a class="brand" href="../index.html#top" aria-label="返回田园研究所主页">
+          <img class="brand-icon" src="../images/Icon1.png" alt="">
+          <div class="brand-copy">
+            <strong>田园研究所</strong>
+            <span>Academic Profile &amp; Research Notes</span>
+          </div>
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="../index.html#about">简介</a>
+          <a href="../index.html#research">研究方向</a>
+          <a href="../index.html#publications">学术成果</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top" class="wrap article-page">
+      <article class="article">
+        <header class="article-header">
+          <p class="eyebrow">PAPER / BIOLOGICAL RESEARCH REPORT</p>
+          <h1 id="page-title">欧油一型病毒（Olea-1）的临床表现与疾病进程</h1>
+          <p class="article-lead">一份围绕假想病原体临床表现、病程分期及防治研究框架展开的虚构研究档案。</p>
+          <dl class="article-meta">
+            <div><dt>作者 / AUTHOR</dt><dd>田园研究所研究团队（虚构）</dd></div>
+            <div><dt>档案编号 / ID</dt><dd>TYRI-VIR-001</dd></div>
+            <div><dt>研究领域 / FIELD</dt><dd>虚构病毒学、病理学</dd></div>
+            <div><dt>档案状态 / STATUS</dt><dd>持续研究（虚构）</dd></div>
+          </dl>
+        </header>
+        <aside class="fiction-notice"><span class="fiction-label">FICTIONAL RESEARCH FILE · IMPORTANT NOTICE</span><p><strong>虚构声明：</strong>本文为科幻创作与世界观构建用途的虚构科研档案。欧油一型病毒（Olea-1）、相关病例、病理表现、传播途径及疫苗研发项目均为虚构内容，不对应任何已知真实病原体。本文采用学术论文结构以增强阅读沉浸感，不是真实医学研究成果。</p></aside>
+        <section class="article-section" id="abstract"><div><span class="section-index">01 / ABSTRACT</span><h2>摘要</h2></div><div><p>本报告围绕虚构病原体欧油一型病毒（Olea-1）的临床表现、疾病进程及潜在传播特征展开描述。根据项目设定，该病原体与受污染食用油存在关联，感染后可出现皮肤异常油脂分泌、进行性代谢紊乱、体重显著增加及多器官功能受损等表现。</p><p>报告将病程划分为早期渗油期、器官受累期、快速增重期及终末失代偿期四个阶段，并提出异常脂质调控失衡的假说，同时记录虚构疫苗研发计划。</p><p><strong>关键词：</strong>欧油一型病毒；异常脂质代谢；疾病分期；器官功能障碍；疫苗研发</p></div></section>
+        <section class="article-section" id="background"><div><span class="section-index">02 / BACKGROUND</span><h2>一、研究背景</h2></div><div><p>欧油一型病毒是田园研究所虚构病原体档案中的编号项目，其设定特征包括异常脂质代谢、持续性食欲亢进以及进行性器官损伤。</p><p>在本研究框架中，该病原体被假设能够干扰宿主正常的能量调节机制，使皮肤油脂分泌、体重变化与器官功能异常呈现时间关联。本文采用感染后天数作为时间轴，并按主要临床表现划分阶段。上述分类仅为虚构档案标准。</p></div></section>
+        <section class="article-section" id="transmission"><div><span class="section-index">03 / TRANSMISSION</span><h2>二、传播途径与暴露风险</h2></div><div><h3>2.1 摄入相关传播</h3><p>受污染食用油被设定为该病原体的主要潜藏载体。个体摄入相关食物后，可能经过一段潜伏期，继而出现皮肤渗油、恶心及代谢异常等症状。</p><h3>2.2 接触相关传播</h3><p>感染者体表产生的异常油脂被设定为潜在的继发传播介质。与此类油脂发生接触的个体，在虚构病例管理体系中会被列为需要进一步评估的接触对象。</p><p>以上传播途径均属于虚构设定，没有证据表明存在能够通过食用油发酵产生并按上述方式传播的真实病毒。</p></div></section>
+        <section class="article-section" id="clinical-course"><div><span class="section-index">04 / CLINICAL COURSE</span><h2>三、临床表现与病程分期</h2></div><div><p>根据本项目预先定义的虚构病例模型，疾病进程分为四个阶段。</p><div class="table-wrap"><table><thead><tr><th>病程阶段</th><th>时间范围</th><th>主要表现</th></tr></thead><tbody><tr><td>Ⅰ期：早期渗油期</td><td>第1—3天</td><td>皮肤异常渗油、恶心</td></tr><tr><td>Ⅱ期：器官受累期</td><td>第4—8天</td><td>器官周围异常脂质积聚、器官功能下降</td></tr><tr><td>Ⅲ期：快速增重期</td><td>第8—15天</td><td>体重显著增加、持续性饥饿</td></tr><tr><td>Ⅳ期：终末失代偿期</td><td>第15—21天</td><td>暴饮暴食、严重器官功能障碍</td></tr></tbody></table></div><p class="table-caption">表 1　虚构病程分期。时间参数为创作设定，不是由真实病例统计得出。</p><h3>3.1 早期渗油期（第1—3天）</h3><p>患者开始出现皮肤表面油脂分泌异常，部分区域持续产生明显油状分泌物，并伴随恶心和胃部不适。该阶段的设定特点是体表症状先于显著体重变化出现。</p><h3>3.2 器官受累期（第4—8天）</h3><p>异常脂质被设定为在重要器官周围积聚，并与器官功能逐步下降同时出现。患者可能伴随乏力、活动能力下降及消化功能异常。</p><h3>3.3 快速增重期（第8—15天）</h3><p>按照原始设定，患者体重可增长至约200斤（100千克），同时出现持续性饥饿感，即使已经进食仍难以获得正常饱腹感。该现象被命名为“持续性食欲亢进”。</p><h3>3.4 终末失代偿期（第15—21天）</h3><p>患者进食行为进一步失控，体重在虚构病例中可达到约300斤（150千克）。设定中的异常脂质积聚与器官功能障碍持续加重，最终可能因多器官功能衰竭死亡。原始设定为进入终末阶段后约一天内死亡；这不是现实医学预测。</p></div></section>
+        <section class="article-section" id="mechanism"><div><span class="section-index">05 / MECHANISM</span><h2>四、病理机制假说</h2></div><div><h3>4.1 异常脂质调控假说</h3><p>研究团队在虚构理论框架中提出“异常脂质调控失衡假说”，用于解释皮肤渗油、体重增加及器官受累等现象之间的关联。该假说认为，病原体可能干扰机体对脂质的正常处理与分布，并伴随食欲调节异常。</p><h3>4.2 研究局限性</h3><p>本项目仅具有概念性病程模型，缺少真实病例、实验数据、病理切片及独立验证结果。因此，无法对病毒结构、感染机制、致病性或传播效率作出真实科学判断。时间上的先后关系也不能单独证明因果关系。</p></div></section>
+        <section class="article-section" id="research"><div><span class="section-index">06 / RESEARCH</span><h2>五、疫苗研发与防控计划</h2></div><div><p>田园研究所将疫苗研发列为该虚构项目的重点工作方向。</p><h3>5.1 病原体识别与档案管理</h3><p>建立统一的假想病原体档案，整理感染时间、症状出现顺序、病程阶段及结局等信息，为虚构病例之间的对照提供统一格式。</p><h3>5.2 暴露事件监测</h3><p>针对设定中的摄入与接触情境，建立假想的暴露事件登记机制，记录可能的暴露来源、接触时间及后续症状变化。</p><h3>5.3 疫苗研发进度</h3><p>截至本报告所设定的时间节点，疫苗项目仍处于早期研发阶段，尚未获得可供临床使用的有效疫苗。由于病毒本身为虚构对象，本文不提供真实疫苗配方、实验结果或有效性数据。</p></div></section>
+        <section class="article-section" id="discussion"><div><span class="section-index">07 / DISCUSSION</span><h2>六、讨论</h2></div><div><p>欧油一型病毒的主要叙事特征，是疾病表现从局部体表异常逐步扩展至全身性代谢紊乱和终末期器官损伤。分期描述有助于将不同阶段的症状组织成统一的时间序列。</p><p>采用医学术语、阶段表格和机制假说，并不意味着相关病原体或病理过程真实存在。关于食用油、病毒传播及异常脂质积聚的描述均缺乏真实实验依据。本报告用于构建科幻病原体档案，而非提出新的医学发现。</p></div></section>
+        <section class="article-section" id="conclusion"><div><span class="section-index">08 / CONCLUSION</span><h2>七、结论</h2></div><div><p>本报告建立了欧油一型病毒的虚构临床分期、传播途径、病理机制假说及疫苗研发框架。在设定中，该疾病由早期皮肤异常渗油开始，随后发展为器官受累、快速增重、持续性食欲亢进及终末期多器官功能衰竭。</p><p>本文所提出的病理机制尚未得到真实实验验证，所有病程参数、病例表现及研发进度均属于创作设定。</p></div></section>
+        <aside class="article-note"><p><strong>虚构声明：</strong>本文为虚构科研文本，不是真实医学论文、临床试验报告或公共卫生警报。欧油一型病毒及相关病例、传播途径、病理机制和疫苗研发项目均为创作设定。本文不应作为医学诊断、疾病预防或治疗依据。</p></aside>
+        <a class="article-back" href="../index.html#publications">← 返回论文与成果列表</a>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <p class="footer-note">© [2026] 田园研究所 · 保留所有适用权利</p>
+        <p class="footer-note">学术交流 · 独立观点</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+  (function () {
+    const gate = document.getElementById('disclaimer-gate');
+    const site = document.getElementById('site-content');
+    const readingArea = document.getElementById('disclaimer-scroll');
+    const confirmation = document.getElementById('disclaimer-confirm');
+    const enterButton = document.getElementById('disclaimer-enter');
+    const status = document.getElementById('disclaimer-status');
+    if (!gate || !site || !readingArea || !confirmation || !enterButton || !status) return;
+    let reachedEnd = false;
+    function updateProgress() {
+      const atEnd = readingArea.scrollTop + readingArea.clientHeight >= readingArea.scrollHeight - 4;
+      if (atEnd && !reachedEnd) {
+        reachedEnd = true;
+        confirmation.disabled = false;
+        status.textContent = '已滚动至正文底部。请勾选确认框后继续。';
+      }
+      enterButton.disabled = !(reachedEnd && confirmation.checked);
+    }
+    readingArea.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    confirmation.addEventListener('change', function () {
+      enterButton.disabled = !(reachedEnd && confirmation.checked);
+      status.textContent = confirmation.checked ? '确认完成，可以进入网站。' : '请确认已完整阅读免责声明。';
+    });
+    enterButton.addEventListener('click', function () {
+      if (!reachedEnd || !confirmation.checked) return;
+      gate.remove();
+      site.removeAttribute('inert');
+      document.body.classList.remove('disclaimer-gate-active');
+      const heading = document.getElementById('page-title');
+      if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
+    });
+    updateProgress();
+  })();
+  </script>
+</body>
+</html>
+
