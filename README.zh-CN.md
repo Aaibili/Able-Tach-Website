@@ -4,6 +4,10 @@
 
 **田园研究所 · Tianyuan Research Institute**
 
+**版权主体：** lsy
+
+*“田园研究所”（Tianyuan Research Institute）仅为网站名称，并非版权主体的法律名称或登记主体。*
+
 **Research · Reading · Reflection**
 
 Able-Tach-Website 是「田园研究所」的官方网站源代码仓库。这是一个以学术研究为主题的静态网站，主要围绕天文学、生物学及相关知识领域展开。
@@ -134,7 +138,8 @@ AI 生成内容的权利归属及可使用范围，可能受到生成工具的�
 
 - **仓库名称：** Able-Tach-Website
 - **GitHub 仓库：** [Aaibili/Able-Tach-Website](https://github.com/Aaibili/Able-Tach-Website)
-- **网站名称：** 田园研究所（Tianyuan Research Institute）
+- **网站名称：** 田园研究所（Tianyuan Research Institute），仅为网站名称
+- **版权主体：** lsy
 - **研究领域：** 天文学、生物学
 - **项目类型：** 学术风格静态网站
 - **源代码许可证：** GNU GPL v3.0（仅适用于 `LICENSE-SCOPE.md` 明确列出的范围）
