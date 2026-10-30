@@ -71,8 +71,8 @@
 
     body.disclaimer-gate-active { overflow:hidden; }
     #site-content[inert] { user-select:none; }
-    .disclaimer-gate { position:fixed; inset:0; z-index:10000; display:grid; place-items:center; padding:22px; overflow-x:hidden; overflow-y:auto; background:rgba(12,20,29,.76); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); }
-    .disclaimer-gate__panel { width:100%; min-width:0; max-width:860px; max-height:calc(100vh - 44px); max-height:calc(100svh - 44px); display:flex; flex-direction:column; overflow:hidden; border-radius:22px; background:#f7f6f2; color:#222923; border:1px solid rgba(255,255,255,.65); box-shadow:0 24px 80px rgba(0,0,0,.34); }
+    .disclaimer-gate { position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; padding:22px; min-width:0; overflow-x:hidden; overflow-y:auto; background:rgba(12,20,29,.76); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); }
+    .disclaimer-gate__panel { flex:0 1 860px; width:100%; min-width:0; max-width:860px; max-height:calc(100vh - 44px); max-height:calc(100svh - 44px); display:flex; flex-direction:column; overflow:hidden; border-radius:22px; background:#f7f6f2; color:#222923; border:1px solid rgba(255,255,255,.65); box-shadow:0 24px 80px rgba(0,0,0,.34); }
     .disclaimer-gate__header { flex:0 0 auto; min-width:0; padding:26px 30px 20px; }
     .disclaimer-gate__eyebrow { color:#365b4a; font:600 10px/1.5 Arial,sans-serif; letter-spacing:.18em; }
     .disclaimer-gate__header h2 { max-width:none; overflow-wrap:anywhere; margin:7px 0 8px; color:#222923; font-size:clamp(22px,3vw,30px); line-height:1.45; letter-spacing:0; font-weight:600; }
@@ -114,9 +114,9 @@
       .disclaimer-gate { padding:10px; }
       .disclaimer-gate__panel { max-height:calc(100vh - 20px); max-height:calc(100svh - 20px); border-radius:17px; }
       .disclaimer-gate__header { padding:20px 19px 15px; }
-      .disclaimer-gate__header h2 { font-size:22px; }
+      .disclaimer-gate__header h2 { min-width:0; white-space:normal; overflow-wrap:anywhere; font-size:22px; }
       .disclaimer-gate__header p { font-size:13px; }
-      .disclaimer-gate__scroll { min-height:0; max-height:none; padding:15px 19px; }
+      .disclaimer-gate__scroll { min-width:0; min-height:0; max-height:none; padding:15px 19px; }
       .disclaimer-gate__actions { grid-template-columns:1fr; gap:12px; padding:15px 19px 19px; }
       .disclaimer-gate__button { width:100%; }
     }
