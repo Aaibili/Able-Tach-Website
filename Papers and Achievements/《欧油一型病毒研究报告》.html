@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="content-nature" content="fictional">
   <meta name="description" content="欧油一型病毒虚构病原体研究报告">
   <title>欧油一型病毒研究报告 - 田园研究所</title>
   <style>
@@ -163,7 +164,11 @@
       .disclaimer-gate__actions { padding:14px 16px 18px; }
       .article h1 { font-size:clamp(28px,8vw,32px); }
     }
-  </style>
+      .content-nature-label { display:flex; align-items:center; gap:8px; margin:12px 0 0; color:var(--muted); font:12px/1.6 Arial,"Microsoft YaHei",sans-serif; }
+    .content-nature-label__badge { display:inline-flex; align-items:center; padding:3px 9px; border:1px solid #ded6c4; border-radius:999px; background:#f1eee5; color:#765d28; font-weight:600; }
+    .content-nature-label__badge[data-content-nature="reference"], .content-nature-label__badge[data-content-nature="research"] { border-color:#c8d7c8; background:var(--accent-soft); color:var(--accent); }
+    .disclaimer-gate__privacy { grid-column:1/-1; margin:0; color:#858a82; font-size:11px; line-height:1.7; }
+</style>
 </head>
 <body class="disclaimer-gate-active">
   <div class="disclaimer-gate" id="disclaimer-gate" role="dialog" aria-modal="true" aria-labelledby="disclaimer-gate-title">
@@ -176,22 +181,24 @@
       <div class="disclaimer-gate__scroll" id="disclaimer-scroll" tabindex="0" aria-label="免责声明正文">
         <section class="disclaimer" aria-labelledby="disclaimer-title">
           <h3 id="disclaimer-title">免责声明 <span class="disclaimer__english">DISCLAIMER</span></h3>
-          <p>最后更新日期：【2026年10月17日】</p>
-          <p>田园研究所网站（以下简称“本站”）是一个以完全虚构人物、事件、组织、地点、情节等为内容的创作、展示或娱乐平台。请在使用本站前仔细阅读以下声明。</p>
-          <p><strong>1. 内容纯属虚构：</strong>本站所有内容，包括但不限于文字、图片、音频、视频、角色、姓名、机构名称、地点、事件、剧情、设定、评论及相关信息，均为虚构创作，并非真实发生。本站内容不代表任何现实人物、团体、组织、事件或地点的真实情况，也不代表本站运营者、作者或相关方的观点、立场或事实陈述。</p>
-          <p><strong>2. 如有雷同，纯属巧合：</strong>本站中出现的任何姓名、名称、机构、地点、事件、日期、情节等，如与现实中的个人、团体、组织、事件、地点、品牌、宗教、民族等存在相似之处，纯属巧合。本站无意影射、诽谤、侮辱、贬损、侵犯或针对任何现实主体。请勿将本站内容与现实人物、事件对号入座。</p>
-          <p><strong>3. 非新闻、非事实、非专业建议：</strong>本站内容不应被视为新闻、事实报道、历史记录、证据材料或法律、医疗、投资、心理、教育等专业建议。本站可能使用“报道”“纪实”“新闻”等风格化表达，但仅为艺术创作或娱乐表现，不改变其虚构性质。任何人不应依据本站内容作出决策或采取行动。因依赖本站内容造成的损失，本站不承担责任。</p>
-          <p><strong>4. 读者责任：</strong>访问者应自行判断并理解本站内容的虚构性质。因误解、传播、引用、改编、对号入座或其他不当使用本站内容而产生的后果，由行为人自行承担。本站不鼓励、不支持任何基于虚构内容对现实主体进行骚扰、攻击或侵权的行为。</p>
+          <p>最后更新日期：【2026年11月6日】</p>
+          <p>截至本声明最后更新日期，本站目前已发布的创作性内容，包括文章、研究报告、理论模型、人物、机构、地点、事件、剧情、设定、图片及其他展示材料，均为虚构创作，并非真实发生、真实存在或经现实研究验证。网站运营信息、法律声明、版权及许可说明等必要说明性文字除外。本站未来可能加入基于现实资料的知识性内容或真实研究成果，届时将在相应页面明确标注其性质，并在适当情况下注明来源、作者、发布日期或核查日期。请在使用本站前仔细阅读以下声明。</p>
+          <p><strong>1. 当前创作内容的虚构性质：</strong>截至本声明最后更新日期，本站已发布的创作性内容，包括但不限于文章、研究报告、理论模型、人物、姓名、机构、地点、事件、剧情、设定及配套图片或其他媒体，均属虚构创作，并非真实发生或经现实研究验证；不代表任何现实人物、团体、组织、事件或地点的真实情况，也不代表创作者或相关方的观点、立场或事实陈述。网站运营信息、法律声明、版权及许可说明等必要说明性文字不属于上述虚构作品。未来加入的真实资料或真实研究成果将按相应页面标注的内容性质理解。</p>
+          <p><strong>2. 如有雷同，纯属巧合：</strong>对于本站虚构作品中出现的姓名、名称、机构、地点、事件、日期及情节等，如与现实中的个人、团体、组织、事件、地点、品牌、宗教或民族等存在相似之处，纯属巧合。本站无意影射、诽谤、侮辱、贬损、侵犯或针对任何现实主体。请勿将虚构作品与现实人物或事件对号入座。</p>
+          <p><strong>3. 学术表达、资料性质与非专业建议：</strong>本站页面使用以下内容性质标识：“虚构创作”表示作品及其设定为虚构；“假设性研究”表示以假设为前提的推演、模型或虚构研究过程，不代表实际实验或研究结果；“真实资料”表示对现实世界资料的引用或整理；“真实研究”表示页面所称的现实研究成果，仍应结合其方法、数据、来源、作者及日期独立核验。标注为“虚构创作”或“假设性研究”的内容，不应被视为新闻、事实报道、历史记录、证据材料、真实科研成果或法律、医疗、投资、心理、教育等专业建议。虚构作品中使用“论文”“研究报告”“实验”“教授”“已发表”“纪实”等表达，仅属于作品设定或艺术表现，不代表真实学术发表、同行评审、科研机构认证或实验验证。未来标注为“真实资料”或“真实研究”的页面，应结合其列明的来源、作者、发布日期或核查日期自行核验；此类内容亦不构成专业建议，不能代替专业人士意见。任何人均不应仅依据虚构或未经独立核验的内容作出重要决策。在适用法律允许的范围内，本站不对仅因依赖此类内容而产生的损失承担责任。</p>
+          <p><strong>4. 读者责任：</strong>访问者应留意各页面对内容性质的标注，不应将虚构或假设性内容误认为现实事实、真实研究或正式学术成果，也不应脱离语境传播、引用或改编而造成误导。本站不鼓励、不支持任何基于虚构内容对现实主体进行骚扰、攻击或侵权的行为。</p>
           <p><strong>5. 侵权处理：</strong>若任何个人或组织认为本站内容侵犯其合法权益，请通过邮箱（lsy@abletach.de5.net）与本站联系，并提供权属证明、具体链接及情况说明。本站将在核实后及时采取删除、修改、断开链接等合理措施。</p>
-          <p><strong>6. 用户生成内容：</strong>若本站允许用户投稿、评论或发布内容，用户应确保其发布内容不侵犯他人合法权益，不发布真实诽谤、虚假信息或违法内容。本站对用户发布内容不承担事先审查义务，但收到有效通知后将依法依规处理。</p>
+          <p><strong>6. 用户生成内容：</strong>如本站未来开放用户投稿、评论或其他用户发布功能，用户应确保其发布内容不侵犯他人合法权益，不发布诽谤、虚假信息或违法内容。本站将根据适用法律及实际情况处理相关通知。</p>
           <p><strong>7. 外部链接：</strong>本站可能包含指向外部网站的链接，仅为方便访问。本站不对第三方网站的内容、安全性或合法性负责，也不代表本站认可其内容。</p>
-          <p><strong>8. 版权声明：</strong>本站原创内容版权归本网站运营者所有，未经许可，不得擅自转载、复制、改编或用于商业用途。引用本站内容请注明来源。虚构角色、设定和情节仅用于创作展示。</p>
-          <p><strong>9. 声明修改：</strong>本站有权根据实际情况随时更新本免责声明。更新后的声明在本页面公布后即生效。继续使用本站，视为接受更新后的声明。</p>
-          <p><strong>10. 法律适用与争议解决：</strong>本声明适用中华人民共和国法律（仅为本声明之目的，不包括香港特别行政区、澳门特别行政区和台湾地区法律）。因本站或本声明产生的争议，双方应尽量友好协商解决；协商不成的，任何一方均可向邯郸有管辖权的人民法院提起诉讼。</p>
+          <p><strong>8. 版权声明：</strong>“Aai”为创作者本人使用的公开笔名及公开署名，并非独立法人或组织。本站原创程序代码的许可范围以仓库中的 LICENSE-SCOPE.md 为准，其中明确列出的原创程序代码采用 GNU GPL-3.0；该许可不自动延伸至文章正文、研究报告、理论模型、图片、背景素材、品牌标识或第三方素材。由创作者本人原创并依法享有权利的文章、研究材料及视觉作品等，除另有单独授权或适用法律另有规定外，未经许可不得擅自复制、转载、改编、传播或用于商业用途。第三方素材依其各自许可及权利状态处理。引用本站内容请注明来源。</p>
+          <p><strong>9. 声明修改：</strong>本站可根据实际情况更新本免责声明，并在本页面公布修订版本及更新日期。对于重大变更，本站将在合理范围内作出提示。声明的适用与效力仍以适用法律为准。</p>
+          <p><strong>10. 法律适用与争议解决：</strong>本声明适用中华人民共和国法律（不包括香港特别行政区、澳门特别行政区和台湾地区法律）。因本站或本声明产生的争议，双方应先尽量友好协商；协商不成的，按照适用法律向有管辖权的人民法院提起诉讼。</p>
+          <p><strong>11. 不可排除或限制的法定责任：</strong>本免责声明不意图排除或限制适用法律规定不得排除或限制的责任，也不意图减损访问者依法享有且不得放弃的权利或救济。如本声明任何条款与适用法律中的强制性规定相冲突，应以该等强制性规定为准；相关条款仅在法律允许的范围内适用。</p>
         </section>
       </div>
       <div class="disclaimer-gate__actions">
         <p class="disclaimer-gate__status" id="disclaimer-status" aria-live="polite">请向下滚动，阅读完整份免责声明。</p>
+        <p class="disclaimer-gate__privacy">本次确认记录仅保存在当前浏览器，包含免责声明版本和确认时间，不会上传服务器；清除本站浏览器数据或更换浏览器后，可能需要重新确认。</p>
         <label class="disclaimer-gate__check"><input type="checkbox" id="disclaimer-confirm" disabled> 我已完整阅读并理解以上免责声明</label>
         <button class="disclaimer-gate__button" id="disclaimer-enter" type="button" disabled>确认并进入网站</button>
       </div>
@@ -220,6 +227,7 @@
       <article class="article">
         <header class="article-header">
           <p class="eyebrow">PAPER / BIOLOGICAL RESEARCH REPORT</p>
+          <p class="content-nature-label"><span>内容性质</span><strong class="content-nature-label__badge" data-content-nature="fictional">虚构创作</strong></p>
           <h1 id="page-title">欧油一型病毒（Olea-1）的临床表现与疾病进程</h1>
           <p class="article-lead">一份围绕假想病原体临床表现、病程分期及防治研究框架展开的虚构研究档案。</p>
           <dl class="article-meta">
@@ -245,7 +253,7 @@
 
     <footer class="site-footer">
       <div class="wrap footer-inner">
-        <p class="footer-note">© [2026] 田园研究所 · 保留所有适用权利</p>
+        <p class="footer-note">© 2026 Aai · 田园研究所 · 保留所有适用权利</p>
         <p class="footer-note">学术交流 · 独立观点</p>
       </div>
     </footer>
@@ -260,6 +268,24 @@
     const enterButton = document.getElementById('disclaimer-enter');
     const status = document.getElementById('disclaimer-status');
     if (!gate || !site || !readingArea || !confirmation || !enterButton || !status) return;
+    // Update this version whenever the disclaimer wording changes, so visitors are prompted again.
+    const DISCLAIMER_VERSION = '2026-11-06';
+    const ACK_STORAGE_KEY = 'tianyuan-disclaimer-acknowledgment';
+
+    function unlockSite() {
+      gate.remove();
+      site.removeAttribute('inert');
+      document.body.classList.remove('disclaimer-gate-active');
+    }
+
+    try {
+      const savedAcknowledgment = JSON.parse(localStorage.getItem(ACK_STORAGE_KEY) || 'null');
+      if (savedAcknowledgment && savedAcknowledgment.version === DISCLAIMER_VERSION) {
+        unlockSite();
+        return;
+      }
+    } catch (_) {}
+
     let reachedEnd = false;
     function updateProgress() {
       const atEnd = readingArea.scrollTop + readingArea.clientHeight >= readingArea.scrollHeight - 4;
@@ -278,9 +304,13 @@
     });
     enterButton.addEventListener('click', function () {
       if (!reachedEnd || !confirmation.checked) return;
-      gate.remove();
-      site.removeAttribute('inert');
-      document.body.classList.remove('disclaimer-gate-active');
+      try {
+        localStorage.setItem(ACK_STORAGE_KEY, JSON.stringify({
+          version: DISCLAIMER_VERSION,
+          acceptedAt: new Date().toISOString()
+        }));
+      } catch (_) {}
+      unlockSite();
       const heading = document.getElementById('page-title');
       if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
     });

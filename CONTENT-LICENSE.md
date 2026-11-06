@@ -2,12 +2,15 @@
 
 **Project:** Able-Tach-Website  
 **Website:** Tianyuan Research Institute (田园研究所)  
-**Copyright Holder:** lsy  
-**Copyright Notice:** © 2026 lsy. All rights reserved where applicable.
+**Public Copyright Attribution:** Aai (the creator's public pen name)
 
-**Website name:** Tianyuan Research Institute (田园研究所). This is the website name only, not the legal identity of the copyright holder.
+**Copyright Notice:** © 2026 Aai. All rights reserved where applicable.
 
-The copyright holder identified for original project materials covered by this notice is lsy. This identification does not claim ownership of third-party materials or override any separate rights held by contributors or other rights holders.
+**Public attribution:** Aai is the creator's personal public pen name and copyright attribution, not a separate legal entity.
+
+**Website name:** Tianyuan Research Institute (田园研究所). This is the website name only.
+
+The public copyright attribution used by the creator for original project-authored materials covered by this notice is Aai. It identifies the creator personally under a pen name and does not claim ownership of third-party materials or override separate rights held by contributors or other rights holders.
 
 This document explains the distinction between the licensing of source code and the rights applicable to creative content in this repository. It is a project notice, not a substitute for file-specific licenses or applicable law.
 
@@ -35,7 +38,7 @@ The source code license does not automatically grant permission to reproduce, ad
 
 Please obtain authorization from the relevant rights holder before using these materials beyond what is permitted by applicable law or an explicit license notice.
 
-Some research reports, theoretical models, and scientific-looking materials published on the website may be fictional or created for illustrative, educational, or creative purposes. They should not be treated as verified scientific findings unless independently supported by appropriate evidence.
+As of the date stated in the website disclaimer, all currently published creative works on the website—including articles, research reports, theoretical models, fictional people and institutions, events, and related visual materials—are fictional. Future real-world educational materials or genuine research will be clearly identified on the relevant page and, where appropriate, accompanied by sources, authors, and publication or review dates. Fictional academic-style materials should not be treated as verified scientific findings.
 
 ## 4. Project Name, Logos, and Branding
 
@@ -63,9 +66,13 @@ For clarity, the fact that a file is publicly viewable, downloadable, or include
 
 ## 7. Disclaimer
 
-The website's creative and research-related content is provided for informational, educational, or creative purposes.
+As of the date stated in the website disclaimer, all currently published creative works on the website—including articles, research reports, theoretical models, fictional people and institutions, events, and related visual materials—are fictional. Operational notices, legal notices, and licensing information are not fictional works.
 
-Fictional reports, hypothetical theories, and illustrative scientific materials are not necessarily factual or scientifically validated. They should not be relied upon as medical advice or as a substitute for professional judgment.
+Future real-world educational materials or genuine research will be clearly identified on the relevant page and, where appropriate, accompanied by sources, authors, and publication or review dates.
+
+Academic terms such as “paper,” “published,” “experiment,” or “professor” used within fictional works are part of the fictional setting and do not imply actual publication, peer review, institutional certification, or experimentally verified results.
+
+Fictional or hypothetical materials should not be treated as established scientific facts or professional advice. Content expressly labeled as real-world information should be checked against its cited sources and does not replace professional judgment.
 
 This document does not provide warranties concerning the accuracy, completeness, or suitability of individual creative works.
 

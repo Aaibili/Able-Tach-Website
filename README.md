@@ -4,9 +4,9 @@
 
 **Tianyuan Research Institute · 田园研究所**
 
-**Copyright holder:** lsy
+**Public copyright attribution:** Aai (the creator's pen name)
 
-*Tianyuan Research Institute (田园研究所) is the website name only; it is not the legal identity of the copyright holder.*
+*Aai is the creator's public pen name and public copyright attribution, not a separate legal entity. Tianyuan Research Institute (田园研究所) is the website name only.*
 
 **Research · Reading · Reflection**
 
@@ -16,7 +16,7 @@ The project combines a clean academic design with research-oriented pages, artic
 
 **Repository:** [Aaibili/Able-Tach-Website](https://github.com/Aaibili/Able-Tach-Website)
 
-> **Disclaimer:** Some articles, research reports, theoretical models, and other materials published on this website may be fictional or created for illustrative, educational, or creative purposes. Unless explicitly stated otherwise, they should not be interpreted as verified scientific findings or professional advice.
+> **Disclaimer:** As of the date stated in the website disclaimer, all currently published creative works on the website—including articles, research reports, theoretical models, fictional people and institutions, events, and related visual materials—are fictional. Future real-world educational materials or genuine research will be clearly identified on the relevant page and, where appropriate, accompanied by sources, authors, and publication or review dates. Operational notices, legal notices, and licensing information are not fictional works.
 
 ## Features
 
@@ -106,13 +106,26 @@ Third-party fonts, icons, libraries, images, and other materials remain subject 
 
 ## Disclaimer
 
-This project is provided for informational, educational, and creative purposes.
+As of the date stated in the website disclaimer, all currently published creative works on the website—including articles, research reports, theoretical models, fictional people and institutions, events, and related visual materials—are fictional. Operational notices, legal notices, and licensing information are not fictional works.
 
-Fictional research reports, hypothetical theories, and illustrative scientific materials should not be treated as established scientific facts unless independently verified through appropriate evidence.
+Future real-world educational materials or genuine research will be clearly identified on the relevant page and, where appropriate, accompanied by sources, authors, and publication or review dates.
 
-The project does not provide medical, scientific, or other professional guarantees concerning the accuracy or applicability of its creative content.
+Academic terms such as “paper,” “published,” “experiment,” or “professor” used within fictional works are part of the fictional setting. They do not imply actual publication, peer review, institutional certification, or experimentally verified results.
+
+Fictional or hypothetical materials should not be treated as established scientific facts or professional advice. Content expressly labeled as real-world information should be checked against its cited sources and does not replace professional judgment.
 
 The source code is distributed under its applicable license and subject to the warranty and liability provisions of that license.
+
+## Content-Nature Labels
+
+Article pages declare their content nature with a `content-nature` meta tag in the HTML `<head>`. Supported values are:
+
+- `fictional` — Fictional creative work. This is the default when the tag is missing or invalid.
+- `hypothetical` — Hypothetical research, reasoning, or models; not evidence of actual experiments or results.
+- `reference` — Real-world reference material or sourced information.
+- `research` — Work presented as real-world research. This label describes the page's claim; it is not independent verification or institutional endorsement.
+
+The `generate_papers_manifest.py` script reads this metadata and includes the label in `papers.json` and the homepage list. When changing a page's nature, update both its meta tag and its visible label in the article header. Real-world reference material or research should also identify relevant sources, authors, methods, data, and dates where appropriate.
 
 ## Contributing
 
@@ -132,7 +145,7 @@ Do not submit third-party images, articles, or other creative materials unless t
 
 - **Repository:** [Aaibili/Able-Tach-Website](https://github.com/Aaibili/Able-Tach-Website)
 - **Website Name:** Tianyuan Research Institute (田园研究所) — website name only
-- **Copyright Holder:** lsy
+- **Public Copyright Attribution:** Aai (the creator's pen name)
 - **Focus Areas:** Astronomy and Biology
 - **Project Type:** Static Academic Website
 - **Source Code License:** GNU GPL v3.0, limited to the scope described in `LICENSE-SCOPE.md`

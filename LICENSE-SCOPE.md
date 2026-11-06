@@ -4,8 +4,9 @@
 
 This document identifies the parts of Able-Tach-Website that are licensed under the GNU General Public License v3.0 (GPL-3.0).
 
-**Copyright holder for original project-authored materials:** lsy.  
-**Website name:** Tianyuan Research Institute (田园研究所), which is a website name only and not the legal identity of the copyright holder.
+**Public copyright attribution for original project-authored materials:** Aai (the creator's personal public pen name; not a separate legal entity).
+
+**Website name:** Tianyuan Research Institute (田园研究所), which is the website name only.
 
 ## 1. GPL-3.0 Covered Materials
 
@@ -16,13 +17,16 @@ The following original website source code authored for this project is licensed
 - JavaScript source code;
 - Python scripts and other project-authored build or maintenance scripts.
 
-The GPL-3.0-licensed program code in the current repository is:
+The GPL-3.0-licensed program code currently identified in this repository is limited to the following original code:
 
 - `generate_papers_manifest.py`;
 - the original HTML, CSS, and JavaScript code in `index.html`;
-- the original HTML, CSS, and JavaScript code in the article-page files under `Papers and Achievements/`.
+- the original HTML, CSS, and JavaScript code in these three current article-page files:
+  - `Papers and Achievements/《时间物质理论与演算宇宙模型》.html`;
+  - `Papers and Achievements/《欧油一型病毒研究报告》.html`;
+  - `Papers and Achievements/《黑体生物研究报告》.html`.
 
-Some HTML files combine program code with article text or other creative material. In those mixed files, GPL-3.0 applies only to the original code (such as page structure, styling, and scripts), not the article prose, research-report text, or embedded visual assets. The file extension alone does not determine the license. The metadata file `Papers and Achievements/papers.json` is not treated as source code and is not included by this statement.
+For each listed HTML file, GPL-3.0 applies only to the original program code (such as page structure, styling, and scripts), not to the article prose, research-report text, theoretical-model text, or embedded visual assets. No other article-page file is included by this current list. The file extension alone does not determine the license. The metadata file `Papers and Achievements/papers.json` is not treated as source code and is not included by this statement.
 
 This list identifies the current scope. It does not mean that every file with one of these extensions is necessarily project-owned or GPL-covered. A file or component is covered only to the extent that it is original project material and is not subject to a separate notice or third-party license. Future source files are not covered unless they are added to this scope or individually marked as GPL-3.0-licensed.
 
@@ -60,8 +64,9 @@ Contributors should submit only material they have the right to contribute. Cont
 
 本文档明确 Able-Tach-Website 中哪些内容采用 GNU GPL v3.0（GPL-3.0）授权。
 
-**本项目原创材料的版权主体：** lsy。  
-**网站名称：** 田园研究所（Tianyuan Research Institute），仅为网站名称，并非版权主体的法律名称或登记主体。
+**本项目原创材料的公开版权署名：** Aai（创作者本人使用的公开笔名，并非独立法人或组织）。
+
+**网站名称：** 田园研究所（Tianyuan Research Institute），仅为网站名称。
 
 ## 一、GPL-3.0 授权范围
 
@@ -72,13 +77,16 @@ Contributors should submit only material they have the right to contribute. Cont
 - JavaScript 源代码；
 - Python 脚本及其他由项目编写的构建或维护脚本。
 
-当前仓库中采用 GPL-3.0 授权的程序代码包括：
+当前仓库明确纳入 GPL-3.0 授权范围的程序代码，仅限于以下文件中的本项目原创代码：
 
 - `generate_papers_manifest.py`；
 - `index.html` 中原创的 HTML、CSS 和 JavaScript 代码；
-- `Papers and Achievements/` 目录下文章页面文件中的原创 HTML、CSS 和 JavaScript 代码。
+- 以下三篇现有文章页面文件中的原创 HTML、CSS 和 JavaScript 代码：
+  - `Papers and Achievements/《时间物质理论与演算宇宙模型》.html`；
+  - `Papers and Achievements/《欧油一型病毒研究报告》.html`；
+  - `Papers and Achievements/《黑体生物研究报告》.html`。
 
-部分 HTML 文件同时包含程序代码与文章文字或其他创作性内容。对于这类混合文件，GPL-3.0 仅适用于原创程序代码（例如页面结构、样式和脚本），不包括文章正文、研究报告文字或嵌入的视觉素材。不能仅凭文件扩展名判断许可证。`Papers and Achievements/papers.json` 是元数据文件，不因本声明而被视为源代码或纳入 GPL-3.0。
+对于上述每个 HTML 文件，GPL-3.0 仅适用于原创程序代码（例如页面结构、样式和脚本），不包括文章正文、研究报告文字、理论模型文字或嵌入的视觉素材。当前清单未列出的其他文章页面文件不纳入本次 GPL-3.0 授权范围。不能仅凭文件扩展名判断许可证。`Papers and Achievements/papers.json` 是元数据文件，不因本声明而被视为源代码或纳入 GPL-3.0。
 
 以上清单明确当前授权范围，并不表示所有具有这些扩展名的文件都必然由项目所有或采用 GPL-3.0。只有属于项目原创内容，且没有其他单独声明或第三方许可证约束的部分，才纳入相应授权范围。今后新增的源代码只有在加入本范围说明或单独标注为 GPL-3.0 授权后，才适用 GPL-3.0。
 
