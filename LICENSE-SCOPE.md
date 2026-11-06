@@ -10,12 +10,7 @@ This document identifies the parts of Able-Tach-Website that are licensed under 
 
 ## 1. GPL-3.0 Covered Materials
 
-The following original website source code authored for this project is licensed under GPL-3.0:
-
-- HTML source code;
-- CSS stylesheets;
-- JavaScript source code;
-- Python scripts and other project-authored build or maintenance scripts.
+Only the original program code in the specific files listed below is covered by GPL-3.0. File extensions or general categories of source code do not independently extend this license to other files.
 
 The GPL-3.0-licensed program code currently identified in this repository is limited to the following original code:
 
@@ -28,9 +23,7 @@ The GPL-3.0-licensed program code currently identified in this repository is lim
 
 For each listed HTML file, GPL-3.0 applies only to the original program code (such as page structure, styling, and scripts), not to the article prose, research-report text, theoretical-model text, or embedded visual assets. No other article-page file is included by this current list. The file extension alone does not determine the license. The metadata file `Papers and Achievements/papers.json` is not treated as source code and is not included by this statement.
 
-This list identifies the current scope. It does not mean that every file with one of these extensions is necessarily project-owned or GPL-covered. A file or component is covered only to the extent that it is original project material and is not subject to a separate notice or third-party license. Future source files are not covered unless they are added to this scope or individually marked as GPL-3.0-licensed.
-
-Where practical, individual source files should include a short copyright and GPL-3.0 notice identifying the applicable license.
+This list defines the current scope. No other file or component is covered merely because it has a listed file extension, belongs to the same directory, or contains similar code. Only original program code that the project has the right to license, and that is not subject to a separate or third-party license, is covered. A future source file will be covered only after it is expressly added to this scope or carries a file-specific notice that clearly licenses the applicable original code under GPL-3.0.
 
 ## 2. Materials Not Included by Default
 
@@ -70,12 +63,7 @@ Contributors should submit only material they have the right to contribute. Cont
 
 ## 一、GPL-3.0 授权范围
 
-以下由本项目原创的网站源代码采用 GPL-3.0 授权：
-
-- HTML 源代码；
-- CSS 样式表；
-- JavaScript 源代码；
-- Python 脚本及其他由项目编写的构建或维护脚本。
+GPL-3.0 仅适用于下方逐项列出的文件中属于本项目原创的程序代码。文件扩展名或源代码类型本身，不会使其他文件自动纳入该许可证范围。
 
 当前仓库明确纳入 GPL-3.0 授权范围的程序代码，仅限于以下文件中的本项目原创代码：
 
@@ -88,9 +76,7 @@ Contributors should submit only material they have the right to contribute. Cont
 
 对于上述每个 HTML 文件，GPL-3.0 仅适用于原创程序代码（例如页面结构、样式和脚本），不包括文章正文、研究报告文字、理论模型文字或嵌入的视觉素材。当前清单未列出的其他文章页面文件不纳入本次 GPL-3.0 授权范围。不能仅凭文件扩展名判断许可证。`Papers and Achievements/papers.json` 是元数据文件，不因本声明而被视为源代码或纳入 GPL-3.0。
 
-以上清单明确当前授权范围，并不表示所有具有这些扩展名的文件都必然由项目所有或采用 GPL-3.0。只有属于项目原创内容，且没有其他单独声明或第三方许可证约束的部分，才纳入相应授权范围。今后新增的源代码只有在加入本范围说明或单独标注为 GPL-3.0 授权后，才适用 GPL-3.0。
-
-在条件允许时，建议在各源代码文件中加入简短的版权声明和 GPL-3.0 许可证说明。
+以上清单界定当前授权范围。其他文件不会仅因具有相同扩展名、位于同一目录或包含类似代码而自动纳入 GPL-3.0。只有项目有权授权、属于项目原创且不受其他单独声明或第三方许可证约束的程序代码，才纳入本范围。今后新增的源代码，只有在本范围说明中被明确列出，或在具体文件中通过清晰的单独声明明确将相关原创代码采用 GPL-3.0 授权后，才适用 GPL-3.0。
 
 ## 二、默认不纳入 GPL-3.0 的内容
 
