@@ -61,10 +61,23 @@
     return copy;
   }
 
+  function scrollToHashTarget() {
+    if (!window.location.hash) return;
+    let targetId = window.location.hash.slice(1);
+    try {
+      targetId = decodeURIComponent(targetId);
+    } catch (_) {
+      // Keep the literal fragment when it is not valid percent-encoding.
+    }
+    const target = document.getElementById(targetId);
+    if (target) target.scrollIntoView({ block: 'start' });
+  }
+
   function unlockSite(gate, site) {
     if (gate) gate.remove();
     if (site) site.removeAttribute('inert');
     document.body.classList.remove('disclaimer-gate-active');
+    if (window.location.hash) requestAnimationFrame(scrollToHashTarget);
   }
 
   function focusArticleHeading() {
@@ -178,6 +191,9 @@
       validateArticleFragment(parsed, articleRoot);
       mount.replaceWith(document.importNode(articleRoot, true));
       focusArticleHeading();
+      if (window.location.hash && !document.body.classList.contains('disclaimer-gate-active')) {
+        requestAnimationFrame(scrollToHashTarget);
+      }
     } catch (error) {
       mount.classList.add('article-load-error');
       mount.textContent = copy ? copy.messages.articleLoadError : '';
@@ -321,7 +337,72 @@
     if (enterButton) enterButton.disabled = true;
   }
 
+  function getLicenseLoadError(copy) {
+    const message = copy && copy.licensePage && copy.licensePage.loadError;
+    return typeof message === 'string' && message.trim()
+      ? message
+      : '原始许可文件暂时无法读取。可使用本页的原始文件链接直接打开或下载。';
+  }
+
+  async function initializeLicenseReader(copy) {
+    const panels = Array.from(document.querySelectorAll('[data-license-source]'));
+    if (!panels.length) return;
+
+    const sourceFiles = {
+      gpl: 'LICENSE',
+      scope: 'LICENSE-SCOPE.md',
+      content: 'CONTENT-LICENSE.md'
+    };
+
+    await Promise.all(panels.map(async (panel) => {
+      const file = sourceFiles[panel.dataset.licenseSource];
+      if (!file) {
+        panel.textContent = getLicenseLoadError(copy);
+        panel.classList.add('license-source-text--error');
+        return;
+      }
+
+      try {
+        const response = await fetch(new URL(file, document.baseURI).href, { cache: 'no-store' });
+        if (!response.ok) throw new Error('License source request failed: HTTP ' + response.status);
+        panel.textContent = await response.text();
+      } catch (error) {
+        panel.textContent = getLicenseLoadError(copy);
+        panel.classList.add('license-source-text--error');
+        console.error('License source loading failed:', file, error);
+      }
+    }));
+  }
+
+  async function startLicensePage() {
+    let copy = null;
+    try {
+      const contentRootUrl = new URL(CONTENT_ROOT, document.baseURI);
+      const response = await fetch(new URL('site-copy.json', contentRootUrl), { cache: 'no-store' });
+      if (!response.ok) throw new Error('Site copy request failed: HTTP ' + response.status);
+      copy = await response.json();
+      applyCopy(copy);
+      const licenseCopy = copy && copy.licensePage;
+      const description = document.querySelector('meta[name="description"]');
+      if (!document.title.trim() && licenseCopy && typeof licenseCopy.documentTitle === 'string') {
+        document.title = licenseCopy.documentTitle;
+      }
+      if (description && !description.content.trim() && licenseCopy && typeof licenseCopy.description === 'string') {
+        description.content = licenseCopy.description;
+      }
+    } catch (error) {
+      console.error('License page copy could not be initialized; original license documents will remain available:', error);
+    }
+    await initializeLicenseReader(copy);
+    if (window.location.hash) requestAnimationFrame(scrollToHashTarget);
+  }
+
   async function start() {
+    if (document.body.dataset.page === 'license') {
+      await startLicensePage();
+      return;
+    }
+
     let copy = null;
     try {
       copy = await loadSharedContent();

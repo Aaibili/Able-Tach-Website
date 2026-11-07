@@ -67,7 +67,7 @@ def main() -> None:
         })
 
     json_text = json.dumps(entries, ensure_ascii=False, indent=2)
-    MANIFEST_PATH.write_text(json_text + "\n", encoding="utf-8")
+    MANIFEST_PATH.write_text(json_text + "\n", encoding="utf-8", newline="\n")
 
     print(f"已更新 {MANIFEST_PATH.name}，共收录 {len(entries)} 篇。")
 

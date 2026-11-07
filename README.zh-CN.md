@@ -1,6 +1,6 @@
 # Able-Tach-Website
 
-版权所有 © 2026 Aai。保留相关权利。本文件仅可为说明项目及其许可证范围之目的，与 GPL-3.0-only 授权程序代码一同逐字、完整复制和分发。本许可不允许修改本文件或将其作为独立作品单独分发，且不对 GPL 授权代码增加任何条件。
+版权所有 © 2026 Aai。在适用法律允许的范围内保留相关权利。本文件仅可为说明项目及其许可证范围之目的，与 GPL-3.0-only 授权程序代码一同逐字、完整复制和分发。本许可不允许修改本文件或将其作为独立作品单独分发，且不对 GPL 授权代码增加任何条件。
 
 **简体中文** | [English](README.md)
 
@@ -25,11 +25,12 @@ Able-Tach-Website 是「田园研究所」的官方网站源代码仓库。这�
 ## 项目特点
 
 - **静态网站架构**：无需专用应用服务器或数据库即可运行基本网站。
+- **许可证阅读页**：以纯文本展示原始许可证及授权范围文件，并提供原始文件下载入口。
 - **学术风格设计**：采用简洁、克制的视觉风格，适合展示研究资料与文字内容。
 - **响应式布局**：针对桌面设备和移动设备进行适配。
 - **论文与成果展示**：提供用于发布文章、研究报告及其他成果的页面。
 - **可复用的页面模板**：便于创建和扩展其他学术展示页面。
-- **免责声明支持**：为重要声明及内容使用限制提供展示空间。
+- **首次访问免责声明入口**：首页和文章页面要求访客阅读并确认免责声明；许可证阅读页有意跳过这一入口，以便许可证及授权范围信息始终可以直接访问。
 
 具体功能以仓库当前实际版本为准。
 
@@ -41,6 +42,7 @@ Able-Tach-Website 是「田园研究所」的官方网站源代码仓库。这�
 Able-Tach-Website/
 ├── .github/
 │   └── workflows/
+├── .gitignore
 ├── assets/
 │   ├── css/
 │   │   ├── article-pages/
@@ -55,10 +57,12 @@ Able-Tach-Website/
 ├── generate_article_pages.py
 ├── generate_papers_manifest.py
 ├── index.html
+├── license.html
 ├── LICENSE
 ├── LICENSE-SCOPE.md
 ├── CONTENT-LICENSE.md
 ├── ASSET-SOURCES.md
+├── MAINTENANCE-GUIDE.zh-CN.md
 ├── README.md
 └── README.zh-CN.md
 ```
@@ -69,7 +73,7 @@ Able-Tach-Website/
 
 ### 本地预览（推荐）
 
-首页和文章页面都会通过浏览器 `fetch()` 加载独立的界面文案、免责声明及其他内容。要完整预览网站，请通过 HTTP 静态服务器运行：
+首页、文章页面和许可证阅读页会通过浏览器 `fetch()` 加载独立的界面文案、免责声明及原始许可文件。要完整预览网站，请通过 HTTP 静态服务器运行：
 
 1. 克隆或下载本仓库，并进入项目目录。
 2. 在仓库根目录执行：
@@ -80,9 +84,9 @@ Able-Tach-Website/
 
 3. 在现代浏览器中打开 `http://localhost:8000/`。
 
-不要通过 `file://` 直接打开单篇文章页面，否则浏览器会阻止其运行时内容请求。
+不要通过 `file://` 直接打开网站的任何页面。首页、文章页面和许可证阅读页都依赖运行时内容请求，必须通过 HTTP 静态服务器访问。
 
-### 方法二：使用 Git 克隆
+### 使用 Git 克隆
 
 ```bash
 git clone https://github.com/Aaibili/Able-Tach-Website.git
@@ -133,7 +137,7 @@ AI 生成内容的权利归属及可使用范围，可能受到生成工具的�
 
 ### 四、第三方素材
 
-当前网站前端没有加载外部托管字体、JavaScript 库、CSS 框架或远程图片资源。GitHub Actions 工作流引用了 `actions/checkout@v4` 和 `actions/setup-python@v5`，它们是第三方工作流依赖，并非网站运行时依赖；其上游项目声明采用 MIT 许可证。当前七张本地图片的清单及来源核实状态见 [`ASSET-SOURCES.md`](ASSET-SOURCES.md)；目前尚未记录完整来源，重新使用前应先核实其权利状态。
+当前网站前端没有加载外部托管字体、JavaScript 库、CSS 框架或远程图片资源。GitHub Actions 工作流引用了 `actions/checkout@v4` 和 `actions/setup-python@v5`，它们是第三方工作流依赖，并非网站运行时依赖；其上游项目声明采用 MIT 许可证。当前七张本地图片的清单及来源核实状态见 [`ASSET-SOURCES.md`](ASSET-SOURCES.md)：维护者已确认均为 AI 生成，并逐张记录了所用生成服务；生成日期、当时适用的服务条款及提示词／参考输入权利尚未记录，重新使用前应先核实。
 
 ## 免责声明
 
@@ -166,7 +170,7 @@ AI 生成内容的权利归属及可使用范围，可能受到生成工具的�
 - **文章元数据：** `Papers and Achievements/articles.json`。用于关联文章 ID、生成后的 HTML 文件名、标题、简介、内容性质、正文片段和样式表。
 - **共享界面文案：** `site-content/site-copy.json` 保存界面文字，`site-content/disclaimer.html` 保存免责声明正文。它们属于独立内容文件，不是可复用页面程序代码，也不纳入 GPL-3.0-only 授权范围。
 - **可复用页面外壳：** `page-layouts/article-page.html`。
-- **共享页面脚本：** `assets/js/article-page.js` 负责加载界面文案和文章内容、校验内容片段、管理免责声明入口及初始化首页成果列表。
+- **共享页面脚本：** `assets/js/article-page.js` 负责加载界面文案和文章内容、校验内容片段、管理免责声明入口、初始化首页成果列表，并为许可证阅读页读取原始许可文件。
 - **文章样式表：** `assets/css/article-pages/`。
 - **发布用文章页面：** `Papers and Achievements/` 下的 `.html` 文件属于生成结果。修改文章时，应编辑正文片段、元数据、模板或样式表，不要直接修改生成结果。
 
@@ -202,6 +206,8 @@ python -m http.server 8000
 - 如果贡献内容拟采用不同许可证，应明确标注并事先说明。
 
 请勿在未获得适当授权的情况下提交第三方图片、文章或其他创作性素材。
+
+维护者及 AI 助手可参阅[项目维护指南](MAINTENANCE-GUIDE.zh-CN.md)，了解许可证维护与新增文章的操作流程。
 
 ## 项目信息
 

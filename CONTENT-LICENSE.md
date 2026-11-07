@@ -70,7 +70,7 @@ Any applicable trademark or other rights remain unaffected by the source code li
 
 The current browser-facing site does not load externally hosted fonts, JavaScript libraries, CSS frameworks, or remote image assets. The GitHub Actions workflow currently references two third-party workflow dependencies: `actions/checkout@v4` and `actions/setup-python@v5`. They are not part of the website's runtime code; their upstream projects identify them as MIT-licensed, and their respective upstream license texts and notices apply.
 
-The repository also contains seven local image files. Their filenames, hashes, apparent project usage, and provenance status are listed in [`ASSET-SOURCES.md`](ASSET-SOURCES.md). The original creator or source for these images is not fully recorded in the repository at this time. Do not infer ownership or permission from their presence in the repository; verify the applicable source and rights before reuse.
+The repository also contains seven local image files. Their filenames, hashes, apparent project usage, and provenance status are listed in [`ASSET-SOURCES.md`](ASSET-SOURCES.md). The project maintainer has confirmed that all seven images are AI-generated, and the generation service used for each is recorded in that register. The generation dates, the service terms in effect at the time of generation, and the rights status of prompts or reference inputs are not currently recorded. Do not infer exclusive copyright or unrestricted reuse permission from AI generation or from the files' presence in the repository; verify the applicable service terms and rights before reuse.
 
 ## 6. Default Permission and Individual Notices
 
@@ -78,7 +78,7 @@ This section is a scope clarification identifying creative materials that the pr
 
 Recipients of GPL-covered program code retain all rights granted by GPL-3.0-only to copy, modify, and distribute that code, subject to the license terms. This includes passing along the complete GPL-3.0-only license text and preserving the notices that GPL-3.0-only requires to be retained. The root `LICENSE` file is provided for that purpose. Nothing in this content notice prevents copying or distributing the GPL-3.0-only text as permitted by the license.
 
-This clarification does not, by itself, place `README.md`, `README.zh-CN.md`, `LICENSE-SCOPE.md`, this `CONTENT-LICENSE.md`, or other project documentation under GPL-3.0-only. Aai expressly permits `README.md`, `README.zh-CN.md`, `LICENSE-SCOPE.md`, this `CONTENT-LICENSE.md`, and `ASSET-SOURCES.md` to be reproduced and distributed verbatim and in full only when accompanying copies of the GPL-3.0-only-covered program code, for the limited purpose of explaining the project and the licensing scope of that code. This permission does not authorize modification of these documents or their standalone distribution as separate works. It applies only to the documents and does not add conditions to the GPL-3.0-only license governing the covered program code.
+This clarification does not, by itself, place the following five documents under GPL-3.0-only: `README.md`, `README.zh-CN.md`, `LICENSE-SCOPE.md`, `CONTENT-LICENSE.md`, and `ASSET-SOURCES.md`. Aai expressly permits these five documents to be reproduced and distributed verbatim and in full only when accompanying copies of the GPL-3.0-only-covered program code, for the limited purpose of explaining the project and the licensing scope of that code. This permission does not authorize modification of these documents or their standalone distribution as separate works. It applies only to the five documents and does not add conditions to the GPL-3.0-only license governing the covered program code.
 
 The fact that creative content is publicly viewable, downloadable, or included in this repository does not by itself constitute permission for unrestricted reuse. Rights and exceptions available under applicable law remain unaffected.
 
@@ -169,7 +169,7 @@ Papers and Achievements/articles.json 中的元数据用于生成已发布的 HT
 
 当前网站前端没有加载外部托管字体、JavaScript 库、CSS 框架或远程图片资源。GitHub Actions 工作流目前引用两项第三方工作流依赖：`actions/checkout@v4` 和 `actions/setup-python@v5`。它们不是网站运行时程序代码；其上游项目声明采用 MIT 许可证，并分别适用其上游许可证文本及声明。
 
-仓库还包含七张本地图片。文件名、哈希值、从项目引用位置判断的用途以及来源核实状态列于 [`ASSET-SOURCES.md`](ASSET-SOURCES.md)。目前仓库尚未完整记录这些图片的原始创作者或来源。不得仅因图片存在于仓库中就推定项目拥有相关权利或已经获得再利用许可；使用前应核实其来源和适用权利。
+仓库还包含七张本地图片。文件名、哈希值、从项目引用位置判断的用途以及来源核实状态列于 [`ASSET-SOURCES.md`](ASSET-SOURCES.md)。项目维护者已确认七张图片均为 AI 生成，该清单也逐张记录了所用生成服务；但生成日期、生成时适用的服务条款，以及提示词或参考输入的权利状态尚未记录。不得仅因图片为 AI 生成或存在于仓库中，就推定项目享有排他性版权或不受限制的再利用许可；使用前应核实适用的服务条款与权利状态。
 
 ## 六、默认权限与单独声明
 
@@ -177,7 +177,7 @@ Papers and Achievements/articles.json 中的元数据用于生成已发布的 HT
 
 接收 GPL 授权程序代码的人，仍可在遵守许可证条款的前提下，行使 GPL-3.0-only 授予的复制、修改和分发权利。这包括依照许可证要求随代码提供完整的 GPL-3.0-only 许可证文本，并保留许可证要求保留的声明。根目录中的 LICENSE 文件用于提供该许可证全文。本内容声明不妨碍按照 GPL-3.0-only 允许的方式复制和分发 GPL 许可证文本。
 
-README.md、README.zh-CN.md、LICENSE-SCOPE.md、CONTENT-LICENSE.md 和 ASSET-SOURCES.md 这五份项目说明文档，不会仅因与 GPL 授权代码一同存放或分发就自动采用 GPL-3.0-only。Aai 明确允许使用者仅为说明项目及代码授权范围之目的，在分发 GPL-3.0-only 授权程序代码时，逐字、完整复制和分发上述五份说明文档。本项有限许可不允许修改这些文档，也不允许将其作为独立作品单独分发。该许可仅适用于说明文档本身，不对适用 GPL-3.0-only 的程序代码增加任何条件。
+以下五份文档不会仅因与 GPL 授权代码一同存放或分发就自动采用 GPL-3.0-only：README.md、README.zh-CN.md、LICENSE-SCOPE.md、CONTENT-LICENSE.md、ASSET-SOURCES.md。Aai 明确允许使用者仅为说明项目及代码授权范围之目的，在分发 GPL-3.0-only 授权程序代码时，逐字、完整复制和分发上述五份文档。本项有限许可不允许修改这些文档，也不允许将其作为独立作品单独分发。该许可仅适用于上述五份文档，不对适用 GPL-3.0-only 的程序代码增加任何条件。
 
 创作性内容可被公开查看、下载或收录在本仓库中，并不因此构成不受限制的再利用许可。适用法律赋予的权利与例外不受影响。
 

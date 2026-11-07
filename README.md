@@ -1,6 +1,6 @@
 # Able-Tach-Website
 
-Copyright © 2026 Aai. All rights reserved. This document may be reproduced and distributed verbatim and in full only alongside copies of the GPL-3.0-only-covered program code, for the limited purpose of explaining the project and its licensing scope. This permission does not allow modification or standalone distribution of this document and does not add conditions to the GPL-covered code.
+Copyright © 2026 Aai. All rights reserved where applicable. This document may be reproduced and distributed verbatim and in full only alongside copies of the GPL-3.0-only-covered program code, for the limited purpose of explaining the project and its licensing scope. This permission does not allow modification or standalone distribution of this document and does not add conditions to the GPL-covered code.
 
 [简体中文](README.zh-CN.md) | **English**
 
@@ -25,11 +25,12 @@ The project combines a clean academic design with research-oriented pages, artic
 ## Features
 
 - **Static website architecture** — Simple deployment without requiring a dedicated application server or database.
+- **License reader** — Displays the original license and scope documents as plain text, with direct links to the source files.
 - **Academic-inspired design** — A restrained visual style for presenting research and written materials.
 - **Responsive layout** — Designed to adapt to desktop and mobile screens.
 - **Research and publications section** — Dedicated pages for articles, research reports, and other works.
 - **Reusable page templates** — A foundation for creating additional research-oriented pages.
-- **Disclaimer support** — Space for presenting important notices and content limitations.
+- **First-visit disclaimer gate** — The homepage and article pages require readers to review and acknowledge the disclaimer. The license-reader page is intentionally accessible without this gate so that license and scope information remains directly reachable.
 
 Features may vary depending on the current state of the project.
 
@@ -41,6 +42,7 @@ The directory structure may evolve as the project develops. A typical layout may
 Able-Tach-Website/
 ├── .github/
 │   └── workflows/
+├── .gitignore
 ├── assets/
 │   ├── css/
 │   │   ├── article-pages/
@@ -55,10 +57,12 @@ Able-Tach-Website/
 ├── generate_article_pages.py
 ├── generate_papers_manifest.py
 ├── index.html
+├── license.html
 ├── LICENSE
 ├── LICENSE-SCOPE.md
 ├── CONTENT-LICENSE.md
 ├── ASSET-SOURCES.md
+├── MAINTENANCE-GUIDE.zh-CN.md
 ├── README.md
 └── README.zh-CN.md
 ```
@@ -69,7 +73,7 @@ This is an illustrative structure, not a definitive listing of the repository's 
 
 ### Run Locally
 
-The homepage and article pages load visitor-facing copy and other content with browser `fetch()`. For a complete local preview, use an HTTP static server:
+The homepage, article pages, and license reader load visitor-facing copy and source documents with browser `fetch()`. For a complete local preview, use an HTTP static server:
 
 1. Clone or download this repository and open the project directory.
 2. From the repository root, run:
@@ -80,7 +84,7 @@ The homepage and article pages load visitor-facing copy and other content with b
 
 3. Open `http://localhost:8000/` in a modern web browser.
 
-Do not open an individual article page through `file://`; the browser will block its runtime content requests.
+Do not open any site page directly through `file://`. The homepage, article pages, and license reader all rely on runtime content requests that require an HTTP server.
 
 ### Clone the Repository
 
@@ -129,7 +133,7 @@ The project name **Able-Tach-Website**, the website name **Tianyuan Research Ins
 
 ### Third-Party Materials
 
-The current browser-facing site does not load externally hosted fonts, JavaScript libraries, CSS frameworks, or remote image assets. The GitHub Actions workflow references `actions/checkout@v4` and `actions/setup-python@v5`; these are third-party workflow dependencies, not website runtime dependencies. Their upstream repositories identify them as MIT-licensed. The source and status of the seven local image files are recorded in [`ASSET-SOURCES.md`](ASSET-SOURCES.md); their provenance is not fully documented and should be confirmed before reuse.
+The current browser-facing site does not load externally hosted fonts, JavaScript libraries, CSS frameworks, or remote image assets. The GitHub Actions workflow references `actions/checkout@v4` and `actions/setup-python@v5`; these are third-party workflow dependencies, not website runtime dependencies. Their upstream repositories identify them as MIT-licensed. The seven local image files are listed in [`ASSET-SOURCES.md`](ASSET-SOURCES.md); the project maintainer has confirmed that they are AI-generated and the generation service is recorded for each image, while generation dates, applicable service terms, and prompt or reference-input rights remain unrecorded. Verify those rights before reuse.
 
 ## Disclaimer
 
@@ -162,7 +166,7 @@ Article pages are built from separate content and program-code sources:
 - **Article metadata:** `Papers and Achievements/articles.json`. It maps each article ID to its published HTML filename, title, description, content-nature label, content fragment, and stylesheet.
 - **Shared visitor-facing copy:** `site-content/site-copy.json` contains interface wording and `site-content/disclaimer.html` contains the disclaimer text. These are content files, not reusable page program code, and are excluded from the GPL-3.0-only grant.
 - **Reusable page shell:** `page-layouts/article-page.html`.
-- **Shared page behavior:** `assets/js/article-page.js` loads site copy and article content, validates fragments, manages the disclaimer gate, and initializes the homepage publication list.
+- **Shared page behavior:** `assets/js/article-page.js` loads site copy and article content, validates fragments, manages the disclaimer gate, initializes the homepage publication list, and retrieves original license files for the plain-text license reader.
 - **Article stylesheets:** `assets/css/article-pages/`.
 - **Published article pages:** the `.html` files in `Papers and Achievements/` are generated outputs. Edit the source fragment, metadata, template, or stylesheet instead of editing these outputs directly.
 
@@ -198,6 +202,8 @@ Before submitting a contribution, please ensure that:
 - You clearly identify any contribution that is intended to have a different license.
 
 Do not submit third-party images, articles, or other creative materials unless their use is properly authorized.
+
+Maintainers and AI assistants can refer to the [Chinese maintenance guide](MAINTENANCE-GUIDE.zh-CN.md) for procedures on license maintenance and adding articles.
 
 ## Project Information
 
