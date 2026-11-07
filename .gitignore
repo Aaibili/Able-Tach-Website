@@ -1,0 +1,6 @@
+# Local AI assistant workspace and notes
+.workbuddy-ai/
+
+# Operating system files
+.DS_Store
+Thumbs.db

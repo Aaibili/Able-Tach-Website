@@ -1,7 +1,10 @@
+# SPDX-FileCopyrightText: 2026 Aai
+# SPDX-License-Identifier: GPL-3.0-only
+# See LICENSE and LICENSE-SCOPE.md for the exact project scope.
+
 from html.parser import HTMLParser
 from pathlib import Path
 import json
-import re
 
 
 CONTENT_NATURES = {"fictional", "hypothetical", "reference", "research"}
@@ -22,7 +25,6 @@ class ContentNatureParser(HTMLParser):
 ROOT = Path(__file__).resolve().parent
 PAPERS_DIR = ROOT / "Papers and Achievements"
 MANIFEST_PATH = PAPERS_DIR / "papers.json"
-INDEX_PATH = ROOT / "index.html"
 
 def read_content_nature(html_path: Path) -> str:
     """Read a page's declared nature; default to fictional to avoid implying verification."""
@@ -34,16 +36,10 @@ def read_content_nature(html_path: Path) -> str:
         value = None
     return value if value in CONTENT_NATURES else "fictional"
 
-DATA_START = "<!-- PAPERS_DATA_START -->"
-DATA_END = "<!-- PAPERS_DATA_END -->"
-
 
 def main() -> None:
     if not PAPERS_DIR.is_dir():
         raise SystemExit(f"论文目录不存在：{PAPERS_DIR}")
-    if not INDEX_PATH.is_file():
-        raise SystemExit(f"主页不存在：{INDEX_PATH}")
-
     html_files = sorted(
         (
             path for path in PAPERS_DIR.iterdir()
@@ -73,30 +69,8 @@ def main() -> None:
     json_text = json.dumps(entries, ensure_ascii=False, indent=2)
     MANIFEST_PATH.write_text(json_text + "\n", encoding="utf-8")
 
-    # Keep the data embedded in index.html so the listing also works for file://
-    # previews, where browser fetch() cannot access sibling files.
-    safe_json = json.dumps(entries, ensure_ascii=False, separators=(",", ":"))
-    safe_json = safe_json.replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e")
-    page = INDEX_PATH.read_text(encoding="utf-8")
-    pattern = re.compile(
-        re.escape(DATA_START) + r".*?" + re.escape(DATA_END),
-        re.DOTALL,
-    )
-    replacement = (
-        DATA_START + "\n"
-        + '<script type="application/json" id="papers-data">' + safe_json + "</script>\n"
-        + DATA_END
-    )
-    updated_page, count = pattern.subn(lambda _: replacement, page, count=1)
-    if count != 1:
-        raise SystemExit(
-            "未找到论文数据插入标记，请确认 index.html 包含 "
-            f"{DATA_START} 和 {DATA_END}"
-        )
-    # Normalize the document ending: exactly one final newline, no accumulated blank lines.
-    INDEX_PATH.write_text(updated_page.rstrip() + "\n", encoding="utf-8")
+    print(f"已更新 {MANIFEST_PATH.name}，共收录 {len(entries)} 篇。")
 
-    print(f"已更新 {MANIFEST_PATH.name} 和 index.html，共收录 {len(entries)} 篇。")
     for entry in entries:
         print(f" - {entry['file']}: {entry['description'][:80]}")
 

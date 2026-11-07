@@ -1,0 +1,67 @@
+<!-- SPDX-FileCopyrightText: 2026 Aai -->
+<!-- SPDX-License-Identifier: GPL-3.0-only -->
+<!-- See LICENSE and LICENSE-SCOPE.md for the exact project scope. -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="content-nature" content="{{CONTENT_NATURE}}">
+  <meta name="description" content="{{PAGE_DESCRIPTION}}">
+  <title>{{PAGE_TITLE}}</title>
+  <link rel="stylesheet" href="{{STYLESHEET}}">
+  <script src="../assets/js/article-page.js" defer></script>
+</head>
+<body class="disclaimer-gate-active" data-copy-root="../site-content/">
+  <div class="disclaimer-gate" id="disclaimer-gate" role="dialog" aria-modal="true" aria-labelledby="disclaimer-gate-title">
+    <div class="disclaimer-gate__panel" role="document">
+      <div class="disclaimer-gate__header">
+        <span class="disclaimer-gate__eyebrow" data-copy="gate.eyebrow"></span>
+        <h2 id="disclaimer-gate-title" data-copy="gate.title"></h2>
+        <p data-copy="gate.intro"></p>
+      </div>
+      <div class="disclaimer-gate__scroll" id="disclaimer-scroll" tabindex="0" data-copy-aria-label="gate.disclaimerAria">
+        <div class="disclaimer" id="disclaimer-copy"></div>
+      </div>
+      <div class="disclaimer-gate__actions">
+        <p class="disclaimer-gate__status" id="disclaimer-status" aria-live="polite" data-copy="gate.status"></p>
+        <p class="disclaimer-gate__privacy" data-copy="gate.privacy"></p>
+        <label class="disclaimer-gate__check"><input type="checkbox" id="disclaimer-confirm" disabled><span data-copy="gate.confirm"></span></label>
+        <button class="disclaimer-gate__button" id="disclaimer-enter" type="button" disabled data-copy="gate.enter"></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-content" inert>
+    <header class="site-header">
+      <div class="wrap masthead">
+        <a class="brand" href="../index.html#top" data-copy-aria-label="articlePage.brandHomeAria">
+          <img class="brand-icon" src="../images/Icon1.png" alt="" data-copy-alt="articlePage.logoAlt" width="44" height="44">
+          <div class="brand-copy">
+            <strong data-copy="articlePage.brandName"></strong>
+            <span data-copy="articlePage.brandSubtitle"></span>
+          </div>
+        </a>
+        <nav class="nav" data-copy-aria-label="articlePage.navAria">
+          <a href="../index.html#about" data-copy="articlePage.navAbout"></a>
+          <a href="../index.html#research" data-copy="articlePage.navResearch"></a>
+          <a href="../index.html#publications" data-copy="articlePage.navPublications"></a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top" class="wrap article-page">
+      <div id="article-content" data-article-id="{{ARTICLE_ID}}" data-article-manifest="articles.json" data-article-src="{{CONTENT_FILE}}" aria-live="polite">
+        <p class="article-loading" data-copy="articlePage.articleLoading"></p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div class="footer-copy"><p class="footer-note" data-copy="footer.content"></p><p class="footer-note" data-copy="footer.code"></p></div>
+        <nav class="footer-license-links" data-copy-aria-label="footer.linksAria"><a href="../LICENSE" data-copy="footer.gpl"></a><a href="../LICENSE-SCOPE.md" data-copy="footer.scope"></a><a href="../CONTENT-LICENSE.md" data-copy="footer.contentLicense"></a></nav>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

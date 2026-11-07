@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Aai
+# SPDX-License-Identifier: GPL-3.0-only
+
 name: Generate papers manifest
 
 on:
@@ -26,6 +29,9 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Generate article HTML pages
+        run: python generate_article_pages.py
+
       - name: Generate papers manifest
         run: python generate_papers_manifest.py
 
@@ -33,10 +39,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html "Papers and Achievements/papers.json"
+          git add -- "Papers and Achievements/papers.json" \
+            "Papers and Achievements/《时间物质理论与演算宇宙模型》.html" \
+            "Papers and Achievements/《欧油一型病毒研究报告》.html" \
+            "Papers and Achievements/《黑体生物研究报告》.html"
           if git diff --cached --quiet; then
             echo "Generated files are already up to date."
             exit 0
           fi
-          git commit -m "chore: regenerate papers manifest"
+          git commit -m "chore: regenerate article pages and papers manifest"
           git push

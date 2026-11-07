@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "articles": [
+    {
+      "id": "time-matter-model",
+      "file": "《时间物质理论与演算宇宙模型》.html",
+      "title": "时间物质理论与演算宇宙模型 - 田园研究所",
+      "description": "田园研究所：时间物质理论与演算宇宙模型",
+      "contentNature": "fictional",
+      "contentFile": "article-content/time-matter-model.html",
+      "stylesheet": "../assets/css/article-pages/time-matter-model.css"
+    },
+    {
+      "id": "olea-1-virus",
+      "file": "《欧油一型病毒研究报告》.html",
+      "title": "欧油一型病毒研究报告 - 田园研究所",
+      "description": "欧油一型病毒虚构病原体研究报告",
+      "contentNature": "fictional",
+      "contentFile": "article-content/olea-1-virus.html",
+      "stylesheet": "../assets/css/article-pages/olea-1-virus.css"
+    },
+    {
+      "id": "black-body-organism",
+      "file": "《黑体生物研究报告》.html",
+      "title": "黑体生物研究报告 - 田园研究所",
+      "description": "黑体生物研究报告 · 基于李文亚黑体生物理论的系统性研究",
+      "contentNature": "fictional",
+      "contentFile": "article-content/black-body-organism.html",
+      "stylesheet": "../assets/css/article-pages/black-body-organism.css"
+    }
+  ]
+}
