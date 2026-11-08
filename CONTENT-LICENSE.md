@@ -8,7 +8,7 @@
 
 **Copyright Notice:** © 2026 Aai. All rights reserved where applicable.
 
-**Last updated:** 2026-11-07
+**Last updated:** 2026-11-08
 
 **Public attribution:** Aai is the creator's personal public pen name and copyright attribution, not a separate legal entity.
 
@@ -84,7 +84,7 @@ The fact that creative content is publicly viewable, downloadable, or included i
 
 ## 7. Disclaimer
 
-As of 2026-11-07, all currently published creative works on the website—including articles, research reports, theoretical models, fictional people and institutions, events, and related visual materials—are fictional. Operational notices, legal notices, and licensing information are not fictional works.
+As of 2026-11-08, all currently published creative works on the website—including articles, research reports, theoretical models, fictional people and institutions, events, and related visual materials—are fictional. Operational notices, legal notices, and licensing information are not fictional works.
 
 Future real-world educational materials or genuine research will be clearly identified on the relevant page and, where appropriate, accompanied by sources, authors, and publication or review dates.
 
@@ -119,7 +119,7 @@ For project information, see [`README.md`](README.md) or [`README.zh-CN.md`](REA
 
 **版权声明：** © 2026 Aai。在适用法律允许的范围内保留相关权利。
 
-**最后更新日期：** 2026年11月7日
+**最后更新日期：** 2026年11月8日
 
 “Aai”是创作者本人使用的公开笔名及公开版权署名，并非独立法人或其他法律实体。“田园研究所”仅为网站名称。
 
@@ -183,7 +183,7 @@ Papers and Achievements/articles.json 中的元数据用于生成已发布的 HT
 
 ## 七、免责声明与内容性质
 
-截至2026年11月7日，网站目前已发布的创作性作品——包括文章、研究报告、理论模型、虚构人物与机构、事件及相关视觉材料——均为虚构内容。网站运营通知、法律声明和许可信息不属于虚构作品。
+截至2026年11月8日，网站目前已发布的创作性作品——包括文章、研究报告、理论模型、虚构人物与机构、事件及相关视觉材料——均为虚构内容。网站运营通知、法律声明和许可信息不属于虚构作品。
 
 未来如加入基于现实的知识性资料或真实研究成果，将在相应页面明确标注，并在适当情况下附上来源、作者及发布日期或核查日期。
 

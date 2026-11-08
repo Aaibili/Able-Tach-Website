@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  const DISCLAIMER_VERSION = '2026-11-07';
+  const DISCLAIMER_VERSION = '2026-11-08';
   const ACK_STORAGE_KEY = 'tianyuan-disclaimer-acknowledgment';
   const CONTENT_ROOT = document.body.dataset.copyRoot || '../site-content/';
 

@@ -61,6 +61,8 @@
     .section-body { min-width: 0; }
     .section-body > p:first-child { margin-top: 0; }
     .prose { margin: 0 0 14px; color: #4f554e; font-size: 15px; line-height: 2; }
+    .fiction-notice { display:flex; align-items:flex-start; gap:10px; margin:0 0 18px; color:#454c45; font-family:Arial,"Microsoft YaHei",sans-serif; font-size:12px; line-height:1.85; }
+    .fiction-notice__label { display:inline-flex; flex:0 0 auto; align-items:center; margin-top:2px; padding:1px 7px; border:1px solid #9eaf9d; border-radius:999px; background:#e1e9df; color:#20382b; font:700 10px/1.7 Arial,"Microsoft YaHei",sans-serif; white-space:nowrap; }
     .topic-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
     .topic { padding: 19px 18px 6px 0; }
     .topic + .topic { border-left: 1px solid var(--line); padding-left: 19px; }
@@ -194,6 +196,19 @@
 }
 .hero > .hero-aside strong {
   font-size: 18px;
+}
+.hero > .hero-aside .fiction-notice__label {
+  border:1px solid #9eaf9d !important;
+  border-radius:999px !important;
+  background:#e1e9df !important;
+  box-shadow:none !important;
+  outline:0 !important;
+  color:#20382b !important;
+  -webkit-text-fill-color:#20382b !important;
+  -webkit-text-stroke:0px transparent !important;
+  paint-order:normal !important;
+  text-shadow:none !important;
+  filter:none !important;
 }
 @media (max-width: 760px) {
   .hero > div:nth-of-type(2) > .eyebrow { font-size: 14px; }

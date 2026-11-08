@@ -20,7 +20,7 @@ The project combines a clean academic design with research-oriented pages, artic
 
 **Licensing:** Original website program code is GPL-3.0-only within the scope listed in [`LICENSE-SCOPE.md`](LICENSE-SCOPE.md). Articles, images, branding, and visitor-facing site content are not automatically included in that code license; see [`CONTENT-LICENSE.md`](CONTENT-LICENSE.md).
 
-> **Disclaimer:** As of 2026-11-07, all currently published creative works on the website—including articles, research reports, theoretical models, fictional people and institutions, events, and related visual materials—are fictional. Future real-world educational materials or genuine research will be clearly identified on the relevant page and, where appropriate, accompanied by sources, authors, and publication or review dates. Operational notices, legal notices, and licensing information are not fictional works.
+> **Disclaimer:** As of 2026-11-08, all currently published creative works on the website—including articles, research reports, theoretical models, fictional people and institutions, events, and related visual materials—are fictional. Future real-world educational materials or genuine research will be clearly identified on the relevant page and, where appropriate, accompanied by sources, authors, and publication or review dates. Operational notices, legal notices, and licensing information are not fictional works.
 
 ## Features
 
@@ -137,7 +137,7 @@ The current browser-facing site does not load externally hosted fonts, JavaScrip
 
 ## Disclaimer
 
-As of 2026-11-07, all currently published creative works on the website—including articles, research reports, theoretical models, fictional people and institutions, events, and related visual materials—are fictional. Operational notices, legal notices, and licensing information are not fictional works.
+As of 2026-11-08, all currently published creative works on the website—including articles, research reports, theoretical models, fictional people and institutions, events, and related visual materials—are fictional. Operational notices, legal notices, and licensing information are not fictional works.
 
 Future real-world educational materials or genuine research will be clearly identified on the relevant page and, where appropriate, accompanied by sources, authors, and publication or review dates.
 
