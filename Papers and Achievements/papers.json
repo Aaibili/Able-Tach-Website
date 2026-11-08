@@ -2,16 +2,19 @@
   {
     "file": "《时间物质理论与演算宇宙模型》.html",
     "description": "[2026] · [田园研究所全体成员] · [时间物质理论] · [已发表]",
-    "contentNature": "fictional"
+    "contentNature": "fictional",
+    "thumbnail": "../images/time-matter-model-cover.png"
   },
   {
     "file": "《欧油一型病毒研究报告》.html",
     "description": "[2026] · [田园研究所全体成员] · [生物学] · [已发表]",
-    "contentNature": "fictional"
+    "contentNature": "fictional",
+    "thumbnail": "../images/Icon1.png"
   },
   {
     "file": "《黑体生物研究报告》.html",
     "description": "[2026] · [田园研究所全体成员] · [黑体生物] · [已发表]",
-    "contentNature": "fictional"
+    "contentNature": "fictional",
+    "thumbnail": "../images/black-body-organism-report.png"
   }
 ]

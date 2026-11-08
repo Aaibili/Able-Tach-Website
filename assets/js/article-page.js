@@ -217,6 +217,18 @@
     function normalizeNature(value) {
       return Object.prototype.hasOwnProperty.call(copy.natureLabels, value) ? value : 'fictional';
     }
+    function normalizeThumbnail(value) {
+      if (typeof value !== 'string' || !value.trim()) return '';
+      try {
+        const url = new URL(value, manifestUrl);
+        const imageRoot = new URL('../images/', manifestUrl);
+        if (url.origin !== imageRoot.origin || !url.pathname.startsWith(imageRoot.pathname)) return '';
+        if (!/\.(?:avif|gif|jpe?g|png|webp)$/i.test(url.pathname)) return '';
+        return url.href;
+      } catch (_) {
+        return '';
+      }
+    }
     function validHtmlFilename(value) {
       return typeof value === 'string' && value.length > 5 &&
         !/[\\/]/.test(value) && value !== '.' && value !== '..' &&
@@ -233,7 +245,8 @@
           if (!validHtmlFilename(filename)) return null;
           return {
             filename,
-            contentNature: normalizeNature(item && typeof item === 'object' ? item.contentNature : 'fictional')
+            contentNature: normalizeNature(item && typeof item === 'object' ? item.contentNature : 'fictional'),
+            thumbnail: item && typeof item === 'object' ? normalizeThumbnail(item.thumbnail) : ''
           };
         }).filter(Boolean).sort((a, b) => collator.compare(a.filename, b.filename));
       } catch (_) {
@@ -253,28 +266,90 @@
         description = messages.paperTxtReadError.replace('{filename}', txtFilename);
       }
       if (!description) description = messages.paperTxtEmpty;
-      return { filename, htmlUrl, description, contentNature: normalizeNature(entry.contentNature) };
+      return {
+        filename,
+        htmlUrl,
+        description,
+        contentNature: normalizeNature(entry.contentNature),
+        thumbnail: normalizeThumbnail(entry.thumbnail)
+      };
     }
+    function parsePaperMetadata(description) {
+      const values = Array.from(String(description || '').matchAll(/\[([^\]]*)\]/g))
+        .map((match) => match[1].trim());
+      if (values.length < 4) return null;
+      return {
+        year: values[0],
+        author: values[1],
+        field: values[2],
+        status: values.slice(3).filter(Boolean).join(' · ')
+      };
+    }
+
     function makeRow(entry) {
       const li = document.createElement('li');
-      const title = document.createElement('p');
-      title.className = 'paper-title';
       const link = document.createElement('a');
+      link.className = 'paper-card';
       link.href = entry.htmlUrl;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
+
+      const media = document.createElement('div');
+      media.className = 'paper-card__media';
+      media.setAttribute('aria-hidden', 'true');
+      const image = document.createElement('img');
+      image.className = 'paper-card__image';
+      image.alt = '';
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      const thumbnail = entry.thumbnail || '../images/Icon1.png';
+      image.src = new URL(thumbnail, manifestUrl).href;
+      if (!entry.thumbnail || /Icon1\.png(?:[?#]|$)/i.test(thumbnail)) {
+        image.classList.add('paper-card__image--fallback');
+      }
+      media.appendChild(image);
+
+      const content = document.createElement('div');
+      content.className = 'paper-card__content';
+      const title = document.createElement('h3');
+      title.className = 'paper-title';
       const displayName = entry.filename.replace(/\.html$/i, '');
-      link.textContent = displayName;
       link.setAttribute('aria-label', messages.paperOpenAria + displayName);
-      title.appendChild(link);
+      title.textContent = displayName;
+
+      const meta = document.createElement('div');
+      meta.className = 'paper-meta';
+      const metadata = parsePaperMetadata(entry.description);
+      if (metadata) {
+        if (metadata.field) {
+          const field = document.createElement('span');
+          field.className = 'paper-meta__category';
+          field.textContent = metadata.field;
+          meta.appendChild(field);
+        }
+        if (metadata.year) {
+          const date = document.createElement('time');
+          date.className = 'paper-meta__date';
+          date.dateTime = metadata.year;
+          date.textContent = /^\d{4}$/.test(metadata.year) ? metadata.year + '年' : metadata.year;
+          meta.appendChild(date);
+        }
+      }
+
       const nature = document.createElement('span');
       nature.className = 'paper-nature paper-nature--' + entry.contentNature;
       nature.textContent = copy.natureLabels[entry.contentNature];
-      title.appendChild(nature);
+      meta.appendChild(nature);
+
       const detail = document.createElement('p');
       detail.className = 'paper-detail';
-      detail.textContent = entry.description;
-      li.append(title, detail);
+      detail.textContent = metadata
+        ? [metadata.author, metadata.status].filter(Boolean).join(' · ')
+        : entry.description;
+
+      content.append(title, meta, detail);
+      link.append(media, content);
+      li.appendChild(link);
       return li;
     }
     function renderList(list, entries) {
