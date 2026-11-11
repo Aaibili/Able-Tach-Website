@@ -369,26 +369,80 @@
     renderList(mainList, loaded.slice(0, 3));
     renderList(allList, loaded);
 
+    const modalPanel = modal.querySelector('.paper-modal__panel');
     let previousOverflow = '';
+    let returnFocusTo = moreButton;
+
+    function getModalFocusableElements() {
+      if (!modalPanel) return [];
+      return Array.from(modalPanel.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )).filter((element) =>
+        !element.hasAttribute('hidden') &&
+        element.getAttribute('aria-hidden') !== 'true' &&
+        element.getClientRects().length > 0
+      );
+    }
+
     function openModal() {
       previousOverflow = document.body.style.overflow;
+      returnFocusTo = document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : moreButton;
       document.body.style.overflow = 'hidden';
       modal.hidden = false;
+      moreButton.setAttribute('aria-expanded', 'true');
       closeButton.focus();
     }
+
     function closeModal() {
       modal.hidden = true;
       document.body.style.overflow = previousOverflow;
-      moreButton.focus();
+      moreButton.setAttribute('aria-expanded', 'false');
+      if (returnFocusTo && returnFocusTo.isConnected) {
+        returnFocusTo.focus();
+      } else {
+        moreButton.focus();
+      }
     }
+
+    function handleModalKeydown(event) {
+      if (modal.hidden) return;
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeModal();
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+
+      const focusable = getModalFocusableElements();
+      if (!focusable.length) {
+        event.preventDefault();
+        if (modalPanel) modalPanel.focus();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const focusOutsidePanel = !modalPanel || !modalPanel.contains(document.activeElement);
+
+      if (event.shiftKey && (document.activeElement === first || focusOutsidePanel)) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || focusOutsidePanel)) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
     moreButton.addEventListener('click', openModal);
     closeButton.addEventListener('click', closeModal);
     modal.addEventListener('click', function (event) {
       if (event.target.matches('[data-close-papers]')) closeModal();
     });
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && !modal.hidden) closeModal();
-    });
+    document.addEventListener('keydown', handleModalKeydown);
   }
 
   function showSharedContentError() {

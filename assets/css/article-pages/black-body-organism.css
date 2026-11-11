@@ -57,6 +57,11 @@
     .article-cover figcaption { margin-top:8px; color:#858a82; font:11px/1.7 Arial,"Microsoft YaHei",sans-serif; text-align:right; }
     @media(max-width:600px) { .article-cover { margin:22px 0 28px; } .article-cover img { width:100%; height:auto; } }
     .article-section { display:grid; grid-template-columns:155px minmax(0,1fr); gap:28px; padding:30px 0 34px; border-bottom:1px solid var(--line); }
+    /* Match the homepage: keep section headings below the floating masthead. */
+    .article-section > div:first-child { align-self:start; }
+    @media(min-width:761px) {
+      .article-section > div:first-child { position:sticky; top:118px; }
+    }
     .section-index { display:block; margin-bottom:7px; color:#8b9188; font:10px/1.6 Arial,"Microsoft YaHei",sans-serif; letter-spacing:.12em; }
     .article-section h2 { margin:0; font-size:18px; font-weight:600; }
     .article-section h3 { margin:23px 0 8px; font-size:15px; font-weight:600; }

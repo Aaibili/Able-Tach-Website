@@ -9,32 +9,42 @@
   <meta name="description" content="田园研究所：以问题为起点，探索知识的边界。">
   <title>田园研究所｜Research · Reading · Reflection</title>
   <link rel="stylesheet" href="assets/css/homepage.css">
+  <script src="assets/js/article-page.js" defer></script>
 </head>
 <body class="disclaimer-gate-active" data-copy-root="site-content/">
+
+  <!-- ============ Disclaimer gate (logic lives in article-page.js) ============ -->
   <div class="disclaimer-gate" id="disclaimer-gate" role="dialog" aria-modal="true" aria-labelledby="disclaimer-gate-title">
     <div class="disclaimer-gate__panel" role="document">
       <div class="disclaimer-gate__header">
         <span class="disclaimer-gate__eyebrow" data-copy="gate.eyebrow"></span>
-        <h1 id="disclaimer-gate-title" data-copy="gate.title"></h1>
+        <h1 class="disclaimer-gate__title" id="disclaimer-gate-title" data-copy="gate.title"></h1>
         <p data-copy="gate.intro"></p>
       </div>
       <div class="disclaimer-gate__scroll" id="disclaimer-scroll" tabindex="0" data-copy-aria-label="gate.disclaimerAria">
-        <section class="disclaimer" id="disclaimer" aria-labelledby="disclaimer-title"><div id="disclaimer-copy"></div></section>
+        <section class="disclaimer" id="disclaimer" aria-labelledby="disclaimer-title">
+          <div id="disclaimer-copy"></div>
+        </section>
       </div>
       <div class="disclaimer-gate__actions">
         <p class="disclaimer-gate__status" id="disclaimer-status" aria-live="polite" data-copy="gate.status"></p>
         <p class="disclaimer-gate__privacy" data-copy="gate.privacy"></p>
-        <label class="disclaimer-gate__check"><input type="checkbox" id="disclaimer-confirm" disabled><span data-copy="gate.confirm"></span></label>
+        <label class="disclaimer-gate__check">
+          <input type="checkbox" id="disclaimer-confirm" disabled>
+          <span data-copy="gate.confirm"></span>
+        </label>
         <button class="disclaimer-gate__button" id="disclaimer-enter" type="button" disabled data-copy="gate.enter"></button>
       </div>
     </div>
   </div>
 
+  <!-- ============ Site ============ -->
   <div id="site-content" inert>
+
     <header class="site-header">
-      <div class="wrap masthead">
+      <div class="masthead">
         <a class="brand" href="#top" data-copy-aria-label="home.brandHomeAria">
-          <img class="brand-icon" src="images/Icon1.png" alt="">
+          <img class="brand-icon" src="images/Icon1.png" alt="" width="44" height="44">
           <div class="brand-copy">
             <strong data-copy="home.brandName"></strong>
             <span data-copy="home.brandSubtitle"></span>
@@ -48,64 +58,120 @@
       </div>
     </header>
 
-    <main id="top" class="wrap">
+    <main id="top">
+
+      <!-- Hero: full-bleed background, content constrained by .wrap -->
       <section class="hero" aria-labelledby="page-title">
-        <div class="slogan-image" role="img" data-copy-aria-label="home.heroBackgroundAlt"></div>
-        <div>
-          <p class="eyebrow" data-copy="home.heroEyebrow"></p>
-          <h1 id="page-title"><span data-copy="home.heroTitleLine1"></span><br><span data-copy="home.heroTitleLine2"></span></h1>
-          <p class="hero-intro" data-copy="home.heroIntro"></p>
+        <div class="hero__bg" role="img" data-copy-aria-label="home.heroBackgroundAlt"></div>
+        <div class="wrap hero__inner">
+          <div class="hero__copy">
+            <p class="eyebrow hero__eyebrow" data-copy="home.heroEyebrow"></p>
+            <h1 class="hero__title" id="page-title">
+              <span class="hero__line" data-copy="home.heroTitleLine1"></span>
+              <span class="hero__line" data-copy="home.heroTitleLine2"></span>
+            </h1>
+            <p class="hero-intro" data-copy="home.heroIntro"></p>
+          </div>
+          <aside class="hero-aside" data-copy-aria-label="home.basicInfoAria">
+            <dl>
+              <div>
+                <dt data-copy="home.fieldLabel"></dt>
+                <dd data-copy="home.fieldValue"></dd>
+              </div>
+              <div>
+                <dt data-copy="home.institutionLabel"></dt>
+                <dd><span data-copy="home.institutionValue"></span> <span class="fiction-notice__label" data-copy="home.fictionalLabel"></span></dd>
+              </div>
+              <div>
+                <dt data-copy="home.updatedLabel"></dt>
+                <dd data-copy="home.updatedValue"></dd>
+              </div>
+            </dl>
+          </aside>
         </div>
-        <aside class="hero-aside" data-copy-aria-label="home.basicInfoAria">
-          <p><strong data-copy="home.fieldLabel"></strong><br><span data-copy="home.fieldValue"></span></p>
-          <p><strong data-copy="home.institutionLabel"></strong><br><span data-copy="home.institutionValue"></span> <span class="fiction-notice__label" data-copy="home.fictionalLabel"></span></p>
-          <p><strong data-copy="home.updatedLabel"></strong><br><span data-copy="home.updatedValue"></span></p>
-        </aside>
       </section>
 
-      <section id="about" class="section">
-        <div><span class="section-index" data-copy="home.profileIndex"></span><h2 class="section-heading" data-copy="home.profileTitle"></h2></div>
-        <div class="section-body"><p class="fiction-notice"><span class="fiction-notice__label" data-copy="home.fictionalLabel"></span><span data-copy="home.profileNatureText"></span></p><p class="prose" data-copy="home.profileText"></p></div>
+      <!-- 01 Profile -->
+      <section id="about" class="wrap section" aria-labelledby="about-title">
+        <div class="section__head">
+          <span class="section-index" data-copy="home.profileIndex"></span>
+          <h2 class="section-heading" id="about-title" data-copy="home.profileTitle"></h2>
+        </div>
+        <div class="section-body">
+          <p class="fiction-notice"><span class="fiction-notice__label" data-copy="home.fictionalLabel"></span><span data-copy="home.profileNatureText"></span></p>
+          <p class="prose" data-copy="home.profileText"></p>
+        </div>
       </section>
 
-      <section id="research" class="section">
-        <div><span class="section-index" data-copy="home.researchIndex"></span><h2 class="section-heading" data-copy="home.researchTitle"></h2></div>
+      <!-- 02 Research -->
+      <section id="research" class="wrap section" aria-labelledby="research-title">
+        <div class="section__head">
+          <span class="section-index" data-copy="home.researchIndex"></span>
+          <h2 class="section-heading" id="research-title" data-copy="home.researchTitle"></h2>
+        </div>
         <div class="section-body">
           <p class="fiction-notice"><span class="fiction-notice__label" data-copy="home.fictionalLabel"></span><span data-copy="home.researchNatureText"></span></p>
           <div class="topic-list">
-            <article class="topic"><h3 data-copy="home.topicOneTitle"></h3><p data-copy="home.topicOneText"></p></article>
-            <article class="topic"><h3 data-copy="home.topicTwoTitle"></h3><p data-copy="home.topicTwoText"></p></article>
-            <article class="topic"><h3 data-copy="home.topicThreeTitle"></h3><p data-copy="home.topicThreeText"></p></article>
+            <article class="topic">
+              <h3 data-copy="home.topicOneTitle"></h3>
+              <p data-copy="home.topicOneText"></p>
+            </article>
+            <article class="topic">
+              <h3 data-copy="home.topicTwoTitle"></h3>
+              <p data-copy="home.topicTwoText"></p>
+            </article>
+            <article class="topic">
+              <h3 data-copy="home.topicThreeTitle"></h3>
+              <p data-copy="home.topicThreeText"></p>
+            </article>
           </div>
         </div>
       </section>
 
-      <section id="publications" class="section">
-        <div><span class="section-index" data-copy="home.outputIndex"></span><h2 class="section-heading" data-copy="home.outputTitle"></h2></div>
+      <!-- 03 Publications (list filled by article-page.js) -->
+      <section id="publications" class="wrap section" aria-labelledby="publications-title">
+        <div class="section__head">
+          <span class="section-index" data-copy="home.outputIndex"></span>
+          <h2 class="section-heading" id="publications-title" data-copy="home.outputTitle"></h2>
+        </div>
         <div class="section-body">
           <ul class="paper-list" id="paper-list" aria-live="polite">
             <li class="paper-empty" data-copy="home.paperLoading"></li>
           </ul>
           <div class="paper-actions">
-            <button class="paper-more" type="button" id="papers-more" data-copy="home.papersMore"></button>
+            <button class="paper-more" type="button" id="papers-more" aria-haspopup="dialog" aria-controls="papers-modal" aria-expanded="false" data-copy="home.papersMore"></button>
           </div>
         </div>
       </section>
 
-      <section id="gallery" class="section">
-        <div><span class="section-index" data-copy="home.galleryIndex"></span><h2 class="section-heading" data-copy="home.galleryTitle"></h2></div>
+      <!-- 04 Gallery -->
+      <section id="gallery" class="wrap section" aria-labelledby="gallery-title">
+        <div class="section__head">
+          <span class="section-index" data-copy="home.galleryIndex"></span>
+          <h2 class="section-heading" id="gallery-title" data-copy="home.galleryTitle"></h2>
+        </div>
         <div class="section-body">
           <p class="fiction-notice"><span class="fiction-notice__label" data-copy="home.fictionalLabel"></span><span data-copy="home.galleryNatureText"></span></p>
           <div class="gallery">
-            <figure><img class="gallery-image" src="images/research-director-reviewing-departments.jpg" alt="" data-copy-alt="home.galleryImageOneAlt" loading="lazy"><figcaption data-copy="home.galleryImageOneCaption"></figcaption></figure>
-            <figure><img class="gallery-image" src="images/researchers-discussing-ideas.jpg" alt="" data-copy-alt="home.galleryImageTwoAlt" loading="lazy"><figcaption data-copy="home.galleryImageTwoCaption"></figcaption></figure>
-            <figure><img class="gallery-image" src="images/professors-exchanging-views.jpg" alt="" data-copy-alt="home.galleryImageThreeAlt" loading="lazy"><figcaption data-copy="home.galleryImageThreeCaption"></figcaption></figure>
+            <figure>
+              <img class="gallery-image" src="images/research-director-reviewing-departments.jpg" alt="" data-copy-alt="home.galleryImageOneAlt" loading="lazy" decoding="async">
+              <figcaption data-copy="home.galleryImageOneCaption"></figcaption>
+            </figure>
+            <figure>
+              <img class="gallery-image" src="images/researchers-discussing-ideas.jpg" alt="" data-copy-alt="home.galleryImageTwoAlt" loading="lazy" decoding="async">
+              <figcaption data-copy="home.galleryImageTwoCaption"></figcaption>
+            </figure>
+            <figure>
+              <img class="gallery-image" src="images/professors-exchanging-views.jpg" alt="" data-copy-alt="home.galleryImageThreeAlt" loading="lazy" decoding="async">
+              <figcaption data-copy="home.galleryImageThreeCaption"></figcaption>
+            </figure>
           </div>
         </div>
       </section>
 
     </main>
 
+    <!-- All-publications modal (opened by article-page.js) -->
     <div class="paper-modal" id="papers-modal" hidden>
       <div class="paper-modal__backdrop" data-close-papers aria-hidden="true"></div>
       <section class="paper-modal__panel" role="dialog" aria-modal="true" aria-labelledby="papers-modal-title" tabindex="-1">
@@ -126,11 +192,18 @@
 
     <footer class="site-footer">
       <div class="wrap footer-inner">
-        <div class="footer-copy"><p class="footer-note" data-copy="footer.content"></p><p class="footer-note" data-copy="footer.code"></p></div>
-        <nav class="footer-license-links" data-copy-aria-label="footer.linksAria"><a href="license.html#gpl" data-copy="footer.gpl"></a><a href="license.html#scope" data-copy="footer.scope"></a><a href="license.html#content" data-copy="footer.contentLicense"></a></nav>
+        <div class="footer-copy">
+          <p class="footer-note" data-copy="footer.content"></p>
+          <p class="footer-note" data-copy="footer.code"></p>
+        </div>
+        <nav class="footer-license-links" data-copy-aria-label="footer.linksAria">
+          <a href="license.html#gpl" data-copy="footer.gpl"></a>
+          <a href="license.html#scope" data-copy="footer.scope"></a>
+          <a href="license.html#content" data-copy="footer.contentLicense"></a>
+        </nav>
       </div>
     </footer>
+
   </div>
-  <script src="assets/js/article-page.js" defer></script>
 </body>
 </html>
